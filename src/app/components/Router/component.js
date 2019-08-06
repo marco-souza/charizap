@@ -1,12 +1,17 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter, Redirect, Switch } from 'react-router-dom'
 
-import Home from 'app/pages/Home'
-import About from 'app/pages/About'
+import Login from 'app/pages/Login'
+import Signup from 'app/pages/Signup'
+import Dashboard from 'app/pages/Dashboard'
 
-const AppRouter = ({ authKey, loading }) => {
-  console.log(authKey, loading)
+import ProtectedRoute from './ProtectedRoute'
+import PublicRoute from './PublicRoute'
+
+const Router = ({ authKey, loading }) => {
+  // TODO: ask to validate authKey
+  // TODO: create isValidAuthKey
   if (loading.authKey) {
     return (
       <div>Loading here...</div>
@@ -14,20 +19,24 @@ const AppRouter = ({ authKey, loading }) => {
   }
 
   return (
-    <Router>
-      <Fragment>
-        <Route exact path='/' component={Home} />
-        <Route exact path='/about' component={About} />
-      </Fragment>
-    </Router>
+    <BrowserRouter>
+      <Switch>
+        {/* TODO Check if is auth and redirect to correct page */}
+        <PublicRoute exact path='/' component={() => <Redirect to='/login' />} />
+        <PublicRoute path='/login' component={Login} />
+        <PublicRoute path='/signup' component={Signup} />
+
+        <ProtectedRoute path='/dashboard' component={Dashboard} />
+      </Switch>
+    </BrowserRouter>
   )
 }
 
-AppRouter.propTypes = {
+Router.propTypes = {
   authKey: PropTypes.string,
   loading: PropTypes.shape({
     authKey: PropTypes.bool,
   }),
 }
 
-export default AppRouter
+export default Router
