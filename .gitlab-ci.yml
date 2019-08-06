@@ -17,11 +17,15 @@ lint:
   stage: quality_gate
   script:
     - yarn lint
+  tags:
+    - ci
 
 yarn_tests:
   stage: quality_gate
   script:
     - yarn test
+  tags:
+    - ci
 
 build_with artifact:
   stage: build
@@ -33,3 +37,5 @@ build_with artifact:
     name: "$BUILD_NAME"
     expire_in: 1 week
   when: manual
+  tags:
+    - build
