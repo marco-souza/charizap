@@ -1,15 +1,20 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import Button from 'app/components/core/Button'
 
-function About (props) {
-  return (
-    <div>
-      <Button>
-        Login
-      </Button>
-    </div>
-  )
+import useAuth from 'app/redux/auth'
+
+const Login = ({ login }) => (
+  <div>
+    <Button onClick={() => login('Loks')}>
+      Login
+    </Button>
+  </div>
+)
+
+Login.propTypes = {
+  login: PropTypes.func.isRequired,
 }
 
-export default About
+export default useAuth(Login)
