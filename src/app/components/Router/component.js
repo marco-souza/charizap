@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import PropTypes from 'prop-types'
-import { BrowserRouter, Redirect, Switch } from 'react-router-dom'
+import { BrowserRouter, Redirect, Switch, Route } from 'react-router-dom'
 
 import Login from 'app/pages/Login'
 import Signup from 'app/pages/Signup'
@@ -9,31 +9,35 @@ import Dashboard from 'app/pages/Dashboard'
 import ProtectedRoute from './ProtectedRoute'
 import PublicRoute from './PublicRoute'
 
-const Router = ({ authKey, loading }) => {
-  // TODO: ask to validate authKey
-  // TODO: create isValidAuthKey
+const Root = () => <Redirect to='/login' />
+
+const Page404 = () => <div>404</div>
+
+const Router = ({ validateAuthKey, isLogged, loading }) => {
+  useMemo(() => { validateAuthKey() }, [])
+
   if (loading.authKey) {
-    return (
-      <div>Loading here...</div>
-    )
+    return <div>Loading here...</div>
   }
 
   return (
     <BrowserRouter>
       <Switch>
-        {/* TODO Check if is auth and redirect to correct page */}
-        <PublicRoute exact path='/' component={() => <Redirect to='/login' />} />
+        <PublicRoute exact path='/' component={Root} />
         <PublicRoute path='/login' component={Login} />
         <PublicRoute path='/signup' component={Signup} />
 
         <ProtectedRoute path='/dashboard' component={Dashboard} />
+
+        <Route component={Page404} />
       </Switch>
     </BrowserRouter>
   )
 }
 
 Router.propTypes = {
-  authKey: PropTypes.string,
+  validateAuthKey: PropTypes.func.isRequired,
+  isLogged: PropTypes.bool.isRequired,
   loading: PropTypes.shape({
     authKey: PropTypes.bool,
   }),

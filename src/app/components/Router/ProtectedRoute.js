@@ -4,19 +4,19 @@ import { Redirect, Route } from 'react-router-dom'
 
 import useAuth from 'app/redux/auth'
 
-const ProtectedRoute = ({ authKey, path, authPath, ...restProps }) =>
-  !authKey
+const ProtectedRoute = ({ isLogged, path, authPath, ...restProps }) =>
+  !isLogged
     ? <Redirect to={authPath} />
     : <Route {...restProps} path={path} />
 
 ProtectedRoute.propTypes = {
   authPath: PropTypes.string,
-  authKey: PropTypes.string,
+  isLogged: PropTypes.bool,
   path: PropTypes.string.isRequired,
 }
 
 ProtectedRoute.defaultProps = {
-  homePath: '/login',
+  authPath: '/login',
 }
 
 export default useAuth(ProtectedRoute)

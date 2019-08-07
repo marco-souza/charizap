@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import { login, validateAuthKey } from './constants'
+import { login, logout, validateAuthKey } from './constants'
 // Make easy to import all important ducks information
 import reducer, { initialState } from './reducer'
 import epics from './epics'
@@ -9,7 +9,8 @@ import { duckStateToProps } from 'app/helpers/redux'
 
 const mapDispatchToProps = (dispatch, props) => ({
   login: data => dispatch(login(data)),
-  validateAuthKey: data => dispatch(validateAuthKey()),
+  logout: data => dispatch(logout(data)),
+  validateAuthKey: data => dispatch(validateAuthKey(data)),
 })
 
 export default connect(duckStateToProps('auth'), mapDispatchToProps)

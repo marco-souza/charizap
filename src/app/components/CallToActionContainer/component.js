@@ -13,7 +13,7 @@ const Header = styled.h2`
   padding-bottom: 80px;
 `
 
-const CallToActionContainer = ({ login }) => (
+const CallToActionContainer = ({ logout }) => (
   <Block>
     <Container>
       <Grid item xs={12}>
@@ -21,8 +21,8 @@ const CallToActionContainer = ({ login }) => (
           Your new amazing web page starts right here!
         </Typography>
 
-        <Button onClick={() => login('DOIDOOOO')}>
-          Check our feature
+        <Button onClick={() => logout('DOIDOOOO')}>
+          Click to logout
         </Button>
       </Grid>
     </Container>
@@ -30,7 +30,7 @@ const CallToActionContainer = ({ login }) => (
 )
 
 CallToActionContainer.propTypes = {
-  login: PropTypes.func.isRequired,
+  logout: PropTypes.func.isRequired,
 }
 
 export default CallToActionContainer
