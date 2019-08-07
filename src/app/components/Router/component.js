@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import PropTypes from 'prop-types'
-import { BrowserRouter, Redirect, Switch } from 'react-router-dom'
+import { BrowserRouter, Redirect, Switch, Route } from 'react-router-dom'
 
 import Login from 'app/pages/Login'
 import Signup from 'app/pages/Signup'
@@ -24,6 +24,8 @@ const Router = ({ validateAuthKey, isLogged, loading }) => {
         <PublicRoute path='/signup' component={Signup} />
 
         <ProtectedRoute path='/dashboard' component={Dashboard} />
+
+        <Route component={() => <div>404</div>} />
       </Switch>
     </BrowserRouter>
   )
