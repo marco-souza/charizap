@@ -7,13 +7,14 @@
 import { tap, map, delay } from 'rxjs/operators'
 import { ofType, combineEpics } from 'redux-observable'
 
-import { getCookie, setCookie } from 'app/helpers/cookie'
+import { getCookie, setCookie, eraseCookie } from 'app/helpers/cookie'
 
 import {
   // Actions
   isLogged,
   // Types
   LOGIN,
+  LOGOUT,
   VALIDATE_AUTH_KEY,
 } from './constants'
 
@@ -27,6 +28,14 @@ export const login = (action$, state$) => action$.pipe(
   map(() => isLogged(true)),
 )
 
+export const logout = (action$, state$) => action$.pipe(
+  ofType(LOGOUT),
+  // TODO: map to a request or cookie
+  delay(1000),
+  tap(() => eraseCookie(COOKIE_KEY)),
+  map(() => isLogged(false)),
+)
+
 export const validateAuthKey = (action$, state$) => action$.pipe(
   ofType(VALIDATE_AUTH_KEY),
   delay(1000),
@@ -37,5 +46,6 @@ export const validateAuthKey = (action$, state$) => action$.pipe(
 
 export default combineEpics(
   validateAuthKey,
+  logout,
   login,
 )
