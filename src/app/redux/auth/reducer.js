@@ -4,12 +4,12 @@
  */
 import {
   LOGIN,
-  SET_AUTH_KEY,
+  IS_LOGGED,
   VALIDATE_AUTH_KEY,
 } from './constants'
 
 export const initialState = {
-  authKey: null,
+  isLogged: false,
   loading: {
     authKey: false
   },
@@ -17,20 +17,21 @@ export const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case SET_AUTH_KEY:
-      return {
-        authKey: action.payload,
-        loading: {
-          authKey: false,
-        },
-      }
-
     case LOGIN:
     case VALIDATE_AUTH_KEY:
       return {
         ...state,
         loading: {
           authKey: true,
+        },
+      }
+
+    case IS_LOGGED:
+      return {
+        ...state,
+        isLogged: action.payload,
+        loading: {
+          authKey: false,
         },
       }
 

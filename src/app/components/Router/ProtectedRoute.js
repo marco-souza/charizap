@@ -16,7 +16,7 @@ ProtectedRoute.propTypes = {
 }
 
 ProtectedRoute.defaultProps = {
-  homePath: '/login',
+  authPath: '/login',
 }
 
 export default useAuth(ProtectedRoute)

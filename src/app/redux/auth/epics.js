@@ -7,26 +7,32 @@
 import { tap, map, delay } from 'rxjs/operators'
 import { ofType, combineEpics } from 'redux-observable'
 
+import { getCookie, setCookie } from 'app/helpers/cookie'
+
 import {
   // Actions
-  setAuthKey,
+  isLogged,
   // Types
   LOGIN,
   VALIDATE_AUTH_KEY,
 } from './constants'
 
+const COOKIE_KEY = 'auth_key'
+
 export const login = (action$, state$) => action$.pipe(
   ofType(LOGIN),
+  // TODO: map to a request or cookie
   delay(1000),
-  map(({ payload }) => setAuthKey(payload)),
-  tap(console.log),
+  tap(({ payload }) => setCookie(COOKIE_KEY, payload, 1)),
+  map(() => isLogged(true)),
 )
 
 export const validateAuthKey = (action$, state$) => action$.pipe(
   ofType(VALIDATE_AUTH_KEY),
   delay(1000),
-  map(({ payload }) => setAuthKey(payload)),
-  tap(alert),
+  map(() => getCookie(COOKIE_KEY)),
+  // TODO: map(authKey => authKey && api.isValidAuthKey),
+  map(isValidKey => isLogged(Boolean(isValidKey))),
 )
 
 export default combineEpics(
