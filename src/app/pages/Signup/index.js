@@ -6,7 +6,7 @@ function About (props) {
   return (
     <div>
       <Button>
-        Fuck yeah
+        SignUp
       </Button>
     </div>
   )
