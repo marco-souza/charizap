@@ -9,6 +9,10 @@ import Dashboard from 'app/pages/Dashboard'
 import ProtectedRoute from './ProtectedRoute'
 import PublicRoute from './PublicRoute'
 
+const Root = () => <Redirect to='/login' />
+
+const Page404 = () => <div>404</div>
+
 const Router = ({ validateAuthKey, isLogged, loading }) => {
   useMemo(() => { validateAuthKey() }, [])
 
@@ -19,13 +23,13 @@ const Router = ({ validateAuthKey, isLogged, loading }) => {
   return (
     <BrowserRouter>
       <Switch>
-        <PublicRoute exact path='/' component={() => <Redirect to='/login' />} />
+        <PublicRoute exact path='/' component={Root} />
         <PublicRoute path='/login' component={Login} />
         <PublicRoute path='/signup' component={Signup} />
 
         <ProtectedRoute path='/dashboard' component={Dashboard} />
 
-        <Route component={() => <div>404</div>} />
+        <Route component={Page404} />
       </Switch>
     </BrowserRouter>
   )
