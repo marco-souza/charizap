@@ -5,6 +5,7 @@ import Grid from '@material-ui/core/Grid'
 
 import LoginCover from 'app/components/LoginCover'
 import LoginMenu from 'app/components/LoginMenu'
+import LoginForm from 'app/components/LoginForm'
 import Container from 'app/components/core/Container'
 
 import useAuth from 'app/redux/auth'
@@ -21,6 +22,7 @@ const Login = ({ login }) => (
           {/* <Menu></Menu> */}
           <LoginMenu />
           {/* <LoginForm></LoginForm> */}
+          <LoginForm />
         </Grid>
       </Grid>
 
