@@ -1,12 +1,14 @@
 import styled from 'styled-components'
+import Component from './component'
 
-const Header = styled.header`
+const Header = styled(Component)`
   /* Adapt the colors based on primary prop */
-  color: ${({ theme, variant }) => theme.colors[variant]};
 
-  font-size: 1em;
+  font-family: ${({ theme }) => theme.fonts};
+  color: ${({ theme, color = 'secondVariant' }) => theme.colors[color]};
   margin: 1em;
   padding: 0.25em 1em;
+  font-weight: normal;
 `
 
 export default Header
