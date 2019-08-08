@@ -7,7 +7,8 @@ const Header = styled(Component)`
   font-family: ${({ theme }) => theme.fonts};
   color: ${({ theme, color = 'secondVariant' }) => theme.colors[color]};
   margin: 1em;
-  padding: 0.25em 1em;
+  max-width: 420px;
+  padding: 0.25em auto;
   font-weight: normal;
 `
 
