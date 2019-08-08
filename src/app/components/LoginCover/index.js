@@ -21,8 +21,8 @@ export default styled(Component)`
 
     &:nth-child(2) {
       width: 100%;
-      margin-top: -100px;
-      margin-bottom: -300px;
+      margin-top: 20px;
+      margin-bottom: -220px;
     }
   }
 
@@ -30,6 +30,6 @@ export default styled(Component)`
   & > h5 {
     font-family: ${({ theme }) => theme.fonts};
     letter-spacing: .05em;
-    padding: 0 27%;
+    padding: 0 25%;
   }
 `
