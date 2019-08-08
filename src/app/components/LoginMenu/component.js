@@ -8,7 +8,7 @@ const LoginCover = ({ className }) => (
   <div className={className}>
     <Link variant='secondaryVariant' small href='#'>Don't have an account?</Link>
 
-    <Button>Get started </Button>
+    <Button variant='outlined'>Get started </Button>
   </div>
 )
 
