@@ -6,6 +6,7 @@ export default styled(Component)`
   display: flex;
   flex-direction: column;
   font-family: ${({ theme }) => theme.fonts};
+  text-align: left;
 
   & > label {
     color: ${({ theme }) => theme.colors.secondary};
