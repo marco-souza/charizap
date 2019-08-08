@@ -4,7 +4,7 @@ import Component from './component'
 
 export default styled(Component)`
   max-width: 430px;
-  margin: 0 auto;
+  margin: 100px auto;
   text-align: center;
 
   & button {
