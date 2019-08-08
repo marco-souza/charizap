@@ -6,27 +6,33 @@ import Input from 'app/components/core/Input'
 import Link from 'app/components/core/Link'
 
 const LoginCover = ({ className }) => (
-  <form className={className}>
+  <div className={className}>
+    <form onSubmit={e => {
+      // eslint-disable-next-line no-debugger
+      debugger
+    }}>
+      <Input
+        name='email'
+        label='Email Address'
+        placeholder='name@project.com'
+      />
 
-    <Input
-      label='Email Address'
-      placeholder='name@project.com'
-    />
+      <Input
+        label='Password'
+        placeholder='+5 characters'
+        type='password'
+        name='password'
+      />
 
-    <Input
-      label='Password'
-      placeholder='+5 characters'
-      type='password'
-    />
+      <Button type='submit'>
+        Login
+      </Button>
 
-    <Button type='submit'>
-      Login
-    </Button>
-
-    <Link href='#' small>
-      Forgot your password?
-    </Link>
-  </form>
+      <Link href='#' small>
+        Forgot your password?
+      </Link>
+    </form>
+  </div>
 )
 
 LoginCover.propTypes = {
