@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+import theme from 'app/helpers/theme'
+
 import Component from './component'
 
 export default styled(Component)`
@@ -11,7 +13,7 @@ export default styled(Component)`
   }
 
   & > div {
-    background-color: #786efe;
+    background-color: ${theme.colors.primary};
   }
 
   & img {
@@ -27,7 +29,7 @@ export default styled(Component)`
 
 
   & > h5 {
-    font-family: 'Roboto-light';
+    font-family: ${theme.fonts};
     letter-spacing: .05em;
     padding: 0 25%;
   }
