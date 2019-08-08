@@ -6,11 +6,12 @@ export default styled(Component)`
   display: flex;
   flex-direction: column;
   font-family: ${({ theme }) => theme.fonts};
+  text-align: left;
 
   & > label {
     color: ${({ theme }) => theme.colors.secondary};
 
-    font-size: .85em;
+    font-size: .8em;
     padding: 10px 0;
   }
 
@@ -19,7 +20,7 @@ export default styled(Component)`
     border: 1px solid ${({ theme }) => theme.colors.strokeBackground};
     background-color: ${({ theme }) => theme.colors.background};
 
-    font-size: .85em;
+    font-size: .8em;
     border-radius: 20px 20px;
     padding: 10px 20px;
 
