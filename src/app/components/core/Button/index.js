@@ -10,6 +10,7 @@ const Button = styled.button`
   margin: 1em;
   padding: 0.25em 1em;
   border-radius: 20px 20px;
+  text-transform: uppercase;
 `
 
 export default Button
