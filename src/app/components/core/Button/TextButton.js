@@ -7,6 +7,7 @@ import BaseButton from './BaseButton'
 const Button = styled(BaseButton)`
 /* Adapt the colors based on primary prop */
 color: ${getPropsColor};
+border: none;
 `
 
 export default Button
