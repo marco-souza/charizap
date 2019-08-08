@@ -47,6 +47,11 @@ export default {
         use: [
           'pug-loader',
         ] },
+
+      { test: /\.(png|svg|jpg|gif)$/,
+        use: [
+          'file-loader'
+        ] },
     ],
   },
 
