@@ -4,9 +4,18 @@ import PropTypes from 'prop-types'
 import Button from 'app/components/core/Button'
 import Input from 'app/components/core/Input'
 import Link from 'app/components/core/Link'
+import Header from 'app/components/core/Header'
+import styled from 'styled-components'
+
+const CustomHeader = styled(Header)`
+  margin: 0;
+`
 
 const LoginCover = ({ className }) => (
   <div className={className}>
+    <CustomHeader>
+      Be a happy DevOps. Enter your account.
+    </CustomHeader>
     <form onSubmit={e => {
       // eslint-disable-next-line no-debugger
       debugger
