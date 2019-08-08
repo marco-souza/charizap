@@ -1,12 +1,26 @@
 const theme = {
-  bg: {
-    primary: '#474F57',
-    secondary: 'white',
+  colors: {
+    primary: '#786efd',
+    secondary: '#2e364e',
+    secondaryVariant: '#bdc4d3',
+    success: '#00d756',
+    error: '#fd595c',
+    alert: '#fff793',
+    background: '#f8f9ff',
+    strokeBackground: '#dfe6ff',
   },
-  text: {
-    primary: 'white',
-    secondary: 'palevioletred',
-  },
+  fonts: [
+    // TODO: MacOS fonts
+    // '-apple-system,',
+    // 'BlinkMacSystemFont,',
+    '"Segoe UI",',
+    '"Roboto-light",',
+    '"Helvetica Neue", Arial, sans-serif',
+    // TODO: Emoji fonts
+    // '"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;',
+  ].join(' '),
 }
+
+export const getPropsColor = ({ theme, color = 'primary' }) => theme.colors[color]
 
 export default theme

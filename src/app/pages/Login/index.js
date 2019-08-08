@@ -1,15 +1,29 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Container from '@material-ui/core/Container'
+import Grid from '@material-ui/core/Grid'
 
-import Button from 'app/components/core/Button'
+import LoginCover from 'app/components/LoginCover'
+import LoginMenu from 'app/components/LoginMenu'
+import LoginForm from 'app/components/LoginForm'
 
 import useAuth from 'app/redux/auth'
 
 const Login = ({ login }) => (
   <div>
-    <Button onClick={() => login('Loks')}>
-      Login
-    </Button>
+    <Container>
+      <Grid container>
+        <Grid item sm={4} xs={12}>
+          <LoginCover />
+        </Grid>
+
+        <Grid item sm={8} xs={12}>
+          <LoginMenu />
+          <LoginForm />
+        </Grid>
+      </Grid>
+
+    </Container>
   </div>
 )
 

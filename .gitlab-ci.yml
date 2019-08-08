@@ -18,6 +18,8 @@ lint:
     yarn lint
   tags:
     - ci
+  only:
+  - merge_requests
 
 yarn_tests:
   stage: quality_gate
@@ -27,6 +29,8 @@ yarn_tests:
     yarn test
   tags:
     - ci
+  only:
+  - merge_requests
 
 build_with_artifact:
   stage: build
@@ -42,6 +46,8 @@ build_with_artifact:
     expire_in: 1 week
   tags:
     - build
+  only:
+  - merge_requests
 
 deploy_s3:
   stage: deploy
@@ -56,3 +62,5 @@ deploy_s3:
   when: manual
   tags:
     - deploy
+  only:
+  - merge_requests

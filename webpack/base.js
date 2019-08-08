@@ -47,6 +47,21 @@ export default {
         use: [
           'pug-loader',
         ] },
+
+      { test: /\.(png|svg|jpg|gif)$/,
+        use: [
+          'file-loader'
+        ] },
+
+      { test: /\.css$/, loader: 'style-loader!css-loader' },
+      { test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [ {
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: 'fonts/'
+          }
+        } ] },
     ],
   },
 
