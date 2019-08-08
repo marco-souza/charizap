@@ -1,13 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-// import Container from '@material-ui/core/Container'
+import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 
 import LoginCover from 'app/components/LoginCover'
 import LoginMenu from 'app/components/LoginMenu'
 import LoginForm from 'app/components/LoginForm'
-import Container from 'app/components/core/Container'
-import Header from 'app/components/core/Header'
 
 import useAuth from 'app/redux/auth'
 
