@@ -8,6 +8,8 @@ import Router from 'app/components/Router'
 import registerServiceWorker from 'app/helpers/registerServiceWorker'
 import { generateStore } from 'app/redux/store'
 
+import 'typeface-roboto'
+
 const store = generateStore()
 registerServiceWorker()
 
