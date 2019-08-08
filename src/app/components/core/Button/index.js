@@ -1,16 +1,33 @@
-import styled from 'styled-components'
+import React from 'react'
+import PropTypes from 'prop-types'
 
-const Button = styled.button`
-  /* Adapt the colors based on primary prop */
-  background: ${({ theme }) => theme.colors.background};
-  color: ${({ theme }) => theme.colors.primary};
-  border: 2px solid ${({ theme }) => theme.colors.primary};
+import ContainedButton from './ContainedButton'
+import TextButton from './TextButton'
+import OutlinedButton from './OutlinedButton'
 
-  font-size: 1em;
-  margin: 1em;
-  padding: 0.25em 1em;
-  border-radius: 20px 20px;
-  text-transform: uppercase;
-`
+const variants = {
+  contained: ContainedButton,
+  outlined: OutlinedButton,
+  text: TextButton,
+}
+
+const Button = ({ variant, children, ...restProps }) => {
+  const SelectedButton = variants[variant] || variants.contained
+
+  return (
+    <SelectedButton {...restProps}>
+      {children}
+    </SelectedButton>
+  )
+}
+
+Button.propTypes = {
+  variant: PropTypes.string,
+  children: PropTypes.string.isRequired,
+}
+
+Button.defaultProps = {
+  variant: 'contained'
+}
 
 export default Button
