@@ -7,6 +7,7 @@ import LoginCover from 'app/components/LoginCover'
 import LoginMenu from 'app/components/LoginMenu'
 import LoginForm from 'app/components/LoginForm'
 import Container from 'app/components/core/Container'
+import Header from 'app/components/core/Header'
 
 import useAuth from 'app/redux/auth'
 
@@ -19,9 +20,8 @@ const Login = ({ login }) => (
         </Grid>
 
         <Grid item sm={6} xs={12}>
-          {/* <Menu></Menu> */}
           <LoginMenu />
-          {/* <LoginForm></LoginForm> */}
+          <Header>Be a happy DevOps. Enter your account</Header>
           <LoginForm />
         </Grid>
       </Grid>
