@@ -4,7 +4,8 @@ import Component from './component'
 
 export default styled(Component)`
   text-align: center;
-  max-width: 420px;
+  max-width: 480px;
+  overflow: hidden;
 
   @media (max-width: 600px) {
     display: none;
@@ -16,12 +17,12 @@ export default styled(Component)`
 
   & img {
     margin: 0 auto;
-    margin-top: 80px;
+    margin-top: 60px;
 
     &:nth-child(2) {
       width: 100%;
-      margin-top: 0px;
-      margin-bottom: -250px;
+      margin-top: -100px;
+      margin-bottom: -300px;
     }
   }
 
@@ -29,6 +30,6 @@ export default styled(Component)`
   & > h5 {
     font-family: ${({ theme }) => theme.fonts};
     letter-spacing: .05em;
-    padding: 0 25%;
+    padding: 0 27%;
   }
 `
