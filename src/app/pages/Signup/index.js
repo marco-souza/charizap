@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 
@@ -9,7 +8,7 @@ import SignupForm from 'app/components/SignupForm'
 
 import useAuth from 'app/redux/auth'
 
-const Signup = ({ Signup }) => (
+const Signup = () => (
   <div>
     <Container>
       <Grid container>
@@ -26,9 +25,5 @@ const Signup = ({ Signup }) => (
     </Container>
   </div>
 )
-
-Signup.propTypes = {
-  Signup: PropTypes.func.isRequired,
-}
 
 export default useAuth(Signup)
