@@ -21,7 +21,7 @@ const CallToActionContainer = ({ logout }) => (
           Your new amazing web page starts right here!
         </Typography>
 
-        <Button onClick={() => logout('DOIDOOOO')}>
+        <Button variant='outlined' onClick={() => logout()}>
           Click to logout
         </Button>
       </Grid>
