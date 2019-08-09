@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import Cover from 'app/components/core/Cover'
 
-import Button from 'app/components/core/Button'
+import Switch from './Switch'
 
 const SignupCover = ({ className }) => (
   <Cover
@@ -14,12 +14,7 @@ const SignupCover = ({ className }) => (
     renderBelow
     moreSpace
   >
-
-    <div>
-      <Button variant='contained' >Be Happy</Button>
-      <Button variant='outlined' >Lonely</Button>
-    </div>
-
+    <Switch />
   </Cover>
 )
 
