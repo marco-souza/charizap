@@ -54,7 +54,18 @@ export ASSETS_RESOLVE=src/assets
 export MODULES_RESOLVE=node_modules
 export APP_HTML=src/assets/index.pug
 export APP_LOGO=src/assets/images/logo.png
-export APP_TITLE="My awesome motherfucker pwa!"
+export APP_TITLE="Devopness"
+export NAME='Devopness Web App - Local Dev'
+export SHORT_NAME='Devopness - Local Dev'
+export DESCRIPTION='Devopness Web App'
+export BG_COLOR='#f8f9ff'
+export THEME_COLOR='#786efd'
+```
+
+or you can just:
+
+```sh
+source .env
 ```
 
 Use `source` at your terminal config file or open a new terminal and try to run the app locally =D.

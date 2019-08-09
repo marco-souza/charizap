@@ -11,7 +11,13 @@ ENV MODULES_RESOLVE=node_modules
 # assets
 ENV APP_HTML=src/assets/index.pug
 ENV APP_LOGO=src/assets/images/logo.png
-ENV APP_TITLE="My awesome motherfucker pwa!"
+ENV APP_TITLE="Devopness - Docker Dev"
+# manifest
+ENV APP_NAME='Devopness Web App - Docker Dev'
+ENV APP_SHORT_NAME='Devopness - Docker Dev'
+ENV DESCRIPTION='Devopness Web App'
+ENV BG_COLOR='#f8f9ff'
+ENV THEME_COLOR='#786efd'
 
 WORKDIR /app
 
