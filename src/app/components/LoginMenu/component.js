@@ -1,20 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Button from 'app/components/core/Button'
-import Link from 'app/components/core/Link'
+import PublicMenu from 'app/components/core/PublicMenu'
 
-const LoginCover = ({ className }) => (
-  <div className={className}>
-    <Link variant='secondaryVariant' small href='#'>Don't have an account?</Link>
-
-    <Button variant='outlined'>Get started </Button>
-  </div>
+const LoginMenu = ({ className }) => (
+  <PublicMenu
+    text="Don't have an account?"
+    href='/signup'
+    buttonText='Get started'
+  />
 )
 
-LoginCover.propTypes = {
-  // children: PropTypes.node,
+LoginMenu.propTypes = {
   className: PropTypes.string,
 }
 
-export default LoginCover
+export default LoginMenu

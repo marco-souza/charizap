@@ -1,15 +1,29 @@
 import React from 'react'
+import Container from '@material-ui/core/Container'
+import Grid from '@material-ui/core/Grid'
 
-import Button from 'app/components/core/Button'
+import SignupCover from 'app/components/SignupCover'
+import SignupMenu from 'app/components/SignupMenu'
+import SignupForm from 'app/components/SignupForm'
 
-function About (props) {
-  return (
-    <div>
-      <Button>
-        SignUp
-      </Button>
-    </div>
-  )
-}
+import useAuth from 'app/redux/auth'
 
-export default About
+const Signup = () => (
+  <div>
+    <Container>
+      <Grid container>
+        <Grid item sm={4} xs={12}>
+          <SignupCover />
+        </Grid>
+
+        <Grid item sm={8} xs={12}>
+          <SignupMenu />
+          <SignupForm />
+        </Grid>
+      </Grid>
+
+    </Container>
+  </div>
+)
+
+export default useAuth(Signup)

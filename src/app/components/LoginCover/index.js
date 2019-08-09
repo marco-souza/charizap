@@ -1,35 +1,24 @@
-import styled from 'styled-components'
+import React from 'react'
+import PropTypes from 'prop-types'
 
-import Component from './component'
+import Cover from 'app/components/core/Cover'
 
-export default styled(Component)`
-  text-align: center;
-  max-width: 480px;
-  overflow: hidden;
+import loginStarship from 'assets/images/login_starship.gif'
 
-  @media (max-width: 600px) {
-    display: none;
-  }
+const LoginCover = ({ className }) => (
+  <Cover
+    background='primary'
+    logo='white'
+    message='Make an impact on the world'
+    className={className}
+    tittleUp
+  >
+    <img src={loginStarship} alt='' className='starship' />
+  </Cover>
+)
 
-  & > div {
-    background-color: ${({ theme }) => theme.colors.primary};
-  }
+LoginCover.propTypes = {
+  className: PropTypes.string,
+}
 
-  & img {
-    margin: 0 auto;
-    margin-top: 60px;
-
-    &:nth-child(2) {
-      width: 100%;
-      margin-top: 20px;
-      margin-bottom: -220px;
-    }
-  }
-
-
-  & > h5 {
-    font-family: ${({ theme }) => theme.fonts};
-    letter-spacing: .05em;
-    padding: 0 25%;
-  }
-`
+export default LoginCover

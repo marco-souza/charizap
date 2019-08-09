@@ -8,10 +8,17 @@ import Router from 'app/components/Router'
 import registerServiceWorker from 'app/helpers/registerServiceWorker'
 import { generateStore } from 'app/redux/store'
 
+import WebFont from 'webfontloader'
 import 'typeface-roboto'
 
 const store = generateStore()
 registerServiceWorker()
+
+WebFont.load({
+  google: {
+    families: ['Roboto:300,400,500']
+  }
+})
 
 const app = (
   <ThemeProvider theme={theme}>

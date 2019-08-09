@@ -1,19 +1,19 @@
 
 import styled from 'styled-components'
 
-import { getPropsColor } from 'app/helpers/theme'
+import { getPropsColor, getPropsBackground } from 'app/helpers/theme'
 
 import BaseButton from './BaseButton'
 
 const Button = styled(BaseButton)`
-/* Adapt the colors based on primary prop */
-color: ${getPropsColor};
-border-color: ${({ theme }) => theme.colors.strokeBackground};
-background: ${({ theme }) => theme.colors.background};
+  /* Adapt the colors based on primary prop */
+  color: ${getPropsColor()};
+  border-color: ${getPropsBackground('stroke')};
+  background: ${getPropsBackground()};
 
-&:hover {
-  border-color: ${getPropsColor};
-}
+  &:hover {
+    border-color: ${getPropsBackground('primary')};
+  }
 `
 
 export default Button
