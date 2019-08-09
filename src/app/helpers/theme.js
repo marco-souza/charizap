@@ -7,8 +7,9 @@ const theme = {
     error: '#fd595c',
     alert: '#fff793',
     background: {
-      primary: '#f8f9ff',
+      default: '#f8f9ff',
       stroke: '#dfe6ff',
+      primary: '#786efd',
     }
   },
   fonts: [
@@ -26,11 +27,11 @@ const theme = {
 export const getFonts = ({ theme }) =>
   theme.colors.fonts
 
-export const getPropsColor = (defaultColor = 'primary') =>
+export const getPropsColor = (defaultColor = 'default') =>
   ({ theme, color = defaultColor }) =>
     theme.colors[color]
 
-export const getPropsBackground = (defaultColor = 'primary') =>
+export const getPropsBackground = (defaultColor = 'default') =>
   ({ theme, background = defaultColor }) =>
     theme.colors.background[background]
 
