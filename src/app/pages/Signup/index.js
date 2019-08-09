@@ -12,11 +12,11 @@ const Signup = () => (
   <div>
     <Container>
       <Grid container>
-        <Grid item sm={4} xs={12}>
+        <Grid item md={4} xs={12}>
           <SignupCover />
         </Grid>
 
-        <Grid item sm={8} xs={12}>
+        <Grid item md={8} xs={12}>
           <SignupMenu />
           <SignupForm />
         </Grid>

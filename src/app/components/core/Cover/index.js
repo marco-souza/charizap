@@ -10,7 +10,7 @@ export default styled(Container)`
   overflow: hidden;
   background-color: ${getPropsBackground()};
 
-  @media (max-width: 1024px) {
+  @media (max-width: 960px) {
     display: none;
   }
 
