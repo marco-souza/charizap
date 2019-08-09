@@ -59,8 +59,8 @@ deploy_s3:
   environment:
     name: staging_S3
     url: http://${S3_BUCKET_NAME}.s3-website-${S3_BUCKET_REGION}.amazonaws.com/
-  when: manual
   tags:
     - deploy
   only:
-  - merge_requests
+    refs:
+      - devel
