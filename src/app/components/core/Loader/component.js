@@ -5,7 +5,7 @@ import Text from 'app/components/core/Text'
 
 import tetris from 'assets/images/tetris-loader.gif'
 
-const Loader = ({ className, children, variant }) => (
+const Loader = ({ className, variant }) => (
   <div className={className}>
     <div>
       <img src={tetris} alt='Loading...' />
@@ -14,16 +14,11 @@ const Loader = ({ className, children, variant }) => (
         Loading...
       </Text>
     </div>
-
   </div>
 )
 
 Loader.propTypes = {
   variant: PropTypes.string,
-  children: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.array,
-  ]).isRequired,
   className: PropTypes.string.isRequired,
 }
 
