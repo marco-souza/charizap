@@ -1,25 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
 
-import Typography from '@material-ui/core/Typography'
+import PublicMenu from 'app/components/core/PublicMenu'
 
-import Button from 'app/components/core/Button'
-
-const LoginCover = ({ className }) => (
-  <div className={className}>
-    <Typography variant='p'>
-      Don't have an account?
-    </Typography>
-    <Link to='/signup'>
-      <Button variant='outlined' >Get started </Button>
-    </Link>
-  </div>
+const LoginMenu = ({ className }) => (
+  <PublicMenu
+    text="Don't have an account?"
+    href='/signup'
+    buttonText='Get started'
+  />
 )
 
-LoginCover.propTypes = {
-  // children: PropTypes.node,
+LoginMenu.propTypes = {
   className: PropTypes.string,
 }
 
-export default LoginCover
+export default LoginMenu
