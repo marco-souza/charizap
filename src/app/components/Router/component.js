@@ -2,6 +2,7 @@ import React, { useMemo } from 'react'
 import PropTypes from 'prop-types'
 import { BrowserRouter, Redirect, Switch, Route } from 'react-router-dom'
 
+import Loader from 'app/components/core/Loader'
 import Login from 'app/pages/Login'
 import Signup from 'app/pages/Signup'
 import Dashboard from 'app/pages/Dashboard'
@@ -17,7 +18,7 @@ const Router = ({ validateAuthKey, isLogged, loading }) => {
   useMemo(() => { validateAuthKey() }, [])
 
   if (loading.authKey) {
-    return <div>Loading here...</div>
+    return <Loader />
   }
 
   return (
