@@ -27,7 +27,7 @@ const theme = {
 export const getFonts = ({ theme }) =>
   theme.colors.fonts
 
-export const getPropsColor = (defaultColor = 'default') =>
+export const getPropsColor = (defaultColor = 'primary') =>
   ({ theme, color = defaultColor }) =>
     theme.colors[color]
 

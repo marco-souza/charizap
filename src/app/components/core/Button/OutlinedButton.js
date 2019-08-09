@@ -12,7 +12,7 @@ const Button = styled(BaseButton)`
   background: ${getPropsBackground()};
 
   &:hover {
-    border-color: ${getPropsColor()};
+    border-color: ${getPropsBackground('primary')};
   }
 `
 
