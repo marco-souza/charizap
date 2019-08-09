@@ -10,6 +10,7 @@ const theme = {
       default: '#f8f9ff',
       stroke: '#dfe6ff',
       primary: '#786efd',
+      none: 'none',
     }
   },
   fonts: [

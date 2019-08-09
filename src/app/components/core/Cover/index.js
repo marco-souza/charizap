@@ -7,7 +7,7 @@ import Container from './component'
 export default styled(Container)`
   text-align: center;
   max-width: 480px;
-  overflow: ${props => props.overflow && 'hidden'};
+  overflow: hidden;
   background-color: ${getPropsBackground()};
 
   @media (max-width: 1024px) {
@@ -22,7 +22,7 @@ export default styled(Container)`
     &:nth-child(2) {
       width: 100%;
       margin-top: 20px;
-      margin-bottom: -220px;
+      margin-bottom: ${props => props.tittleUp ? -200 : -100}px;
     }
   }
 

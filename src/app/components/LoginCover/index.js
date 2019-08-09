@@ -9,9 +9,9 @@ const LoginCover = ({ className }) => (
   <Cover
     background='primary'
     logo='white'
-    overflow
     message='Make an impact on the world'
     className={className}
+    tittleUp
   >
     <img src={loginStarship} alt='' className='starship' />
   </Cover>
