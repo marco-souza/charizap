@@ -1,13 +1,19 @@
-import styled from 'styled-components'
+import React from 'react'
+import PropTypes from 'prop-types'
 
-import Component from './component'
+import PublicMenu from 'app/components/core/PublicMenu'
 
-export default styled(Component)`
-  align-content: flex-end;
-  text-align: end;
-  padding: 40px 20px;
+const SignupCover = ({ className }) => (
+  <PublicMenu
+    text='Already have an account?'
+    href='/login'
+    buttonText='Log in'
+  />
+)
 
-  & p {
-    font-family: 'Roboto-light';
-  }
-`
+SignupCover.propTypes = {
+  // children: PropTypes.node,
+  className: PropTypes.string,
+}
+
+export default SignupCover
