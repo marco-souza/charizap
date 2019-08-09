@@ -6,8 +6,10 @@ const theme = {
     success: '#00d756',
     error: '#fd595c',
     alert: '#fff793',
-    background: '#f8f9ff',
-    strokeBackground: '#dfe6ff',
+    background: {
+      primary: '#f8f9ff',
+      stroke: '#dfe6ff',
+    }
   },
   fonts: [
     // TODO: MacOS fonts
@@ -21,6 +23,15 @@ const theme = {
   ].join(' '),
 }
 
-export const getPropsColor = ({ theme, color = 'primary' }) => theme.colors[color]
+export const getFonts = ({ theme }) =>
+  theme.colors.fonts
+
+export const getPropsColor = (defaultColor = 'primary') =>
+  ({ theme, color = defaultColor }) =>
+    theme.colors[color]
+
+export const getPropsBackground = (defaultColor = 'primary') =>
+  ({ theme, background = defaultColor }) =>
+    theme.colors.background[background]
 
 export default theme
