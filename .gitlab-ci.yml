@@ -47,17 +47,17 @@ build_with_artifact:
   tags:
     - build
   only:
-  - merge_requests
+    - merge_requests
+    - merge
+    - devel
 
 deploy_s3:
   stage: deploy
   image: garland/aws-cli-docker:latest
-  script: |
-    npm install yarn -g
-    yarn
-    export BUILD_NAME=${CI_COMMIT_TAG:-$CI_COMMIT_NAME}
-    yarn build
-    aws s3 cp public/ s3://${S3_BUCKET_NAME}/ --recursive
+  dependencies:
+    - build_with_artifact
+  script:
+    - aws s3 cp public/ s3://${S3_BUCKET_NAME}/ --recursive
   environment:
     name: staging_S3
     url: http://${S3_BUCKET_NAME}.s3-website-${S3_BUCKET_REGION}.amazonaws.com/
