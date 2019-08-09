@@ -10,18 +10,18 @@ const CustomHeader = styled(Header)`
   margin: 0;
 `
 
-const LoginForm = ({ className }) => (
+const SignupForm = ({ className }) => (
   <div className={className}>
     <CustomHeader>
-      Be a happy DevOps. Enter your account.
+    Get started absolutely free. No credit card needed.
     </CustomHeader>
 
     <FormContainer />
   </div>
 )
 
-LoginForm.propTypes = {
+SignupForm.propTypes = {
   className: PropTypes.string,
 }
 
-export default LoginForm
+export default SignupForm
