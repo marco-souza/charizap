@@ -13,11 +13,11 @@ const Login = ({ login }) => (
   <div>
     <Container>
       <Grid container>
-        <Grid item sm={4} xs={12}>
+        <Grid item md={4} sm={12}>
           <LoginCover />
         </Grid>
 
-        <Grid item sm={8} xs={12}>
+        <Grid item md={8} sm={12}>
           <LoginMenu />
           <LoginForm />
         </Grid>

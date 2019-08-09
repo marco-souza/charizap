@@ -17,8 +17,8 @@ const Form = ({
   isSubmitting,
   className,
 }) => {
-  const termOfServices = <Link href='#' small>Terms of service</Link>
-  const privacyPolicy = <Link href='#' small>Privacy Policy</Link>
+  const termOfServices = <Link href='#'>Terms of service</Link>
+  const privacyPolicy = <Link href='#'>Privacy Policy</Link>
   return (
     <div className={className}>
       <form onSubmit={handleSubmit}>
@@ -45,7 +45,7 @@ const Form = ({
         Sign Up
         </Button>
 
-        <Text fontSize={12}>
+        <Text variant='span' small>
           By signing up you're agreeing to the Devopness {termOfServices} & {privacyPolicy}.
         </Text>
       </form>

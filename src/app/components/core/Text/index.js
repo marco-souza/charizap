@@ -7,5 +7,5 @@ import Component from './component'
 export default styled(Component)`
   color: ${getPropsColor('secondaryVariant')};
   font-family: ${theme.fonts};
-  font-size: ${({ small }) => small ? '0.8em' : '1em'};
+  font-size: ${props => props.small && '12px'};
 `
