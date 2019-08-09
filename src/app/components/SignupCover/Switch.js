@@ -7,6 +7,8 @@ import theme, { getPropsBackground, getPropsColor } from 'app/helpers/theme'
 import lonely from 'assets/images/lonely.gif'
 import meditating from 'assets/images/meditating.gif'
 
+import 'animate.css/animate.min.css'
+
 const options = {
   lonely,
   meditating,
@@ -16,7 +18,10 @@ const Switch = ({ className }) => {
   const [selected, setSelected] = useState(options.meditating)
   const isSelected = option =>
     selected === option
-      ? 'selected'
+      ? `selected animated ${option === options.meditating
+        ? 'slideInLeft'
+        : 'slideInRight'
+      }`
       : ''
 
   return (
