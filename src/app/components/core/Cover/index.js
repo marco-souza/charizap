@@ -8,14 +8,12 @@ export default styled(Container)`
   text-align: center;
   max-width: 480px;
   overflow: ${props => props.overflow && 'hidden'};
+  background-color: ${getPropsBackground()};
 
   @media (max-width: 1024px) {
     display: none;
   }
 
-  & > div {
-    background-color: ${getPropsBackground()};
-  }
 
   & img {
     margin: 0 auto;
@@ -32,6 +30,6 @@ export default styled(Container)`
   & > h5 {
     font-family: ${({ theme }) => theme.fonts};
     letter-spacing: .05em;
-    padding: 0 25%;
+    padding: ${props => props.padding || 0} ${props => props.moreSpace ? 10 : 25}%;
   }
 `

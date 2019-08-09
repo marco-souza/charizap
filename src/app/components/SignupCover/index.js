@@ -1,35 +1,30 @@
-import styled from 'styled-components'
+import React from 'react'
+import PropTypes from 'prop-types'
 
-import Component from './component'
+import Cover from 'app/components/core/Cover'
 
-export default styled(Component)`
-  text-align: center;
-  max-width: 480px;
+import Button from 'app/components/core/Button'
 
-  @media (max-width: 600px) {
-    display: none;
-  }
+const SignupCover = ({ className }) => (
+  <Cover
+    message='Focus on what really matters and leave it to us'
+    className={className}
+    logo='colored'
+    padding='40px'
+    renderBelow
+    moreSpace
+  >
 
-  & > div {
-    background-color: ${({ theme }) => theme.colors.background};
-  }
+    <div>
+      <Button variant='contained' >Be Happy</Button>
+      <Button variant='outlined' >Lonely</Button>
+    </div>
 
-  & img {
-    margin: 0 auto;
-    margin-top: 60px;
-    margin-bottom: 30px;
+  </Cover>
+)
 
-    &:nth-child(2) {
-      width: 100%;
-      height: 80%;
-      margin-top: 100px;
-      margin-bottom: -220px;
-    }
-  }
+SignupCover.propTypes = {
+  className: PropTypes.string,
+}
 
-  & > h5 {
-    font-family: ${({ theme }) => theme.fonts};
-    letter-spacing: .05em;
-    padding: 0 25%;
-  }
-`
+export default SignupCover
