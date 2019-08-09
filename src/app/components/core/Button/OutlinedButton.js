@@ -8,11 +8,11 @@ import BaseButton from './BaseButton'
 const Button = styled(BaseButton)`
   /* Adapt the colors based on primary prop */
   color: ${getPropsColor()};
-  border-color: ${getPropsBackground('stroke')};
   background: ${getPropsBackground()};
+  border: 2px solid ${getPropsBackground('stroke')};
 
   &:hover {
-    border-color: ${getPropsBackground('primary')};
+    border: 2px solid ${getPropsBackground('primary')};
   }
 `
 
