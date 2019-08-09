@@ -11,7 +11,10 @@ const Text = ({ className, children, variant }) => (
 
 Text.propTypes = {
   variant: PropTypes.string,
-  children: PropTypes.string.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.array,
+  ]).isRequired,
   className: PropTypes.string.isRequired,
 }
 

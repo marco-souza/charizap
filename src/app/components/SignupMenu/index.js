@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import PublicMenu from 'app/components/core/PublicMenu'
 
-const SignupCover = ({ className }) => (
+const SignupMenu = ({ className }) => (
   <PublicMenu
     text='Already have an account?'
     href='/login'
@@ -11,9 +11,9 @@ const SignupCover = ({ className }) => (
   />
 )
 
-SignupCover.propTypes = {
+SignupMenu.propTypes = {
   // children: PropTypes.node,
   className: PropTypes.string,
 }
 
-export default SignupCover
+export default SignupMenu
