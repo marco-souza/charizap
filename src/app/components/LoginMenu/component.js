@@ -1,14 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
+
+import Typography from '@material-ui/core/Typography'
 
 import Button from 'app/components/core/Button'
-import Link from 'app/components/core/Link'
 
 const LoginCover = ({ className }) => (
   <div className={className}>
-    <Link variant='secondaryVariant' small href='#'>Don't have an account?</Link>
-
-    <Button variant='outlined'>Get started </Button>
+    <Typography variant='p'>
+      Don't have an account?
+    </Typography>
+    <Link to='/signup'>
+      <Button variant='outlined' >Get started </Button>
+    </Link>
   </div>
 )
 
