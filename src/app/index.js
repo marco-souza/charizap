@@ -10,9 +10,17 @@ import { generateStore } from 'app/redux/store'
 
 import WebFont from 'webfontloader'
 import 'typeface-roboto'
+import ReactBreakpoints from 'react-breakpoints'
 
 const store = generateStore()
 registerServiceWorker()
+
+const breakpoints = {
+  minimal: 576,
+  small: 768,
+  medium: 992,
+  large: 1200,
+}
 
 WebFont.load({
   google: {
@@ -23,7 +31,9 @@ WebFont.load({
 const app = (
   <ThemeProvider theme={theme}>
     <Provider store={store}>
-      <Router />
+      <ReactBreakpoints breakpoints={breakpoints}>
+        <Router />
+      </ReactBreakpoints>
     </Provider>
   </ThemeProvider>
 )
