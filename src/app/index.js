@@ -16,10 +16,8 @@ const store = generateStore()
 registerServiceWorker()
 
 const breakpoints = {
-  minimal: 576,
-  small: 768,
-  medium: 992,
-  large: 1200,
+  mobile: 320,
+  desktop: 1025,
 }
 
 WebFont.load({

@@ -17,15 +17,16 @@ const PublicMenu = ({
   currentBreakpoint,
 }) => (
   <div className={className}>
-    {breakpoints[currentBreakpoint] > breakpoints.small
+    {breakpoints[currentBreakpoint] > breakpoints.mobile
       ? (
         <Text variant='span' small>
           {text}
         </Text>
       )
-      : (<Logo variant='colored' />)
+      : (<Logo />)
     }
 
+    {console.log(currentBreakpoint)}
     <Link to={href}>
       <Button variant={buttonType} >{buttonText}</Button>
     </Link>
