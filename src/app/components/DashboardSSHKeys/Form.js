@@ -16,32 +16,28 @@ const Form = ({
   handleSubmit,
   isSubmitting,
   className,
-}) => {
-  // eslint-disable-next-line no-debugger
-  // debugger
-  return (
-    <div className={className}>
-      <form onSubmit={handleSubmit}>
-        <Input
-          name='name'
-          label='Name'
-          placeholder='Ex: MacBook'
-        />
+}) => (
+  <div className={className}>
+    <form onSubmit={handleSubmit}>
+      <Input
+        name='name'
+        label='Name'
+        placeholder='Ex: MacBook'
+      />
 
-        <Textarea
-          label='Public Key SSH'
-          placeholder='Add your public key'
-          name='SSHKey'
-          rows='10'
-        />
+      <Textarea
+        label='Public Key SSH'
+        placeholder='Add your public key'
+        name='SSHKey'
+        rows='10'
+      />
 
-        <Button type='submit' disable={isSubmitting}>
-          Add key
-        </Button>
-      </form>
-    </div>
-  )
-}
+      <Button type='submit' disable={isSubmitting}>
+        Add key
+      </Button>
+    </form>
+  </div>
+)
 
 Form.propTypes = {
   values: PropTypes.object,

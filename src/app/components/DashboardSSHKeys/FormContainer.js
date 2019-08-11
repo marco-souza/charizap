@@ -11,20 +11,16 @@ const validationSchema = Yup.object()
     SSHKey: Yup.string().required(REQUIRED),
   })
 
-const mapPropsToValues = ({ name = '', SSHKey = '' }) => {
-  // eslint-disable-next-line no-debugger
-  // debugger
-  return {
-    name,
-    SSHKey
-  }
-}
+const mapPropsToValues = ({
+  name = '',
+  SSHKey = '',
+}) => ({
+  name,
+  SSHKey,
+})
 
 const onSubmit = (values, { props }) => {
-  // eslint-disable-next-line no-debugger
-  debugger
   console.log(values, props)
-  // props.login(values)
 }
 
 const Container = withFormik({

@@ -42,8 +42,6 @@ export default styled(NoState)`
   border: 2px solid ${getPropsBackground('stroke')};
 
   width: 50%;
-  /* max-width: 420px;
-  max-height: 420px; */
   padding-bottom: 50%;
   opacity: .5;
 

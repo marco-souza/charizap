@@ -6,9 +6,6 @@ let ComposedComponent = styled(Component)`
   & .container {
     margin: 40px 0;
   }
-
-  & .navbar {
-  }
 `
 
 export default ComposedComponent
