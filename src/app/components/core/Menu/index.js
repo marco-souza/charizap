@@ -12,6 +12,5 @@ export default styled(Component)`
 
   & > .rightSide {
     float: right;
-
   }
 `
