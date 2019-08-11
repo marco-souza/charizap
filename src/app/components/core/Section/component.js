@@ -10,7 +10,7 @@ const Container = ({ children, title, className, ...otherProps }) => (
       {title}
     </Text>
 
-    <Card>
+    <Card className='card'>
       {children}
     </Card>
   </div>
