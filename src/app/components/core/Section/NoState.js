@@ -38,6 +38,7 @@ NoState.propTypes = {
 export default styled(NoState)`
   margin: -20px auto;
   border-radius: 50%;
+  background-color: ${getPropsBackground()};
   border: 2px solid ${getPropsBackground('stroke')};
 
   opacity: .5;

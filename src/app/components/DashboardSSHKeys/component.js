@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 import Grid from '@material-ui/core/Grid'
 
 import Section from 'app/components/core/Section'
+import NoState from 'app/components/core/Section/NoState'
 import coloredLogo from 'assets/images/logo_devopness_alfa.png'
 
 import FormContainer from './FormContainer'
-import NoState from './NoState'
 
 const DashboardSSHKeys = ({ className }) => (
   <Grid container spacing={5}>
