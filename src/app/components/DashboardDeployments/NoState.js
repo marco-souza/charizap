@@ -36,23 +36,28 @@ NoState.propTypes = {
 }
 
 export default styled(NoState)`
-  width: 50vw;
-  height: 50vw;
-  max-width: 420px;
-  max-height: 420px;
-
-  display: flex;
-  align-items: center;
-
   margin: -20px auto;
   border-radius: 50%;
-  border: 1px solid ${getPropsBackground('stroke')};
+  border: 2px solid ${getPropsBackground('stroke')};
 
   opacity: .5;
-  box-sizing: border-box;
+  width: 50%;
+  padding-top: 50%; /* 1:1 Aspect Ratio */
+  position: relative; /* If you want text inside of it */
 
   div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    /* Horizontal Center */
     text-align: center;
-    width: 100%
+    /* Vertical Center */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
   }
 `
