@@ -1,7 +1,7 @@
 import React from 'react'
-import Grid from '@material-ui/core/Grid'
 
 import DashboardDeployments from 'app/components/DashboardDeployments'
+import DashboardSSHKeys from 'app/components/DashboardSSHKeys'
 import Separator from 'app/components/core/Separator'
 
 const Dashboard = (props) => {
@@ -13,15 +13,7 @@ const Dashboard = (props) => {
 
       <Separator />
 
-      <Grid container spacing={5}>
-        <Grid item md={6} sm={12}>
-          <DashboardDeployments />
-        </Grid>
-
-        <Grid item md={6} sm={12}>
-          <DashboardDeployments />
-        </Grid>
-      </Grid>
+      <DashboardSSHKeys />
     </div>
   )
 }
