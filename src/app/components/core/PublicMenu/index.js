@@ -4,6 +4,6 @@ import Component from './component'
 
 export default styled(Component)`
   & button {
-    margin-left: 10px;
+    margin-left: 15px;
   }
 `
