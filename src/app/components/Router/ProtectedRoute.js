@@ -2,12 +2,18 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Redirect, Route } from 'react-router-dom'
 
+import PrivatePageTemplate from 'app/components/PrivatePageTemplate'
+
 import useAuth from 'app/redux/auth'
 
 const ProtectedRoute = ({ isLogged, path, authPath, ...restProps }) =>
   !isLogged
     ? <Redirect to={authPath} />
-    : <Route {...restProps} path={path} />
+    : (
+      <PrivatePageTemplate>
+        <Route {...restProps} path={path} />
+      </PrivatePageTemplate>
+    )
 
 ProtectedRoute.propTypes = {
   authPath: PropTypes.string,
