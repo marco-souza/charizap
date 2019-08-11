@@ -2,7 +2,7 @@ import React from 'react'
 
 import CallToActionContainer from 'app/components/CallToActionContainer'
 
-const Dashboard = (props) => {
+function Home (props) {
   return (
     <div>
       Dashboard
@@ -11,4 +11,4 @@ const Dashboard = (props) => {
   )
 }
 
-export default Dashboard
+export default Home
