@@ -4,11 +4,10 @@ import Component from './component'
 
 let ComposedComponent = styled(Component)`
   & .container {
-    margin: 40px 80px;
+    margin: 40px 0;
   }
 
   & .navbar {
-    margin-bottom: 40px;
   }
 `
 

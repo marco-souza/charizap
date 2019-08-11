@@ -24,7 +24,7 @@ const PrivatePageTemplate = ({ children, className }) => (
       </Grid>
 
       <Grid item md={10} sm={12}>
-        <Card >
+        <Card className='container'>
           {children}
         </Card>
       </Grid>
