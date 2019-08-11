@@ -4,6 +4,7 @@ import Container from '@material-ui/core/Container'
 
 import Menu from 'app/components/core/Menu'
 import Card from 'app/components/core/Card'
+import Button from 'app/components/core/Button'
 
 import Logo from 'app/components/core/Logo'
 
@@ -12,7 +13,11 @@ const PrivatePageTemplate = ({ logout, children, className }) => (
     <Container>
       <Menu
         leftSide={<Logo />}
-        rightSide={<button onClick={logout}>logout</button>}
+        rightSide={(
+          <Button variant='outlined' onClick={logout}>
+            logout
+          </Button>
+        )}
       />
 
       <Card className='container'>
