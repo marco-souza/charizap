@@ -11,18 +11,17 @@ import FormContainer from './FormContainer'
 const DashboardSSHKeys = ({ className }) => (
   <Grid container spacing={5} className={className}>
     <Grid item md={6} xs={12}>
-      <Section title='Add SSH Keys' className='section'>
-        <FormContainer />
-      </Section>
+      <FormContainer />
     </Grid>
 
     <Grid item md={6} xs={12}>
-      <Section title='SSH Keys' className='section'>
+      <Section title='Active Keys' className='section'>
         <NoState
           src={coloredLogo}
           text='You need an ssh key'
           buttonText='Generate'
           handleClick={console.log}
+          background='none'
         />
       </Section>
     </Grid>

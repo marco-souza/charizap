@@ -1,10 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
 import Button from 'app/components/core/Button'
 import Textarea from 'app/components/core/Textarea'
 import Input from 'app/components/core/Input'
-import styled from 'styled-components'
+import { getPropsColor } from 'app/helpers/theme'
 
 const Form = ({
   values,
@@ -55,9 +56,17 @@ Form.propTypes = {
 
 export default styled(Form)`
   position: relative;
+  width: 100%;
 
   & button {
-    margin: 20px 0;
+    margin-top: 20px;
     float: right
+  }
+
+  label {
+    margin: 10px 0;
+    font-weight: bold;
+    font-size: 1em;
+    color: ${getPropsColor('secondary')}
   }
 `

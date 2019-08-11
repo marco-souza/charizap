@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+import { getPropsBackground } from 'app/helpers/theme'
+
 import Container from './component'
 
 export default styled(Container)`
@@ -15,6 +17,8 @@ export default styled(Container)`
 
   & .card {
     flex: 11;
-    background-color: white;
+    background-color: ${getPropsBackground('white')};
+    display: flex;
+    position: relative;
   }
 `
