@@ -23,8 +23,4 @@ Menu.propTypes = {
   rightSide: PropTypes.node.isRequired,
 }
 
-Menu.defaultProps = {
-  buttonType: 'outlined',
-}
-
 export default Menu
