@@ -17,7 +17,7 @@ registerServiceWorker()
 
 const breakpoints = {
   mobile: 320,
-  desktop: 1025,
+  medium: 960,
 }
 
 WebFont.load({
