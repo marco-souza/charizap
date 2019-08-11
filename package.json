@@ -27,6 +27,7 @@
     "animate.css": "^3.7.2",
     "formik": "^1.5.8",
     "react": "^16.8.6",
+    "react-breakpoints": "^3.0.3",
     "react-dom": "^16.8.6",
     "redux": "^4.0.4",
     "redux-observable": "^1.1.0",

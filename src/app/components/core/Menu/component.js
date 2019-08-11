@@ -19,8 +19,8 @@ const Menu = ({
 
 Menu.propTypes = {
   className: PropTypes.string.isRequired,
-  leftSide: PropTypes.node.isRequired,
-  rightSide: PropTypes.node.isRequired,
+  leftSide: PropTypes.node,
+  rightSide: PropTypes.node,
 }
 
 export default Menu
