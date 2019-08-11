@@ -1,7 +1,5 @@
 import styled from 'styled-components'
 
-import useAuth from 'app/redux/auth'
-
 import Component from './component'
 
 let ComposedComponent = styled(Component)`
@@ -13,6 +11,5 @@ let ComposedComponent = styled(Component)`
     margin-bottom: 40px;
   }
 `
-ComposedComponent = useAuth(ComposedComponent)
 
 export default ComposedComponent
