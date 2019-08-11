@@ -8,12 +8,9 @@ import Text from 'app/components/core/Text'
 import Logo from 'app/components/core/Logo'
 import Menu from 'app/components/core/Menu'
 
-const getScreenType = (currentBreakpoint, breakpoints) => {
-  if (breakpoints[currentBreakpoint] > breakpoints.mobile) {
-    return 'Desktop'
-  }
-  return null
-}
+const isDesktop = (currentBreakpoint, breakpoints) => (
+  breakpoints[currentBreakpoint] > breakpoints.mobile
+)
 
 const PublicMenu = ({
   text,
@@ -26,25 +23,18 @@ const PublicMenu = ({
 }) => (
   <div className={className}>
     <Menu
-      leftSide={getScreenType(currentBreakpoint, breakpoints)
-        ? null
-        : <Logo />
-      }
-      rightSide={getScreenType(currentBreakpoint, breakpoints)
-        ? (
-          <div>
+      leftSide={!isDesktop(currentBreakpoint, breakpoints) && <Logo />}
+      rightSide={
+        <div>
+          {isDesktop(currentBreakpoint, breakpoints) &&
             <Text variant='span' small>
               {text}
             </Text>
-            <Link to={href}>
-              <Button variant={buttonType} >{buttonText}</Button>
-            </Link>
-          </div>
-        ) : (
+          }
           <Link to={href}>
             <Button variant={buttonType} >{buttonText}</Button>
           </Link>
-        )
+        </div>
       }
     />
   </div>
