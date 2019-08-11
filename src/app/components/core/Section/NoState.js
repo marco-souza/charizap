@@ -38,12 +38,12 @@ NoState.propTypes = {
 export default styled(NoState)`
   margin: -20px auto;
   border-radius: 50%;
+  background-color: ${getPropsBackground()};
   border: 2px solid ${getPropsBackground('stroke')};
 
-  opacity: .5;
   width: 50%;
-  padding-top: 50%; /* 1:1 Aspect Ratio */
-  position: relative; /* If you want text inside of it */
+  padding-bottom: 50%;
+  opacity: .5;
 
   div {
     position: absolute;

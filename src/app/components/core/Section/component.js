@@ -6,11 +6,11 @@ import Text from 'app/components/core/Text'
 
 const Container = ({ children, title, className, ...otherProps }) => (
   <div className={className}>
-    <Text variant='subtitle1'>
+    <Text variant='subtitle1' color='secondary'>
       {title}
     </Text>
 
-    <Card>
+    <Card className='card' {...otherProps}>
       {children}
     </Card>
   </div>

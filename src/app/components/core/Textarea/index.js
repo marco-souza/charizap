@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
-import theme, { getPropsColor, getPropsBackground } from 'app/helpers/theme'
-
 import Component from './component'
+
+import theme, { getPropsColor, getPropsBackground } from 'app/helpers/theme'
 
 export default styled(Component)`
   display: flex;
@@ -17,7 +17,8 @@ export default styled(Component)`
     padding: 10px 0;
   }
 
-  & input {
+  & textarea {
+    resize: none;
     color: ${getPropsColor('secondary')};
     border: 1px solid ${getPropsBackground('stroke')};
 

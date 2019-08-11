@@ -2,10 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import Section from 'app/components/core/Section'
-
+import NoState from 'app/components/core/Section/NoState'
 import coloredLogo from 'assets/images/logo_devopness_alfa.png'
-
-import NoState from './NoState'
 
 const DashboardDeployments = ({ className }) => (
   <Section title='Deployments' className={className}>

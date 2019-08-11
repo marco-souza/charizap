@@ -2,17 +2,17 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Field } from 'formik'
 
-const Input = ({ className, label, ...restProps }) => (
+const Textarea = ({ className, label, ...restProps }) => (
   <div className={className}>
     {label && <label>{label}</label>}
 
-    <Field component='input' type='text' {...restProps} />
+    <Field component='textarea' {...restProps} />
   </div>
 )
 
-Input.propTypes = {
+Textarea.propTypes = {
   label: PropTypes.string,
   className: PropTypes.string,
 }
 
-export default Input
+export default Textarea
