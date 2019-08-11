@@ -6,6 +6,14 @@ import { withBreakpoints } from 'react-breakpoints'
 import Button from 'app/components/core/Button'
 import Text from 'app/components/core/Text'
 import Logo from 'app/components/core/Logo'
+import Menu from 'app/components/core/Menu'
+
+const getScreenType = (currentBreakpoint, breakpoints) => {
+  if (breakpoints[currentBreakpoint] > breakpoints.mobile) {
+    return 'Desktop'
+  }
+  return null
+}
 
 const PublicMenu = ({
   text,
@@ -17,19 +25,28 @@ const PublicMenu = ({
   currentBreakpoint,
 }) => (
   <div className={className}>
-    {breakpoints[currentBreakpoint] > breakpoints.mobile
-      ? (
-        <Text variant='span' small>
-          {text}
-        </Text>
-      )
-      : (<Logo />)
-    }
-
-    {console.log(currentBreakpoint)}
-    <Link to={href}>
-      <Button variant={buttonType} >{buttonText}</Button>
-    </Link>
+    <Menu
+      leftSide={getScreenType(currentBreakpoint, breakpoints)
+        ? null
+        : <Logo />
+      }
+      rightSide={getScreenType(currentBreakpoint, breakpoints)
+        ? (
+          <div>
+            <Text variant='span' small>
+              {text}
+            </Text>
+            <Link to={href}>
+              <Button variant={buttonType} >{buttonText}</Button>
+            </Link>
+          </div>
+        ) : (
+          <Link to={href}>
+            <Button variant={buttonType} >{buttonText}</Button>
+          </Link>
+        )
+      }
+    />
   </div>
 )
 
