@@ -6,7 +6,7 @@ import Component from './component'
 
 let ComposedComponent = styled(Component)`
   & .container {
-    margin: 0 80px;
+    margin: 40px 80px;
   }
 `
 ComposedComponent = useAuth(ComposedComponent)
