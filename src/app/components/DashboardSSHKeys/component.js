@@ -16,7 +16,7 @@ const DashboardSSHKeys = ({ className }) => (
       </Section>
     </Grid>
 
-    <Grid item md={6} xs={12} flex>
+    <Grid item md={6} xs={12}>
       <Section title='SSH Keys' className='section'>
         <NoState
           src={coloredLogo}
