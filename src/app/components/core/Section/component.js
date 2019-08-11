@@ -6,7 +6,7 @@ import Text from 'app/components/core/Text'
 
 const Container = ({ children, title, className, ...otherProps }) => (
   <div className={className}>
-    <Text variant='subtitle2'>
+    <Text variant='subtitle1'>
       {title}
     </Text>
 
