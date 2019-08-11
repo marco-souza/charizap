@@ -1,35 +1,37 @@
 import styled from 'styled-components'
 
+import theme, { getPropsColor, getPropsBackground } from 'app/helpers/theme'
+
 import Component from './component'
 
 export default styled(Component)`
   display: flex;
   flex-direction: column;
-  font-family: ${({ theme }) => theme.fonts};
+  font-family: ${theme.fonts};
   text-align: left;
 
-  & > label {
-    color: ${({ theme }) => theme.colors.secondary};
+  & label {
+    color: ${getPropsColor('secondary')};
 
     font-size: .8em;
     padding: 10px 0;
   }
 
-  & > input {
-    color: ${({ theme }) => theme.colors.secondary};
-    border: 1px solid ${({ theme }) => theme.colors.strokeBackground};
-    background-color: ${({ theme }) => theme.colors.background};
+  & input {
+    color: ${getPropsColor('secondary')};
+    border: 1px solid ${getPropsBackground('stroke')};
+    background-color: ${getPropsBackground()};
 
     font-size: .8em;
     border-radius: 20px 20px;
     padding: 10px 20px;
 
     &:hover, &:focus {
-      border-color: ${({ theme }) => theme.colors.primary};
+      border-color: ${getPropsBackground('primary')};
     }
 
     &::placeholder {
-      color: ${({ theme }) => theme.colors.secondaryVariant};
+      color: ${getPropsColor('secondaryVariant')};
     }
   }
 `

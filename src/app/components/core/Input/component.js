@@ -1,11 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Field } from 'formik'
 
 const Input = ({ className, label, ...restProps }) => (
   <div className={className}>
     {label && <label>{label}</label>}
 
-    <input type='text' {...restProps} />
+    <Field component='input' type='text' {...restProps} />
   </div>
 )
 
