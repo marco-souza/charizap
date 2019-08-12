@@ -19,6 +19,7 @@ const appTitle = getVarEnv('APP_TITLE')
 const appResolve = getVarEnv('APP_RESOLVE')
 const assetsResolve = getVarEnv('ASSETS_RESOLVE')
 const modulesResolve = getVarEnv('MODULES_RESOLVE')
+const themeColor = getVarEnv('THEME_COLOR')
 
 export default {
   entry,
@@ -77,7 +78,8 @@ export default {
     }),
     new HtmlWebpackPlugin({
       templateParameters: {
-        title: appTitle
+        title: appTitle,
+        themeColor,
       },
       template: appHtml,
     }),
