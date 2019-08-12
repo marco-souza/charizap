@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid'
 import ProjectDetails from './ProjectDetails'
 
 const DashboardHeader = ({ className }) => (
-  <Grid container>
+  <Grid container spacing={5}>
     <Grid item md={6} xs={12}>
       <ProjectDetails />
     </Grid>

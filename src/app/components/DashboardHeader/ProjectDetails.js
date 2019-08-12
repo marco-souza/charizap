@@ -11,12 +11,12 @@ import theme, { getPropsBackground, getPropsColor } from 'app/helpers/theme'
 
 const ProjectDetails = ({ className }) => (
   <Grid container className={className}>
-    <Grid item xs={6}>
+    <Grid item xs={5}>
       <div className='logo'>
         <Logo />
       </div>
     </Grid>
-    <Grid item xs={6}>
+    <Grid item xs={7}>
       <div className='title'>
         <div className='state on'>on</div>
         <Text variant='h5' color='secondary'>Devopness</Text>
