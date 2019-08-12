@@ -7,7 +7,8 @@ import BaseButton from './BaseButton'
 
 const Button = styled(BaseButton)`
   /* Adapt the colors based on primary prop */
-  padding: 5px 20px;
+  padding: 10px 20px;
+  border-radius: 30px;
   display: flex;
   align-items: center;
   color: ${getPropsColor('secondary')};

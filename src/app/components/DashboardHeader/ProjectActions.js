@@ -85,7 +85,7 @@ export default styled(ProjectDetails)`
   }
 
   button {
-    margin: 10px auto;
+    margin: 15px auto;
     width: 100%;
   }
 `
