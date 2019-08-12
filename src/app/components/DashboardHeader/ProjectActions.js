@@ -8,9 +8,7 @@ import Cloud from '@material-ui/icons/Cloud'
 import Button from 'app/components/core/Button'
 // import Select from 'app/components/core/Select'
 
-import theme, { getPropsBackground, getPropsColor } from 'app/helpers/theme'
-
-const ProjectDetails = ({ className }) => (
+const ProjectActions = ({ className }) => (
   <Grid container className={className}>
     <Grid item xs={12}>
       <Button variant='icon' icon={<Cloud />}>
@@ -32,56 +30,14 @@ const ProjectDetails = ({ className }) => (
   </Grid>
 )
 
-ProjectDetails.propTypes = {
+ProjectActions.propTypes = {
   className: PropTypes.string.isRequired,
 }
 
-export default styled(ProjectDetails)`
+export default styled(ProjectActions)`
   & > div {
     display: flex;
     flex-direction: column;
-  }
-
-  .logo {
-    width: 128px;
-    height: 128px;
-    border-radius: 40px;
-    background-color: ${getPropsBackground('white')};
-    border: 1px solid ${getPropsBackground('stroke')};
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    img {
-      width: 100px;
-      margin: 10px 0;
-      vertical-align: middle;
-    }
-  }
-
-  .title {
-    display: flex;
-    flex-grow: 1;
-
-
-    .state {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-right: 10px;
-      text-transform: uppercase;
-      font-family: ${theme.fonts};
-      font-size: .8em;
-    }
-  }
-
-  .on {
-    background-color: ${getPropsColor('success')};
-    color: ${getPropsBackground('white')};
   }
 
   button {
