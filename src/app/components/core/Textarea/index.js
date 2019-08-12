@@ -21,6 +21,7 @@ export default styled(Component)`
     resize: none;
     color: ${getPropsColor('secondary')};
     border: 1px solid ${getPropsBackground('stroke')};
+    font-family: ${theme.fonts};
 
     font-size: .8em;
     border-radius: 20px 20px;
