@@ -41,7 +41,6 @@ export default styled(ProjectActions)`
   }
 
   button {
-    /* margin: 10px auto; */
     width: 100%;
   }
 `
