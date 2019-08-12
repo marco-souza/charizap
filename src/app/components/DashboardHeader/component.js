@@ -4,6 +4,7 @@ import Grid from '@material-ui/core/Grid'
 
 import ProjectDetails from './ProjectDetails'
 import ProjectActions from './ProjectActions'
+import ProjectChart from './ProjectChart'
 
 const DashboardHeader = ({ className }) => (
   <Grid container spacing={5}>
@@ -11,7 +12,7 @@ const DashboardHeader = ({ className }) => (
       <ProjectDetails />
     </Grid>
     <Grid item md={4} xs={12}>
-      Chart
+      <ProjectChart />
     </Grid>
     <Grid item md={3} xs={12}>
       <ProjectActions />
