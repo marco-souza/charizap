@@ -9,8 +9,8 @@ import Button from 'app/components/core/Button'
 // import Select from 'app/components/core/Select'
 
 const ProjectActions = ({ className }) => (
-  <Grid container className={className}>
-    <Grid item xs={12}>
+  <Grid container className={className} spacing={3}>
+    <Grid item xs={12} sm={6} md={12}>
       <Button variant='icon' icon={<Cloud />}>
       Digital Ocean
       </Button>
@@ -22,7 +22,7 @@ const ProjectActions = ({ className }) => (
       /> */}
     </Grid>
 
-    <Grid item xs={12}>
+    <Grid item xs={12} sm={6} md={12}>
       <Button variant='icon' icon={<Computer />}>
         phpMyAdmin
       </Button>
@@ -41,7 +41,6 @@ export default styled(ProjectActions)`
   }
 
   button {
-    margin: 15px auto;
     width: 100%;
   }
 `
