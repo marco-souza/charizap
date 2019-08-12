@@ -12,6 +12,7 @@ const Button = styled(BaseButton)`
   display: flex;
   align-items: center;
   color: ${getPropsColor('secondary')};
+  background-color: ${getPropsBackground('white')};
   border: 2px solid ${getPropsBackground('stroke')};
   display: flex;
   text-transform: none;
