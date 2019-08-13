@@ -1,3 +1,5 @@
+import get from 'lodash/get'
+
 const theme = {
   colors: {
     primary: '#786efd',
@@ -12,6 +14,7 @@ const theme = {
       primary: '#786efd',
       white: '#FFFFFF',
       none: 'none',
+      modalHeader: '#F3F7FE',
     }
   },
   fonts: [
@@ -33,5 +36,14 @@ export const getPropsColor = (defaultColor = 'primary') =>
 export const getPropsBackground = (defaultColor = 'default') =>
   ({ theme, background = defaultColor }) =>
     theme.colors.background[background]
+
+export const getFonts = () =>
+  get(theme, `fonts`)
+
+export const getColor = color =>
+  get(theme, `colors.${color}`, 'primary')
+
+export const getBgColor = color =>
+  get(theme, `colors.background.${color}`, 'default')
 
 export default theme
