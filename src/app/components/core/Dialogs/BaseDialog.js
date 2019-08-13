@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Dialog from '@material-ui/core/Dialog'
 import Text from 'app/components/core/Text'
-// import Close from '@material-ui/icons/Close'
 
 import { Header, Body, CloseIcon } from './styled'
 
