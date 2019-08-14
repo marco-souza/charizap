@@ -1,9 +1,9 @@
 import * as Yup from 'yup'
 
-const REQUIRED = 'Field is required!'
-const AWS = 'aws'
-const DIGITAL_OCEAN = 'digitalOcean'
-const SELF_HOSTED = 'selfHosted'
+export const REQUIRED = 'Field is required!'
+export const AWS = 'aws'
+export const DIGITAL_OCEAN = 'digitalOcean'
+export const SELF_HOSTED = 'selfHosted'
 
 export const providers = {
   [DIGITAL_OCEAN]: [
@@ -34,7 +34,6 @@ export const providers = {
       name: 'ip' },
 
     { placeholder: '22',
-      value: 22,
       label: 'SSH port',
       name: 'port' },
   ],
