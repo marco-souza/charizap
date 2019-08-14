@@ -1,11 +1,11 @@
 import styled from 'styled-components'
 import Close from 'app/components/core/icons/Close'
 
-import { getFonts, getColor, getBgColor } from 'app/helpers/theme'
+import { getFont, getColor, getBgColor } from 'app/helpers/theme'
 
 export const Header = styled.div`
   background-color: ${getBgColor('modalHeader')};
-  font-family: ${getFonts()};
+  font-family: ${getFont('helveticaFallback')};
   text-align: center;
   font-weight: bold;
   font-size: 0.8em;
