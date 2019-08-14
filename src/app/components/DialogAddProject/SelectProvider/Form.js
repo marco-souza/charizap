@@ -13,10 +13,10 @@ const mapPropsToValues = values =>
   pick({ ...formFields, ...values }, Object.keys(formFields))
 
 const onSubmit = (values, { props }) => {
-  console.log(values, props)
-  // eslint-disable-next-line no-debugger
-  debugger
-  props.addData(values)
+  props.addData({
+    credentials: values
+  })
+  props.nextStep()
 }
 
 const Form = ({
