@@ -5,22 +5,18 @@ import Grid from '@material-ui/core/Grid'
 import Computer from '@material-ui/icons/Computer'
 import Cloud from '@material-ui/icons/Cloud'
 
+import DialogAddProject from 'app/components/DialogAddProject'
 import Button from 'app/components/core/Button'
-import Dialog from 'app/components/core/Dialogs/BaseDialog'
-// import Select from 'app/components/core/Select'
 
 const ProjectActions = ({ className }) => {
   const [modalIsVisible, setModalIsVisible] = useState(false)
 
   return (
     <Grid container className={className} spacing={3}>
-      <Dialog
-        title='Download your logo'
-        isOpen={modalIsVisible}
+      <DialogAddProject
+        modalIsVisible={modalIsVisible}
         handleClose={() => setModalIsVisible(false)}
-      >
-        Losco
-      </Dialog>
+      />
       <Grid item xs={12} sm={6} md={12}>
         <Button
           variant='icon'
