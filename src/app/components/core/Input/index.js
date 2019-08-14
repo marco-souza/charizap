@@ -20,7 +20,7 @@ export default styled(Component)`
   & input {
     color: ${getPropsColor('secondary')};
     border: 1px solid ${getPropsBackground('stroke')};
-
+    background: ${getPropsBackground()};
     font-size: .8em;
     border-radius: 20px 20px;
     padding: 10px 20px;
