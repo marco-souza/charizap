@@ -9,6 +9,7 @@ export default styled(Component)`
   flex-direction: column;
   font-family: ${getFont('robotoDefault')};
   text-align: left;
+  outline: none;
 
   & label {
     color: ${getPropsColor('secondary')};
@@ -33,4 +34,12 @@ export default styled(Component)`
       color: ${getPropsColor('secondaryVariant')};
     }
   }
+
+  & textarea:focus, input:focus{
+    outline: none;
+  };
+
+  & *:focus {
+    outline: none;
+  };
 `

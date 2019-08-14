@@ -9,5 +9,5 @@ export default useAuth(styled(Component)`
   margin: 0 auto;
   text-align: center;
   margin-top: 40px;
-  font-family: ${getFont('robotoDefault')}
+  font-family: ${getFont('robotoDefault')};
 `)

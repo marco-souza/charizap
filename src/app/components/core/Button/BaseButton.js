@@ -9,6 +9,15 @@ const Button = styled.button`
   text-transform: uppercase;
   border: none;
   font-family: ${getFont('robotoDefault')};
+  outline: none;
+
+  & textarea:focus, input:focus{
+    outline: none;
+  }
+
+  & *:focus {
+    outline: none;
+  }
 `
 
 export default Button
