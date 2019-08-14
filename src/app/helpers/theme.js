@@ -17,16 +17,12 @@ const theme = {
       modalHeader: '#F3F7FE',
     }
   },
-  fonts: [
-    // TODO: MacOS fonts
-    // '-apple-system,',
-    // 'BlinkMacSystemFont,',
-    '"Segoe UI",',
-    '"Roboto-light",',
-    '"Helvetica Neue", Arial, sans-serif',
-    // TODO: Emoji fonts
-    // '"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;',
-  ].join(' '),
+  fonts: {
+    segoe: 'Segoe UI',
+    robotoDefault: 'Roboto',
+    robotoMontserrat: 'Montserrat',
+    fallback: 'Helvetica Neue, Arial, sans-serif',
+  },
 }
 
 export const getPropsColor = (defaultColor = 'primary') =>
@@ -37,8 +33,8 @@ export const getPropsBackground = (defaultColor = 'default') =>
   ({ theme, background = defaultColor }) =>
     theme.colors.background[background]
 
-export const getFonts = () =>
-  get(theme, `fonts`)
+export const getFont = font =>
+  get(theme, `fonts.${font}`, 'fonts.fallback')
 
 export const getColor = color =>
   get(theme, `colors.${color}`, 'primary')

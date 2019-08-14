@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import theme, { getPropsBackground, getPropsColor } from 'app/helpers/theme'
+import { getPropsBackground, getPropsColor, getFont } from 'app/helpers/theme'
 
 import lonely from 'assets/images/lonely.gif'
 import meditating from 'assets/images/meditating.gif'
@@ -68,7 +68,7 @@ export default styled(Switch)`
       color: ${getPropsColor()};
       border-radius: 20px 20px;
       text-transform: uppercase;
-      font-family: ${theme.fonts};
+      font-family: ${getFont('robotoDefault')};
       cursor: pointer;
     }
 

@@ -1,13 +1,13 @@
 import styled from 'styled-components'
 
-import theme, { getPropsColor, getPropsBackground } from 'app/helpers/theme'
+import { getPropsColor, getPropsBackground, getFont } from 'app/helpers/theme'
 
 import Component from './component'
 
 export default styled(Component)`
   display: flex;
   flex-direction: column;
-  font-family: ${theme.fonts};
+  font-family: ${getFont('robotoDefault')};
   text-align: left;
 
   & label {

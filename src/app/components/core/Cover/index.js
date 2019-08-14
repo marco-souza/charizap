@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { getPropsBackground } from 'app/helpers/theme'
+import { getPropsBackground, getFont } from 'app/helpers/theme'
 
 import Container from './component'
 
@@ -28,7 +28,7 @@ export default styled(Container)`
 
 
   & > h5 {
-    font-family: ${({ theme }) => theme.fonts};
+    font-family: ${getFont('robotoMontserrat')};
     letter-spacing: .05em;
     padding: ${props => props.padding || 0} ${props => props.moreSpace ? 10 : 25}%;
   }

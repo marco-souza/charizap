@@ -7,7 +7,7 @@ import Logo from 'app/components/core/Logo'
 import Text from 'app/components/core/Text'
 import Button from 'app/components/core/Button'
 
-import theme, { getPropsBackground, getPropsColor } from 'app/helpers/theme'
+import { getPropsBackground, getPropsColor, getFont } from 'app/helpers/theme'
 
 const ProjectDetails = ({ className }) => (
   <Grid container className={className}>
@@ -68,7 +68,7 @@ export default styled(ProjectDetails)`
       justify-content: center;
       margin-right: 10px;
       text-transform: uppercase;
-      font-family: ${theme.fonts};
+      font-family: ${getFont('robotoDefault')};
       font-size: .8em;
     }
   }

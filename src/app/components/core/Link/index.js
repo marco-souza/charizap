@@ -5,7 +5,6 @@ const Link = styled.a`
   color: ${({ theme, variant = 'primary' }) => theme.colors[variant]};
   font-size: ${({ small }) => small ? '0.8em' : '1em'};
   text-decoration: none;
-  font-family: ${({ theme }) => theme.fonts}
 `
 
 export default Link
