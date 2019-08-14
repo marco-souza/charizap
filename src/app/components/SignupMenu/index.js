@@ -7,7 +7,7 @@ const SignupMenu = ({ className }) => (
   <PublicMenu
     text='Already have an account?'
     href='/login'
-    buttonText='Log in'
+    buttonText='Login'
   />
 )
 

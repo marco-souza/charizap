@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 import { getPropsColor, getPropsBackground, getFont } from 'app/helpers/theme'
+import { removeBlueMark } from 'app/helpers/styles'
 
 import Component from './component'
 
@@ -20,7 +21,7 @@ export default styled(Component)`
   & input {
     color: ${getPropsColor('secondary')};
     border: 1px solid ${getPropsBackground('stroke')};
-
+    background: ${getPropsBackground()};
     font-size: .8em;
     border-radius: 20px 20px;
     padding: 10px 20px;
@@ -33,4 +34,6 @@ export default styled(Component)`
       color: ${getPropsColor('secondaryVariant')};
     }
   }
+
+  ${removeBlueMark}
 `
