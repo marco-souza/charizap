@@ -7,7 +7,7 @@ import Component from './component'
 export default styled(Component)`
   display: flex;
   flex-direction: column;
-  font-family: ${getFont('roboto')};
+  font-family: ${getFont('robotoDefault')};
   text-align: left;
 
   & label {
