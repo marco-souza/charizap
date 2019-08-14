@@ -14,7 +14,7 @@ const Step = ({
 }) => {
   useMemo(() => {
     shouldRun &&
-    !shouldRun() &&
+    !shouldRun(data) &&
     nextStep()
   })
 
