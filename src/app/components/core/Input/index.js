@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 import { getPropsColor, getPropsBackground, getFont } from 'app/helpers/theme'
+import { removeBlueMark } from 'app/helpers/styles'
 
 import Component from './component'
 
@@ -9,7 +10,6 @@ export default styled(Component)`
   flex-direction: column;
   font-family: ${getFont('robotoDefault')};
   text-align: left;
-  outline: none;
 
   & label {
     color: ${getPropsColor('secondary')};
@@ -35,11 +35,5 @@ export default styled(Component)`
     }
   }
 
-  & textarea:focus, input:focus{
-    outline: none;
-  };
-
-  & *:focus {
-    outline: none;
-  };
+  ${removeBlueMark}
 `
