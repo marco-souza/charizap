@@ -6,10 +6,8 @@ import Text from 'app/components/core/Text'
 
 import SelectProviderForm from './Form'
 
-const shouldRun = data => false
-
 const SelectProviderStep = (props) => (
-  <Step {...props} shouldRun={shouldRun}>
+  <Step {...props}>
     <Text>What is you server provider credentials?</Text>
     <Text variant='subtitle2'>What is you server provider credentials?</Text>
 
