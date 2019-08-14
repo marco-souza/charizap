@@ -5,9 +5,11 @@ import MultiStepForm from 'app/components/core/MultiStepForm'
 import Dialog from 'app/components/core/Dialogs/BaseDialog'
 
 import SelectProviderStep from './SelectProvider'
+import ServerSpecsStep from './ServerSpecs'
 
 const steps = [
   SelectProviderStep,
+  ServerSpecsStep,
 ]
 
 const DialogContainer = ({ handleClose, modalIsVisible }) => (
