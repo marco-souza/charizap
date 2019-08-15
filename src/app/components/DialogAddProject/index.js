@@ -8,12 +8,14 @@ import SelectProviderStep from './SelectProvider'
 import ServerSpecsStep from './ServerSpecs'
 import SelectDB from './SelectDB'
 import SelectDBManager from './SelectDBManager'
+import Confirmation from './Confirmation'
 
 const steps = [
   SelectProviderStep,
   ServerSpecsStep,
   SelectDB,
   SelectDBManager,
+  Confirmation,
 ]
 
 const DialogContainer = ({ handleClose, modalIsVisible }) => (
