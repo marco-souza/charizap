@@ -39,7 +39,6 @@ const Form = ({
           </Button>
         </Grid>
       </Grid>
-      <code>{JSON.stringify(data)}</code>
     </form>
   </div>
 )

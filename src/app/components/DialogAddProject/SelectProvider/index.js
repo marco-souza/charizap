@@ -1,16 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Text from 'app/components/core/Text'
+import Highlight from 'app/components/core/Highlight'
 import bodyImage from 'assets/images/tetris-1p.gif'
 
 import SelectProviderForm from './Form'
-import { Step } from '../styled'
+import { Step, SubText, Header } from '../styled'
 
 const SelectProviderStep = (props) => (
   <Step {...props}>
-    <Text>What is you server provider credentials?</Text>
-    <Text variant='subtitle2'>What is you server provider credentials?</Text>
+    <Header variant='h4'>
+      What is you <Highlight>server provider</Highlight> credential?
+    </Header>
+    <SubText variant='subtitle2'>
+      Let's create your machine with <Highlight>php</Highlight> and <Highlight>Nginx</Highlight>.
+    </SubText>
 
     <img src={bodyImage} alt='Cloud Provider' />
 

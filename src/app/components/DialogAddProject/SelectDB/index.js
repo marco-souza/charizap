@@ -1,20 +1,24 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Text from 'app/components/core/Text'
+import Highlight from 'app/components/core/Highlight'
 import bodyImage from 'assets/images/tetris-2p.gif'
 
 import SelectDBForm from './Form'
-import { Step } from '../styled'
+import { Step, SubText, Header } from '../styled'
 
 const SelectDBStep = (props) => (
   <Step {...props} >
-    <Text>Would you like to have MySQL installed?</Text>
+    <Header variant='h4'>
+      Would you like to have MySQL installed?
+    </Header>
 
     <img src={bodyImage} alt='Select Database' />
 
     <SelectDBForm {...props} />
-    <Text>MySQL is the most trusted and widely used open source database platform in use today.</Text>
+    <SubText variant='subtitle2' small>
+      <Highlight>MySQL</Highlight> is the most trusted and widely used open source database platform in use today.
+    </SubText>
   </Step>
 )
 

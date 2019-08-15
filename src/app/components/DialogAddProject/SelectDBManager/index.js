@@ -2,22 +2,24 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import get from 'lodash/get'
 
-import Text from 'app/components/core/Text'
+import Highlight from 'app/components/core/Highlight'
 import bodyImage from 'assets/images/tetris-3p.gif'
 
 import SelectDBManagerForm from './Form'
-import { Step } from '../styled'
+import { Step, SubText, Header } from '../styled'
 
 const shouldRun = data => get(data, 'database.mysql', null)
 
 const SelectDBManager = (props) => (
   <Step {...props} shouldRun={shouldRun}>
-    <Text>Do you want to have phpMyAdmin for access?</Text>
+    <Header variant='h4'>Do you want to have phpMyAdmin for access?</Header>
 
     <img src={bodyImage} alt='Select DB Manager' />
 
     <SelectDBManagerForm {...props} />
-    <Text>PhpMyAdmin is a tool designed to handle the administration of MySQL vit the Web.</Text>
+    <SubText variant='subtitle2' small>
+      <Highlight>PhpMyAdmin</Highlight> is a tool designed to handle the administration of MySQL vit the Web.
+    </SubText>
   </Step>
 )
 

@@ -43,7 +43,7 @@ const Form = ({
       <form onSubmit={handleSubmit}>
         <Grid container>
           <Grid item xs={6}>
-            <Button onClick={onClickHandler(false)} background='secondary'>No</Button>
+            <Button variant='contained' onClick={onClickHandler(false)} background='secondary'>No</Button>
           </Grid>
 
           <Grid item xs={6}>

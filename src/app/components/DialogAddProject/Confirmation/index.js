@@ -1,15 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Text from 'app/components/core/Text'
 import bodyImage from 'assets/images/tetris-4p.gif'
 
 import ConfirmationForm from './Form'
-import { Step } from '../styled'
+import { Step, Header } from '../styled'
 
 const SelectDBStep = (props) => (
   <Step {...props}>
-    <Text>Are you ready?</Text>
+    <Header variant='h4'>Are you ready?</Header>
 
     <img src={bodyImage} alt='Select DB Manager' />
 

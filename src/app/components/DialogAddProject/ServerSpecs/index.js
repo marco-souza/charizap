@@ -2,18 +2,22 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import get from 'lodash/get'
 
-import Text from 'app/components/core/Text'
+import Highlight from 'app/components/core/Highlight'
 import bodyImage from 'assets/images/tetris-1p.gif'
 
 import ServerSpecsForm from './Form'
-import { Step } from '../styled'
+import { Step, SubText, Header } from '../styled'
 
 const shouldRun = data => get(data, 'credentials.provider', null)
 
 const ServerSpecsStep = (props) => (
   <Step {...props} shouldRun={shouldRun}>
-    <Text>Now lets define your server name.</Text>
-    <Text variant='subtitle2'>Let's create your machine with php and Nginx.</Text>
+    <Header variant='h4'>
+      Now lets define your server name.
+    </Header>
+    <SubText variant='subtitle2'>
+      Let's create your machine with <Highlight>php</Highlight> and <Highlight>Nginx</Highlight>.
+    </SubText>
 
     <img src={bodyImage} alt='Server Specifications' />
 
