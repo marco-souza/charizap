@@ -7,11 +7,13 @@ import Dialog from 'app/components/core/Dialogs/BaseDialog'
 import SelectProviderStep from './SelectProvider'
 import ServerSpecsStep from './ServerSpecs'
 import SelectDB from './SelectDB'
+import SelectDBManager from './SelectDBManager'
 
 const steps = [
   SelectProviderStep,
   ServerSpecsStep,
   SelectDB,
+  SelectDBManager,
 ]
 
 const DialogContainer = ({ handleClose, modalIsVisible }) => (
