@@ -44,8 +44,12 @@ Step.propTypes = {
   addData: PropTypes.func.isRequired,
   nextStep: PropTypes.func.isRequired,
   previousStep: PropTypes.func.isRequired,
-  shouldRun: PropTypes.func.isRequired,
+  shouldRun: PropTypes.func,
   children: PropTypes.node.isRequired,
+}
+
+Step.defaultProps = {
+  shouldRun: () => true,
 }
 
 export default Step
