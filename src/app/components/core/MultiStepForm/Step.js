@@ -11,6 +11,7 @@ const Step = ({
   previousStep,
   shouldRun,
   children,
+  className,
 }) => {
   useMemo(() => {
     shouldRun &&
@@ -27,11 +28,11 @@ const Step = ({
   }
 
   return (
-    <div>
+    <div className={className}>
       <div>{children}</div>
 
-      <button disabled={!hasPrevious} onClick={onCancel}>Cancel</button>
-      <button disabled={!hasNext} onClick={onSubmit}>Next</button>
+      {false && <button disabled={!hasPrevious} onClick={onCancel}>Cancel</button>}
+      {false && <button disabled={!hasNext} onClick={onSubmit}>Next</button>}
     </div>
   )
 }
@@ -46,6 +47,7 @@ Step.propTypes = {
   previousStep: PropTypes.func.isRequired,
   shouldRun: PropTypes.func,
   children: PropTypes.node.isRequired,
+  className: PropTypes.string,
 }
 
 Step.defaultProps = {

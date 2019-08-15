@@ -2,11 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import get from 'lodash/get'
 
-import Step from 'app/components/core/MultiStepForm/Step'
 import Text from 'app/components/core/Text'
 import bodyImage from 'assets/images/tetris-1p.gif'
 
 import ServerSpecsForm from './Form'
+import { Step } from '../styled'
 
 const shouldRun = data => get(data, 'credentials.provider', null)
 

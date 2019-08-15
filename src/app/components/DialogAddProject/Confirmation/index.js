@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Step from 'app/components/core/MultiStepForm/Step'
 import Text from 'app/components/core/Text'
 import bodyImage from 'assets/images/tetris-4p.gif'
 
 import ConfirmationForm from './Form'
+import { Step } from '../styled'
 
 const SelectDBStep = (props) => (
   <Step {...props}>
