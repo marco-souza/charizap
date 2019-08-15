@@ -4,6 +4,7 @@ import get from 'lodash/get'
 
 import Step from 'app/components/core/MultiStepForm/Step'
 import Text from 'app/components/core/Text'
+import bodyImage from 'assets/images/tetris-1p.gif'
 
 import ServerSpecsForm from './Form'
 
@@ -13,6 +14,8 @@ const ServerSpecsStep = (props) => (
   <Step {...props} shouldRun={shouldRun}>
     <Text>Now lets define your server name.</Text>
     <Text variant='subtitle2'>Let's create your machine with php and Nginx.</Text>
+
+    <img src={bodyImage} alt='Server Specifications' />
 
     <ServerSpecsForm {...props} />
   </Step>

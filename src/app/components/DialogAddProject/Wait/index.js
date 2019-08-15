@@ -3,16 +3,19 @@ import PropTypes from 'prop-types'
 
 import Step from 'app/components/core/MultiStepForm/Step'
 import Text from 'app/components/core/Text'
+import bodyImage from 'assets/images/tetris-5p.gif'
 
-const SelectDBStep = (props) => (
+const WaitStep = (props) => (
   <Step {...props}>
     <Text>It's coming?</Text>
+
+    <img src={bodyImage} alt='Waiting...' />
 
     <Text>Please wait, your project will take off in a few moments</Text>
   </Step>
 )
 
-SelectDBStep.propTypes = {
+WaitStep.propTypes = {
   values: PropTypes.object,
   errors: PropTypes.object,
   touched: PropTypes.object,
@@ -23,4 +26,4 @@ SelectDBStep.propTypes = {
   className: PropTypes.string,
 }
 
-export default SelectDBStep
+export default WaitStep

@@ -4,6 +4,7 @@ import get from 'lodash/get'
 
 import Step from 'app/components/core/MultiStepForm/Step'
 import Text from 'app/components/core/Text'
+import bodyImage from 'assets/images/tetris-3p.gif'
 
 import SelectDBManagerForm from './Form'
 
@@ -12,6 +13,8 @@ const shouldRun = data => get(data, 'database.mysql', null)
 const SelectDBManager = (props) => (
   <Step {...props} shouldRun={shouldRun}>
     <Text>Do you want to have phpMyAdmin for access?</Text>
+
+    <img src={bodyImage} alt='Select DB Manager' />
 
     <SelectDBManagerForm {...props} />
     <Text>PhpMyAdmin is a tool designed to handle the administration of MySQL vit the Web.</Text>

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 
 import Step from 'app/components/core/MultiStepForm/Step'
 import Text from 'app/components/core/Text'
+import bodyImage from 'assets/images/tetris-1p.gif'
 
 import SelectProviderForm from './Form'
 
@@ -10,6 +11,8 @@ const SelectProviderStep = (props) => (
   <Step {...props}>
     <Text>What is you server provider credentials?</Text>
     <Text variant='subtitle2'>What is you server provider credentials?</Text>
+
+    <img src={bodyImage} alt='Cloud Provider' />
 
     <SelectProviderForm {...props} />
   </Step>

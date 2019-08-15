@@ -6,7 +6,7 @@ import Grid from '@material-ui/core/Grid'
 import Text from 'app/components/core/Text'
 import Button from 'app/components/core/Button'
 
-const onSubmit = ({ props }) => {
+const onSubmit = (_, { props }) => {
   props.nextStep()
 }
 
@@ -20,7 +20,8 @@ const Form = ({
   ...otherProps
 }) => (
   <div className={className}>
-    <Button disabled> 10$ month </Button>
+    {/* TODO: refactor colors so can bg use any color */}
+    <Button background='none'> 10$ month </Button>
 
     <Text>have you opted for the $ 10 a month plan with the 1GB capacity. Can we continue?</Text>
 
