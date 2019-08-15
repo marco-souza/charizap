@@ -9,12 +9,17 @@ import Input from 'app/components/core/Input'
 
 import { validationSchema, formFields, providers } from './constants'
 
-const mapPropsToValues = values =>
-  pick({ ...formFields, ...values }, Object.keys(formFields))
+const DATA_KEY = 'credentials'
+
+const mapPropsToValues = ({ data }) =>
+  pick({
+    ...formFields,
+    ...data[DATA_KEY],
+  }, Object.keys(formFields))
 
 const onSubmit = (values, { props }) => {
   props.addData({
-    credentials: values
+    [DATA_KEY]: values
   })
   props.nextStep()
 }

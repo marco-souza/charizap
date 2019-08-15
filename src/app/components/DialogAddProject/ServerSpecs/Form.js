@@ -9,12 +9,17 @@ import Input from 'app/components/core/Input'
 import { validationSchema, formFields } from './constants'
 import { SELF_HOSTED } from '../SelectProvider/constants'
 
-const mapPropsToValues = values =>
-  pick({ ...formFields, ...values }, Object.keys(formFields))
+const DATA_KEY = 'serverSpecs'
+
+const mapPropsToValues = ({ data }) =>
+  pick({
+    ...formFields,
+    ...data[DATA_KEY],
+  }, Object.keys(formFields))
 
 const onSubmit = (values, { props }) => {
   props.addData({
-    serverSpecs: values,
+    [DATA_KEY]: values
   })
   props.nextStep()
 }
