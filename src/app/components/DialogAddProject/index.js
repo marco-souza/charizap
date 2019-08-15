@@ -6,16 +6,18 @@ import Dialog from 'app/components/core/Dialogs/BaseDialog'
 
 import SelectProviderStep from './SelectProvider'
 import ServerSpecsStep from './ServerSpecs'
-import SelectDB from './SelectDB'
-import SelectDBManager from './SelectDBManager'
-import Confirmation from './Confirmation'
+import SelectDBStep from './SelectDB'
+import SelectDBManagerStep from './SelectDBManager'
+import ConfirmationStep from './Confirmation'
+import WaitStep from './Wait'
 
 const steps = [
   SelectProviderStep,
   ServerSpecsStep,
-  SelectDB,
-  SelectDBManager,
-  Confirmation,
+  SelectDBStep,
+  SelectDBManagerStep,
+  ConfirmationStep,
+  WaitStep,
 ]
 
 const DialogContainer = ({ handleClose, modalIsVisible }) => (
