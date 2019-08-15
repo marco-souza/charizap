@@ -1,10 +1,11 @@
 import { withFormik } from 'formik'
+import useAuth from 'app/redux/auth'
 
 import Form from './Form'
 
 const onSubmit = (values, { props }) => {
-  console.log(values, props)
-  // props.login(values)
+  console.log('Form values', values)
+  props.signUp(values)
 }
 
 const Container = withFormik({
@@ -12,4 +13,4 @@ const Container = withFormik({
   handleSubmit: onSubmit,
 })(Form)
 
-export default Container
+export default useAuth(Container)

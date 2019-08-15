@@ -4,10 +4,12 @@
  *
  * Refs: [rxjs, redux-observable]
  */
-import { tap, map, delay } from 'rxjs/operators'
+import { ajax } from 'rxjs/ajax'
+import { tap, map, delay, mergeMap } from 'rxjs/operators'
 import { ofType, combineEpics } from 'redux-observable'
 
 import { getCookie, setCookie, eraseCookie } from 'app/helpers/cookie'
+import api from 'app/helpers/api'
 
 import {
   // Actions
@@ -16,9 +18,26 @@ import {
   LOGIN,
   LOGOUT,
   VALIDATE_AUTH_KEY,
+  SIGN_UP,
 } from './constants'
 
 const COOKIE_KEY = 'auth_key'
+
+export const signup = action$ => action$.pipe(
+  ofType(SIGN_UP),
+  tap(console.log),
+  mergeMap(action => ajax({
+    method: 'POST',
+    url: api.signUp(),
+    body: {
+      email: action.payload.email,
+      name: action.payload.username,
+      password: action.payload.password,
+    },
+  }).pipe(
+    map(response => console.log(response)),
+  ))
+)
 
 export const login = (action$, state$) => action$.pipe(
   ofType(LOGIN),
@@ -48,4 +67,5 @@ export default combineEpics(
   validateAuthKey,
   logout,
   login,
+  signup
 )
