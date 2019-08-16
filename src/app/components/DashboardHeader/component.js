@@ -12,7 +12,7 @@ const DashboardHeader = ({ className }) => (
       <ProjectDetails />
     </Grid>
     <Grid item md={4} xs={12}>
-      <ProjectChart />
+      <ProjectChart fake />
     </Grid>
     <Grid item md={3} xs={12}>
       <ProjectActions />
