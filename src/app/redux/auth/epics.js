@@ -4,9 +4,10 @@
  *
  * Refs: [rxjs, redux-observable]
  */
+import { of } from 'rxjs'
 import { ajax } from 'rxjs/ajax'
-import { tap, map, delay, mergeMap } from 'rxjs/operators'
 import { ofType, combineEpics } from 'redux-observable'
+import { tap, map, delay, mergeMap, catchError } from 'rxjs/operators'
 
 import { getCookie, setCookie, eraseCookie } from 'app/helpers/cookie'
 import api from 'app/helpers/api'
@@ -24,6 +25,14 @@ import {
 const COOKIE_KEY = 'auth_key'
 const COOKIE_REFRESH_KEY = 'refresh_key'
 
+// TODO: make it a helper
+const handleRequestErrors = error => {
+  console.log(error)
+  // TODO: handle Unauthenticated error
+  // TODO: call notification with error message
+  return of(isLogged(false))
+}
+
 export const signup = action$ => action$.pipe(
   ofType(SIGN_UP),
   tap(console.log),
@@ -37,6 +46,7 @@ export const signup = action$ => action$.pipe(
     },
   })),
   map(() => isLogged(false)),
+  catchError(handleRequestErrors),
 )
 
 export const login = (action$, state$) => action$.pipe(
@@ -54,12 +64,13 @@ export const login = (action$, state$) => action$.pipe(
       setCookie(COOKIE_REFRESH_KEY, response.refresh_token, 0)
     }),
     map(() => isLogged(true)),
-  ))
+  )),
+  catchError(handleRequestErrors),
 )
 
 export const logout = (action$, state$) => action$.pipe(
   ofType(LOGOUT),
-  // TODO: map to a request or cookie
+  // TODO: map to a logout request
   delay(1000),
   tap(() => eraseCookie(COOKIE_KEY)),
   map(() => isLogged(false)),
@@ -71,6 +82,7 @@ export const validateAuthKey = (action$, state$) => action$.pipe(
   map(() => getCookie(COOKIE_KEY)),
   // TODO: map(authKey => authKey && api.isValidAuthKey),
   map(isValidKey => isLogged(Boolean(isValidKey))),
+  catchError(handleRequestErrors),
 )
 
 export default combineEpics(
