@@ -1,20 +1,20 @@
 import styled from 'styled-components'
 
-import { getPropsBackground, getColor } from 'app/helpers/theme'
+import { getPropsBackground, getPropsColor, getColor } from 'app/helpers/theme'
 
 import BaseButton from './BaseButton'
 
 const Button = styled(BaseButton)`
   /* Adapt the colors based on primary prop */
   background: ${getPropsBackground('primary')};
-  color: ${getPropsBackground()};
+  color: ${getPropsColor('background')};
 
-  &:hover {
+  &:hover, &:focus {
     background: ${getColor('secondary')};
   }
 
-  &:disabled :hover {
-    background: ${getColor('primary')};
+  &:disabled {
+    background: ${getColor('secondaryVariant')};
   }
 `
 
