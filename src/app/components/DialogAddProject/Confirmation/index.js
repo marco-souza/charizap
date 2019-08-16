@@ -1,10 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Grid from '@material-ui/core/Grid'
 
+import Highlight from 'app/components/core/Highlight'
 import bodyImage from 'assets/images/tetris-4p.gif'
 
-import ConfirmationForm from './Form'
-import { Step, Header } from '../styled'
+import { Step, Header, Button, SubText, Tag } from '../styled'
 
 const SelectDBStep = (props) => (
   <Step {...props}>
@@ -12,19 +13,32 @@ const SelectDBStep = (props) => (
 
     <img src={bodyImage} alt='Select DB Manager' />
 
-    <ConfirmationForm {...props} />
+    <div>
+      <Tag>10$ month</Tag>
+    </div>
+
+    <SubText small>
+      Have you opted for the <Highlight>$ 10 a month</Highlight> plan with the <Highlight>1 GB</Highlight> capacity. Can we continue?
+    </SubText>
+
+    <Grid container spacing={2}>
+      <Grid item xs={6}>
+        <Button variant='text'>
+          Cancel
+        </Button>
+      </Grid>
+
+      <Grid item xs={6}>
+        <Button onClick={props.nextStep()}>
+          Confirm
+        </Button>
+      </Grid>
+    </Grid>
   </Step>
 )
 
 SelectDBStep.propTypes = {
-  values: PropTypes.object,
-  errors: PropTypes.object,
-  touched: PropTypes.object,
-  handleChange: PropTypes.func,
-  handleBlur: PropTypes.func,
-  handleSubmit: PropTypes.func,
-  isSubmitting: PropTypes.bool,
-  className: PropTypes.string,
+  nextStep: PropTypes.func,
 }
 
 export default SelectDBStep
