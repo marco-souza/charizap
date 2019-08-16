@@ -5,6 +5,7 @@
 import {
   LOGIN,
   LOGOUT,
+  SIGN_UP,
   IS_LOGGED,
   VALIDATE_AUTH_KEY,
 } from './constants'
@@ -20,6 +21,7 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case LOGIN:
     case LOGOUT:
+    case SIGN_UP:
     case VALIDATE_AUTH_KEY:
       return {
         ...state,
