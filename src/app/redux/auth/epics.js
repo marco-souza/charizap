@@ -70,10 +70,14 @@ export const login = (action$, state$) => action$.pipe(
 
 export const logout = (action$, state$) => action$.pipe(
   ofType(LOGOUT),
-  // TODO: map to a logout request
-  delay(1000),
+  mergeMap(action => ajax({
+    method: 'GET',
+    url: api.logout(),
+  }).pipe(
+    map(() => isLogged(false)),
+  )),
   tap(() => eraseCookie(COOKIE_KEY)),
-  map(() => isLogged(false)),
+  catchError(handleRequestErrors),
 )
 
 export const validateAuthKey = (action$, state$) => action$.pipe(
