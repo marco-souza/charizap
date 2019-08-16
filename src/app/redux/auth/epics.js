@@ -22,6 +22,7 @@ import {
 } from './constants'
 
 const COOKIE_KEY = 'auth_key'
+const COOKIE_REFRESH_KEY = 'refresh_key'
 
 export const signup = action$ => action$.pipe(
   ofType(SIGN_UP),
@@ -34,17 +35,26 @@ export const signup = action$ => action$.pipe(
       name: action.payload.username,
       password: action.payload.password,
     },
-  }).pipe(
-    map(response => console.log(response)),
-  ))
+  })),
+  map(() => isLogged(false)),
 )
 
 export const login = (action$, state$) => action$.pipe(
   ofType(LOGIN),
-  // TODO: map to a request or cookie
-  delay(1000),
-  tap(({ payload }) => setCookie(COOKIE_KEY, payload, 1)),
-  map(() => isLogged(true)),
+  mergeMap(action => ajax({
+    method: 'POST',
+    url: api.login(),
+    body: {
+      email: action.payload.email,
+      password: action.payload.password,
+    },
+  }).pipe(
+    map(({ response }) => {
+      setCookie(COOKIE_KEY, response.access_token, 0)
+      setCookie(COOKIE_REFRESH_KEY, response.refresh_token, 0)
+    }),
+    map(() => isLogged(true)),
+  ))
 )
 
 export const logout = (action$, state$) => action$.pipe(
