@@ -4,9 +4,8 @@ import pick from 'lodash/pick'
 import { withFormik } from 'formik'
 import Grid from '@material-ui/core/Grid'
 
-import Button from 'app/components/core/Button'
-
 import { validationSchema, formFields } from './constants'
+import { Button } from '../styled'
 
 const DATA_KEY = 'databaseManager'
 
@@ -41,9 +40,14 @@ const Form = ({
   return (
     <div className={className}>
       <form onSubmit={handleSubmit}>
-        <Grid container>
+        <Grid container spacing={2}>
           <Grid item xs={6}>
-            <Button onClick={onClickHandler(false)} background='secondary'>No</Button>
+            <Button
+              variant='outlined'
+              onClick={onClickHandler(false)}
+            >
+              No
+            </Button>
           </Grid>
 
           <Grid item xs={6}>

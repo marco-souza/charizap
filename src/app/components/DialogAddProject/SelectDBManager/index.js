@@ -18,7 +18,7 @@ const SelectDBManager = (props) => (
 
     <SelectDBManagerForm {...props} />
     <SubText variant='subtitle2' small>
-      <Highlight>PhpMyAdmin</Highlight> is a tool designed to handle the administration of MySQL vit the Web.
+      <Highlight>PhpMyAdmin</Highlight> is a tool designed to handle the administration of MySQL via the Web.
     </SubText>
   </Step>
 )

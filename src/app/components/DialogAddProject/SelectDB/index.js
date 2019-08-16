@@ -16,6 +16,7 @@ const SelectDBStep = (props) => (
     <img src={bodyImage} alt='Select Database' />
 
     <SelectDBForm {...props} />
+
     <SubText variant='subtitle2' small>
       <Highlight>MySQL</Highlight> is the most trusted and widely used open source database platform in use today.
     </SubText>

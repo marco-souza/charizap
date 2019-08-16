@@ -8,14 +8,11 @@ const theme = {
     success: '#00d756',
     error: '#fd595c',
     alert: '#fff793',
-    background: {
-      default: '#f8f9ff',
-      stroke: '#dfe6ff',
-      primary: '#786efd',
-      white: '#FFFFFF',
-      none: 'none',
-      modalHeader: '#F3F7FE',
-    }
+    white: '#FFFFFF',
+    none: 'none',
+    stroke: '#dfe6ff',
+    modalHeader: '#F3F7FE',
+    background: '#f8f9ff',
   },
   fonts: {
     segoe: 'Segoe UI',
@@ -26,12 +23,10 @@ const theme = {
 }
 
 export const getPropsColor = (defaultColor = 'primary') =>
-  ({ theme, color = defaultColor }) =>
-    theme.colors[color]
+  ({ color = defaultColor }) => getColor(color)
 
-export const getPropsBackground = (defaultColor = 'default') =>
-  ({ theme, background = defaultColor }) =>
-    theme.colors.background[background]
+export const getPropsBackground = (defaultColor = 'background') =>
+  ({ background = defaultColor }) => getBgColor(background)
 
 export const getFont = font =>
   get(theme, `fonts.${font}`, 'fonts.fallback')
@@ -40,6 +35,6 @@ export const getColor = color =>
   get(theme, `colors.${color}`, 'primary')
 
 export const getBgColor = color =>
-  get(theme, `colors.background.${color}`, 'default')
+  get(theme, `colors.${color}`, 'background')
 
 export default theme

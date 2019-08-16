@@ -11,7 +11,7 @@ const Button = styled(BaseButton)`
   background: ${getPropsBackground()};
   border: 2px solid ${getPropsBackground('stroke')};
 
-  &:hover {
+  &:hover, &:focus {
     border: 2px solid ${getPropsBackground('primary')};
   }
 `

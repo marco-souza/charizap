@@ -3,11 +3,11 @@ import PropTypes from 'prop-types'
 import pick from 'lodash/pick'
 import { withFormik } from 'formik'
 
-import Button from 'app/components/core/Button'
 import Input from 'app/components/core/Input'
 
 import { validationSchema, formFields } from './constants'
 import { SELF_HOSTED } from '../SelectProvider/constants'
+import { Button } from '../styled'
 
 const DATA_KEY = 'serverSpecs'
 

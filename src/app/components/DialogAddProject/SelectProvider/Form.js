@@ -4,10 +4,10 @@ import get from 'lodash/get'
 import pick from 'lodash/pick'
 import { withFormik } from 'formik'
 
-import Button from 'app/components/core/Button'
 import Input from 'app/components/core/Input'
 
 import { validationSchema, formFields, providers } from './constants'
+import { Button } from '../styled'
 
 const DATA_KEY = 'credentials'
 
