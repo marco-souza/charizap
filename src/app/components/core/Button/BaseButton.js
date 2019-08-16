@@ -11,6 +11,10 @@ const Button = styled.button`
   border: none;
   font-family: ${getFont('robotoDefault')};
 
+  &:disabled {
+    opacity: 0.8;
+  }
+
   ${removeBlueMark}
 `
 
