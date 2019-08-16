@@ -56,13 +56,13 @@ export default {
 
       { test: /\.css$/, loader: 'style-loader!css-loader' },
       { test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
-        use: [ {
+        use: [{
           loader: 'file-loader',
           options: {
             name: '[name].[ext]',
             outputPath: 'fonts/'
           }
-        } ] },
+        }] },
     ],
   },
 
@@ -94,7 +94,8 @@ export default {
     }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-      'process.env.FORCE_UPDATE': JSON.stringify(process.env.FORCE_UPDATE || '')
+      'process.env.FORCE_UPDATE': JSON.stringify(process.env.FORCE_UPDATE || ''),
+      'process.env.API_BASE_URL': JSON.stringify(process.env.API_BASE_URL),
     })
   ],
 

@@ -65,7 +65,7 @@ export THEME_COLOR='#786efd'
 or you can just:
 
 ```sh
-source .env
+export $(cat .env | xargs)
 ```
 
 Use `source` at your terminal config file or open a new terminal and try to run the app locally =D.

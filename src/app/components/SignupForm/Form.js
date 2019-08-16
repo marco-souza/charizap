@@ -5,6 +5,7 @@ import Button from 'app/components/core/Button'
 import Input from 'app/components/core/Input'
 import Text from 'app/components/core/Text'
 import Link from 'app/components/core/Link'
+
 import styled from 'styled-components'
 
 const Form = ({
@@ -42,7 +43,7 @@ const Form = ({
         />
 
         <Button type='submit' disable={isSubmitting}>
-        Sign Up
+          Sign Up
         </Button>
 
         <Text variant='span' small>
