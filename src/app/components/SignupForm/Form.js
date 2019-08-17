@@ -1,37 +1,44 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import { withFormik } from 'formik'
+import * as Yup from 'yup'
 
 import Button from 'app/components/core/Button'
 import Input from 'app/components/core/Input'
-import Text from 'app/components/core/Text'
 import Link from 'app/components/core/Link'
+import Text from 'app/components/core/Text'
 
-import styled from 'styled-components'
+import {
+  propsToValues,
+  defaultFormikProps,
+  isSubmitDisabled,
+  REQUIRED,
+  EMAIL,
+  PASSWORD,
+} from 'app/helpers/forms'
+import { useWrappers } from 'app/helpers/redux'
+import useAuth from 'app/redux/auth'
 
-const Form = ({
-  values,
-  errors,
-  touched,
-  handleChange,
-  handleBlur,
-  handleSubmit,
-  isSubmitting,
-  className,
-}) => {
+import { Container } from './styled'
+
+const Form = (props) => {
+  const { handleSubmit } = props
   const termOfServices = <Link href='#'>Terms of service</Link>
   const privacyPolicy = <Link href='#'>Privacy Policy</Link>
+
   return (
-    <div className={className}>
+    <Container>
       <form onSubmit={handleSubmit}>
         <Input
           name='username'
           label='Username'
+          autoComplete='username'
           placeholder='Your first and last name'
         />
 
         <Input
           name='email'
           label='Email Address'
+          autoComplete='email'
           placeholder='name@project.com'
         />
 
@@ -40,9 +47,13 @@ const Form = ({
           placeholder='+5 characters'
           type='password'
           name='password'
+          autoComplete='new-password'
         />
 
-        <Button type='submit' disable={isSubmitting}>
+        <Button
+          type='submit'
+          disabled={isSubmitDisabled(props)}
+        >
           Sign Up
         </Button>
 
@@ -50,28 +61,39 @@ const Form = ({
           By signing up you're agreeing to the Devopness {termOfServices} & {privacyPolicy}.
         </Text>
       </form>
-    </div>
+    </Container>
   )
 }
 
 Form.propTypes = {
-  values: PropTypes.object,
-  errors: PropTypes.object,
-  touched: PropTypes.object,
-  handleChange: PropTypes.func,
-  handleBlur: PropTypes.func,
-  handleSubmit: PropTypes.func,
-  isSubmitting: PropTypes.bool,
-  className: PropTypes.string,
+  ...defaultFormikProps,
 }
 
-export default styled(Form)`
-  & button {
-    width: 100%;
-    margin: 20px 0;
-  }
+const validationSchema = Yup.object()
+  .shape({
+    email: Yup.string().email(EMAIL).required(REQUIRED),
+    username: Yup.string().min(3).required(REQUIRED),
+    password: Yup.string().min(6, PASSWORD).required(REQUIRED),
+  })
 
-  & form {
-    margin-top: 70px;
-  }
-`
+const mapPropsToValues = propsToValues
+  .fromInitialState({
+    email: '',
+    username: '',
+    password: '',
+  })
+
+const onSubmit = (values, { props }) => {
+  console.log(values, props)
+  props.signUp(values)
+}
+
+export default useWrappers(
+  withFormik({
+    enableReinitialize: true,
+    handleSubmit: onSubmit,
+    validationSchema,
+    mapPropsToValues,
+  }),
+  useAuth,
+)(Form)
