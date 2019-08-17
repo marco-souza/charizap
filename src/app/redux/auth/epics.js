@@ -22,8 +22,8 @@ import {
   SIGN_UP,
 } from './constants'
 
-const COOKIE_KEY = 'auth_key'
-const COOKIE_REFRESH_KEY = 'refresh_key'
+const COOKIE_KEY = 'access_token'
+const COOKIE_REFRESH_KEY = 'refresh_token'
 
 // TODO: make it a helper
 const handleRequestErrors = error => {
@@ -44,6 +44,10 @@ export const signup = action$ => action$.pipe(
       name: action.payload.username,
       password: action.payload.password,
     },
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    }
   })),
   map(() => isLogged(false)),
   catchError(handleRequestErrors),
@@ -58,6 +62,10 @@ export const login = (action$, state$) => action$.pipe(
       email: action.payload.email,
       password: action.payload.password,
     },
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    }
   }).pipe(
     map(({ response }) => {
       setCookie(COOKIE_KEY, response.access_token, 0)
@@ -73,10 +81,18 @@ export const logout = (action$, state$) => action$.pipe(
   mergeMap(action => ajax({
     method: 'GET',
     url: api.logout(),
+    headers: {
+      'Authorization': `Bearer{${getCookie(COOKIE_KEY)}}`,
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: null,
   }).pipe(
     map(() => isLogged(false)),
+    // TODO: Ref eraseCookie for multiple targets
+    tap(() => eraseCookie(COOKIE_KEY)),
+    tap(() => eraseCookie(COOKIE_REFRESH_KEY)),
   )),
-  tap(() => eraseCookie(COOKIE_KEY)),
   catchError(handleRequestErrors),
 )
 
