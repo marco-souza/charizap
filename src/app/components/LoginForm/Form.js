@@ -9,7 +9,7 @@ import Link from 'app/components/core/Link'
 import {
   propsToValues,
   defaultFormikProps,
-  formIsValid,
+  isSubmitDisabled,
   REQUIRED,
   EMAIL,
   PASSWORD,
@@ -17,19 +17,18 @@ import {
 import { useWrappers } from 'app/helpers/redux'
 import useAuth from 'app/redux/auth'
 
-import { FormContainer } from './styled'
+import { Container } from './styled'
 
 const Form = (props) => {
-  const { errors, handleSubmit } = props
+  const { handleSubmit } = props
   return (
-    <FormContainer>
+    <Container>
       <form onSubmit={handleSubmit}>
         <Input
           name='email'
           label='Email Address'
           placeholder='name@project.com'
           autoComplete='username'
-          errorMessage={errors.email}
         />
 
         <Input
@@ -38,12 +37,11 @@ const Form = (props) => {
           type='password'
           name='password'
           autoComplete='current-password'
-          errorMessage={errors.password}
         />
 
         <Button
           type='submit'
-          disabled={!formIsValid(props)}
+          disabled={isSubmitDisabled(props)}
         >
           Login
         </Button>
@@ -52,7 +50,7 @@ const Form = (props) => {
           Forgot your password?
         </Link>
       </form>
-    </FormContainer>
+    </Container>
   )
 }
 

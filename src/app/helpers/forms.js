@@ -13,12 +13,15 @@ export const propsToValues = {
     )
 }
 
-export const formIsValid = form => (
-  !form.dirty || (
-    form.dirty &&
-    form.isValid
+export const isSubmitDisabled = form => {
+  // eslint-disable-next-line no-debugger
+  // debugger
+  return (
+    Object.keys(form.errors).length &&
+    Object.keys(form.touched).length &&
+    !form.isValid
   )
-)
+}
 
 export const defaultFormikProps = {
   values: PropTypes.object,
