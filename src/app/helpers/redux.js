@@ -8,3 +8,10 @@ export const createAction = type =>
 
 export const duckStateToProps = key =>
   state => state[key]
+
+export const useWrappers = (...wrappers) =>
+  Component =>
+    wrappers.reduce(
+      (Wrapper, curFunc) => curFunc(Wrapper),
+      Component,
+    )

@@ -6,7 +6,8 @@ import Container from './component'
 
 export default styled(Container)`
   padding: 0;
-  position:relative;
+  position: relative;
+  display: flex;
 
   ${removeBlueMark}
 `

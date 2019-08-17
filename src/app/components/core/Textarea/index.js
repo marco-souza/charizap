@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 import Component from './component'
 
-import { getPropsColor, getPropsBackground, getFont } from 'app/helpers/theme'
+import { getPropsColor, getPropsBackground, getFont, getColor } from 'app/helpers/theme'
 
 export default styled(Component)`
   display: flex;
@@ -22,6 +22,7 @@ export default styled(Component)`
     color: ${getPropsColor('secondary')};
     border: 1px solid ${getPropsBackground('stroke')};
     font-family: ${getFont('robotoMontserrat')};
+    background: ${({ hasError }) => getColor(!hasError ? 'background' : 'stroke')};
 
     font-size: .8em;
     border-radius: 20px 20px;
