@@ -1,29 +1,16 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
-import Header from 'app/components/core/Header'
-import { getColor } from 'app/helpers/theme'
-import styled from 'styled-components'
+import Form from './Form'
+import { Header, LoginContainer } from './styled'
 
-import FormContainer from './FormContainer'
-
-const CustomHeader = styled(Header)`
-  margin: 0;
-  color: ${getColor('secondary')};
-`
-
-const LoginForm = ({ className }) => (
-  <div className={className}>
-    <CustomHeader>
+const LoginForm = props => (
+  <LoginContainer {...props}>
+    <Header>
       Be a happy DevOps. Enter your account.
-    </CustomHeader>
+    </Header>
 
-    <FormContainer />
-  </div>
+    <Form />
+  </LoginContainer>
 )
-
-LoginForm.propTypes = {
-  className: PropTypes.string,
-}
 
 export default LoginForm
