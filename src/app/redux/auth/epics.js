@@ -26,6 +26,12 @@ import {
 const COOKIE_KEY = 'access_token'
 const COOKIE_REFRESH_KEY = 'refresh_token'
 
+// TODO: Make function to generate requests
+const HEADER_TEMPLATE = {
+  'Accept': 'application/json',
+  'Content-Type': 'application/json',
+}
+
 // TODO: make it a helper
 const handleRequestErrors = error => {
   console.log(error)
@@ -41,10 +47,7 @@ export const signup = action$ => action$.pipe(
     method: 'POST',
     url: api.signUp(),
     body: pick(action.payload, ['email', 'name', 'password']),
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-    }
+    headers: HEADER_TEMPLATE,
   })),
   map(() => isLogged(false)),
   catchError(handleRequestErrors),
@@ -56,10 +59,7 @@ export const login = (action$, state$) => action$.pipe(
     method: 'POST',
     url: api.login(),
     body: pick(action.payload, ['email', 'password']),
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-    },
+    headers: HEADER_TEMPLATE,
   }).pipe(
     map(({ response }) => {
       setCookie(COOKIE_KEY, response.access_token, 0)
@@ -75,21 +75,13 @@ export const logout = (action$, state$) => action$.pipe(
   mergeMap(action => ajax({
     method: 'GET',
     url: api.logout(),
-    headers: {
-      'Authorization': `Bearer{${getCookie(COOKIE_KEY)}}`,
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-    },
-    crossDomain: true,
-    withCredentials: true,
+    headers: HEADER_TEMPLATE,
     xhrFields: {
       withCredentials: true
     }
   }).pipe(
     map(() => isLogged(false)),
-    // TODO: Ref eraseCookie for multiple targets
-    tap(() => eraseCookie(COOKIE_KEY)),
-    tap(() => eraseCookie(COOKIE_REFRESH_KEY)),
+    tap([COOKIE_KEY, COOKIE_REFRESH_KEY].map(eraseCookie)),
   )),
   catchError(handleRequestErrors),
 )
