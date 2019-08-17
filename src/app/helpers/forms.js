@@ -29,3 +29,7 @@ export const defaultFormikProps = {
   isSubmitting: PropTypes.bool,
   className: PropTypes.string,
 }
+
+export const hasError = ({ touched, errors }, name) => (
+  touched[name] && errors[name]
+)

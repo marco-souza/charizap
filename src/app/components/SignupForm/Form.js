@@ -11,6 +11,7 @@ import {
   propsToValues,
   defaultFormikProps,
   isSubmitDisabled,
+  hasError,
   REQUIRED,
   EMAIL,
   PASSWORD,
@@ -29,6 +30,7 @@ const Form = (props) => {
     <Container>
       <form onSubmit={handleSubmit}>
         <Input
+          hasError={hasError(props, 'username')}
           name='username'
           label='Username'
           autoComplete='username'
@@ -36,6 +38,7 @@ const Form = (props) => {
         />
 
         <Input
+          hasError={hasError(props, 'email')}
           name='email'
           label='Email Address'
           autoComplete='email'
@@ -43,6 +46,7 @@ const Form = (props) => {
         />
 
         <Input
+          hasError={hasError(props, 'password')}
           label='Password'
           placeholder='+5 characters'
           type='password'

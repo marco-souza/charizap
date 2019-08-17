@@ -4,17 +4,18 @@ import { Field, ErrorMessage } from 'formik'
 
 import ErrorMessageComponent from 'app/components/core/ErrorMessage'
 
-const Input = ({ className, label, ...restProps }) => (
+const Input = ({ className, label, hasError, ...restProps }) => (
   <div className={className}>
     {label && <label>{label}</label>}
 
     <Field component='input' type='text' {...restProps} />
-    <ErrorMessage component={ErrorMessageComponent} name={restProps.name} />
+    {hasError && <ErrorMessage component={ErrorMessageComponent} name={restProps.name} />}
   </div>
 )
 
 Input.propTypes = {
   label: PropTypes.string,
+  hasError: PropTypes.bool,
   className: PropTypes.string,
 }
 

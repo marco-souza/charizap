@@ -20,19 +20,19 @@ export default styled(Component)`
 
   & input {
     color: ${getColor('secondary')};
-    border: 1px solid ${({ errorMessage }) => getColor(!errorMessage ? 'stroke' : 'error')};
-    background: ${({ errorMessage }) => getColor(!errorMessage ? 'background' : 'stroke')};
+    border: 1px solid ${({ hasError }) => getColor(!hasError ? 'stroke' : 'error')};
+    background: ${({ hasError }) => getColor(!hasError ? 'background' : 'stroke')};
 
     font-size: .8em;
     border-radius: 20px 20px;
     padding: 10px 20px;
 
     &:hover, &:focus {
-      border-color: ${({ errorMessage }) => !errorMessage && getPropsBackground('primary')};
+      border-color: ${({ hasError }) => !hasError && getPropsBackground('primary')};
     }
 
     &::placeholder {
-      color: ${({ errorMessage }) => getColor(!errorMessage ? 'secondaryVariant' : 'white')};
+      color: ${({ hasError }) => getColor(!hasError ? 'secondaryVariant' : 'white')};
     }
   }
 
