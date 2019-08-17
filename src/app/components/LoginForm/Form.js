@@ -30,7 +30,7 @@ const Form = (props) => {
           name='email'
           label='Email Address'
           placeholder='name@project.com'
-          autoComplete='username'
+          autoComplete='email'
         />
 
         <Input

@@ -31,5 +31,5 @@ export const defaultFormikProps = {
 }
 
 export const hasError = ({ touched, errors }, name) => (
-  touched[name] && errors[name]
+  Boolean(touched[name] && errors[name])
 )

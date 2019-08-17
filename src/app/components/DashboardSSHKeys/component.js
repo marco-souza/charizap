@@ -7,15 +7,16 @@ import NoState from 'app/components/core/Section/NoState'
 import coloredLogo from 'assets/images/logo_devopness_alfa.png'
 
 import FormContainer from './FormContainer'
+import { GridItem } from './styled'
 
 const DashboardSSHKeys = ({ className }) => (
   <Grid container spacing={5} className={className}>
-    <Grid item md={6} xs={12}>
+    <GridItem item md={6} xs={12}>
       <FormContainer />
-    </Grid>
+    </GridItem>
 
-    <Grid item md={6} xs={12}>
-      <Section title='Active Keys' className='section'>
+    <GridItem item md={6} xs={12}>
+      <Section title='Active Keys' className={className}>
         <NoState
           src={coloredLogo}
           text='You need an ssh key'
@@ -24,7 +25,7 @@ const DashboardSSHKeys = ({ className }) => (
           background='none'
         />
       </Section>
-    </Grid>
+    </GridItem>
   </Grid>
 )
 
