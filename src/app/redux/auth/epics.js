@@ -65,7 +65,7 @@ export const login = (action$, state$) => action$.pipe(
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
-    }
+    },
   }).pipe(
     map(({ response }) => {
       setCookie(COOKIE_KEY, response.access_token, 0)
@@ -86,7 +86,12 @@ export const logout = (action$, state$) => action$.pipe(
       'Accept': 'application/json',
       'Content-Type': 'application/json',
     },
+    crossDomain: true,
+    withCredentials: true,
     body: null,
+    xhrFields: {
+      withCredentials: true
+    }
   }).pipe(
     map(() => isLogged(false)),
     // TODO: Ref eraseCookie for multiple targets
