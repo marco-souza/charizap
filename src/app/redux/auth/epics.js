@@ -4,6 +4,7 @@
  *
  * Refs: [rxjs, redux-observable]
  */
+import pick from 'lodash/pick'
 import { of } from 'rxjs'
 import { ajax } from 'rxjs/ajax'
 import { ofType, combineEpics } from 'redux-observable'
@@ -22,8 +23,14 @@ import {
   SIGN_UP,
 } from './constants'
 
-const COOKIE_KEY = 'auth_key'
-const COOKIE_REFRESH_KEY = 'refresh_key'
+const COOKIE_KEY = 'access_token'
+const COOKIE_REFRESH_KEY = 'refresh_token'
+
+// TODO: Make function to generate requests
+const HEADER_TEMPLATE = {
+  'Accept': 'application/json',
+  'Content-Type': 'application/json',
+}
 
 // TODO: make it a helper
 const handleRequestErrors = error => {
@@ -39,11 +46,8 @@ export const signup = action$ => action$.pipe(
   mergeMap(action => ajax({
     method: 'POST',
     url: api.signUp(),
-    body: {
-      email: action.payload.email,
-      name: action.payload.username,
-      password: action.payload.password,
-    },
+    body: pick(action.payload, ['email', 'name', 'password']),
+    headers: HEADER_TEMPLATE,
   })),
   map(() => isLogged(false)),
   catchError(handleRequestErrors),
@@ -54,10 +58,8 @@ export const login = (action$, state$) => action$.pipe(
   mergeMap(action => ajax({
     method: 'POST',
     url: api.login(),
-    body: {
-      email: action.payload.email,
-      password: action.payload.password,
-    },
+    body: pick(action.payload, ['email', 'password']),
+    headers: HEADER_TEMPLATE,
   }).pipe(
     map(({ response }) => {
       setCookie(COOKIE_KEY, response.access_token, 0)
@@ -70,10 +72,18 @@ export const login = (action$, state$) => action$.pipe(
 
 export const logout = (action$, state$) => action$.pipe(
   ofType(LOGOUT),
-  // TODO: map to a logout request
-  delay(1000),
-  tap(() => eraseCookie(COOKIE_KEY)),
-  map(() => isLogged(false)),
+  mergeMap(action => ajax({
+    method: 'GET',
+    url: api.logout(),
+    headers: HEADER_TEMPLATE,
+    xhrFields: {
+      withCredentials: true
+    }
+  }).pipe(
+    map(() => isLogged(false)),
+    tap([COOKIE_KEY, COOKIE_REFRESH_KEY].map(eraseCookie)),
+  )),
+  catchError(handleRequestErrors),
 )
 
 export const validateAuthKey = (action$, state$) => action$.pipe(
