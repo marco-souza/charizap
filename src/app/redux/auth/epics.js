@@ -4,6 +4,7 @@
  *
  * Refs: [rxjs, redux-observable]
  */
+import pick from 'lodash/pick'
 import { of } from 'rxjs'
 import { ajax } from 'rxjs/ajax'
 import { ofType, combineEpics } from 'redux-observable'
@@ -39,11 +40,7 @@ export const signup = action$ => action$.pipe(
   mergeMap(action => ajax({
     method: 'POST',
     url: api.signUp(),
-    body: {
-      email: action.payload.email,
-      name: action.payload.username,
-      password: action.payload.password,
-    },
+    body: pick(action.payload, ['email', 'name', 'password']),
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
@@ -58,10 +55,7 @@ export const login = (action$, state$) => action$.pipe(
   mergeMap(action => ajax({
     method: 'POST',
     url: api.login(),
-    body: {
-      email: action.payload.email,
-      password: action.payload.password,
-    },
+    body: pick(action.payload, ['email', 'password']),
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
@@ -88,7 +82,6 @@ export const logout = (action$, state$) => action$.pipe(
     },
     crossDomain: true,
     withCredentials: true,
-    body: null,
     xhrFields: {
       withCredentials: true
     }
