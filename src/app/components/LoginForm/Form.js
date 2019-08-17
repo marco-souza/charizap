@@ -28,6 +28,7 @@ const Form = (props) => {
           name='email'
           label='Email Address'
           placeholder='name@project.com'
+          autoComplete='username'
           errorMessage={errors.email}
         />
 
@@ -36,6 +37,7 @@ const Form = (props) => {
           placeholder='+5 characters'
           type='password'
           name='password'
+          autoComplete='current-password'
           errorMessage={errors.password}
         />
 
