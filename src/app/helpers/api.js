@@ -1,5 +1,5 @@
 const BaseUrl = process.env.API_BASE_URL
-const CorsService = 'http://glacial-mountain-72752.herokuapp.com/'
+const CorsService = 'https://glacial-mountain-72752.herokuapp.com/'
 
 export default {
   signUp: () => `${CorsService}${BaseUrl}users/signup`,
