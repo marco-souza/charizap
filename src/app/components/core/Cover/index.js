@@ -8,7 +8,6 @@ export default styled(Container)`
   text-align: center;
   max-width: inherit;
   max-height: 1200px;
-  overflow: hidden;
   background-color: ${getPropsBackground()};
 
   @media (max-width: 960px) {
