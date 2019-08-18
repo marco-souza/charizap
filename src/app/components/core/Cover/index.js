@@ -1,12 +1,13 @@
 import styled from 'styled-components'
 
-import { getPropsBackground, getFont } from 'app/helpers/theme'
+import { getPropsBackground, getFont, getColor } from 'app/helpers/theme'
 
 import Container from './component'
 
 export default styled(Container)`
   text-align: center;
-  max-width: 480px;
+  max-width: inherit;
+  max-height: 1200px;
   overflow: hidden;
   background-color: ${getPropsBackground()};
 
@@ -14,6 +15,22 @@ export default styled(Container)`
     display: none;
   }
 
+ /* Not Proud */
+  @media (max-width: 2000px) {
+    & > h5 {font-size: 217%;}
+  }
+  @media (max-width: 1900px) {
+    & > h5 {font-size: 189%;}
+  }
+   @media (max-width: 1417px) {
+    & > h5 {font-size: 166%;}
+  }
+  @media (max-width: 1242px) {
+    & > h5 {font-size: 142%;}
+  }
+  @media (max-width: 1062px) {
+    & > h5 {font-size: 121%;}
+  }
 
   & img {
     margin: 0 auto;
@@ -29,7 +46,8 @@ export default styled(Container)`
 
   & > h5 {
     font-family: ${getFont('robotoMontserrat')};
-    letter-spacing: .05em;
-    padding: ${props => props.padding || 0} ${props => props.moreSpace ? 10 : 25}%;
+    letter-spacing: .09em;
+    color: ${getColor('secondary')};
+    padding: ${props => props.padding || 0} ${props => props.moreSpace ? 10 : 20}%;
   }
 `

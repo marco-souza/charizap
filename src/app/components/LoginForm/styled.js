@@ -4,11 +4,12 @@ import CoreHeader from 'app/components/core/Header'
 import { getFont, getColor } from 'app/helpers/theme'
 
 export const Container = styled.div`
-  max-width: 430px;
-  margin: 0 auto;
+  margin: 0 27%;
   text-align: center;
   margin-top: 40px;
   font-family: ${getFont('robotoDefault')};
+  margin-right: 27%;
+  size: 34px;
 
   & button {
     width: 100%;
@@ -18,6 +19,11 @@ export const Container = styled.div`
   & form {
     margin-top: 70px;
   }
+
+  & div {
+    margin-left: 0px;
+  }
+
 `
 
 export const Header = styled(CoreHeader)`
