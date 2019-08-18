@@ -1,5 +1,4 @@
 import React from 'react'
-import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 
 import SignupCover from 'app/components/SignupCover'
@@ -10,19 +9,16 @@ import useAuth from 'app/redux/auth'
 
 const Signup = () => (
   <div>
-    <Container>
-      <Grid container>
-        <Grid item md={4} xs={12}>
-          <SignupCover />
-        </Grid>
-
-        <Grid item md={8} xs={12}>
-          <SignupMenu />
-          <SignupForm />
-        </Grid>
+    <Grid container padding={0}>
+      <Grid item xlg={4} lg={4} md={4} xs={12} sm={12}>
+        <SignupCover />
       </Grid>
 
-    </Container>
+      <Grid item xlg={8} lg={8} md={8} xs={12} sm={12}>
+        <SignupMenu />
+        <SignupForm />
+      </Grid>
+    </Grid>
   </div>
 )
 
