@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
 import Cover from 'app/components/core/Cover'
 
@@ -24,4 +25,8 @@ SignupCover.propTypes = {
   className: PropTypes.string,
 }
 
-export default SignupCover
+export default styled(SignupCover)`
+  & h5 {
+    padding: 40px 8%;
+  }
+`
