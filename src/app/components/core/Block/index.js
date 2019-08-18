@@ -1,8 +1,10 @@
 import styled from 'styled-components'
 
+import { getColor, getBgColor } from 'app/helpers/theme'
+
 const Block = styled.div`
-  background: ${({ theme }) => theme.colors['primary']};
-  color: ${({ theme }) => theme.colors['background']};
+  background: ${getColor()};
+  color: ${getBgColor()};
   font-size: 1em;
   padding: 3em;
   text-align: center;

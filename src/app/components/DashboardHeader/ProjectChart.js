@@ -6,7 +6,7 @@ import Grid from '@material-ui/core/Grid'
 import { Line } from 'react-chartjs-2'
 
 import Text from 'app/components/core/Text'
-import theme from 'app/helpers/theme'
+import { getColor } from 'app/helpers/theme'
 
 import pingGif from 'assets/images/ping.gif'
 
@@ -32,7 +32,7 @@ const ProjectChart = ({ className, fake }) => (
           data={{
             labels: mockedData.map(({ date }) => date.fromNow()),
             datasets: [{
-              backgroundColor: `${theme.colors.primary}60`,
+              backgroundColor: `${getColor()}60`,
               data: mockedData.map(({ value }) => value),
               borderWidth: 1
             }],
