@@ -4,12 +4,10 @@ import CoreHeader from 'app/components/core/Header'
 import { getFont, getColor } from 'app/helpers/theme'
 
 export const Container = styled.div`
-  margin: 0 27%;
+  margin: 0 22%;
   text-align: center;
   margin-top: 40px;
   font-family: ${getFont('robotoDefault')};
-  margin-right: 27%;
-  size: 34px;
 
   & button {
     width: 100%;
@@ -22,6 +20,16 @@ export const Container = styled.div`
 
   & div {
     margin-left: 0px;
+  }
+
+  & h1 {
+    margin-top: 7%;
+    margin-right: 35%;
+    max-width: 100%;
+    font-size: 36px;
+    @media (max-width: 960px) {
+      font-size: 18px;
+    }
   }
 
 `
