@@ -30,8 +30,8 @@ const Form = (props) => {
     <Container>
       <form onSubmit={handleSubmit}>
         <Input
-          hasError={hasError(props, 'username')}
-          name='username'
+          hasError={hasError(props, 'name')}
+          name='name'
           label='Username'
           autoComplete='username'
           placeholder='Your first and last name'
@@ -76,14 +76,14 @@ Form.propTypes = {
 const validationSchema = Yup.object()
   .shape({
     email: Yup.string().email(EMAIL).required(REQUIRED),
-    username: Yup.string().min(3).required(REQUIRED),
+    name: Yup.string().min(3).required(REQUIRED),
     password: Yup.string().min(6, PASSWORD).required(REQUIRED),
   })
 
 const mapPropsToValues = propsToValues
   .fromInitialState({
     email: '',
-    username: '',
+    name: '',
     password: '',
   })
 
