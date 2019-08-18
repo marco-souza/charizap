@@ -77,8 +77,4 @@ export default styled(Switch)`
       color: ${getPropsBackground()};
     }
   }
-
-  & > .imageCover {
-    margin-bottom: -100px;
-  }
 `
