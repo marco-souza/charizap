@@ -13,6 +13,10 @@ const Header = styled(Component)`
   padding: 0.25em 0;
   font-weight: normal;
   text-align: left;
+
+  & h1 {
+    font-size: 42px;
+  }
 `
 
 export default Header

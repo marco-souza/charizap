@@ -22,24 +22,17 @@ export const Container = styled.div`
     margin-left: 0px;
   }
 
-  & h1 {
-    margin-top: 7%;
-    margin-right: 35%;
-    max-width: 100%;
-    font-size: 36px;
-    @media (max-width: 960px) {
-      font-size: 18px;
-    }
-  }
-
 `
 
 export const Header = styled(CoreHeader)`
   margin: 0;
   color: ${getColor('secondary')};
+  margin-top: 7%;
+  margin-right: 35%;
+  max-width: 100%;
 
   &&& {
     font-size: 46px;
-    ${mediaQueryUpTo('xxLarge', `font-size: 32px;`)}
+    ${mediaQueryUpTo('xLarge', `font-size: 32px;`)}
   }
 `
