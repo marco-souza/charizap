@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { withFormik } from 'formik'
+import { useSnackbar } from 'notistack'
 import * as Yup from 'yup'
 
 import Button from 'app/components/core/Button'
 import Input from 'app/components/core/Input'
 import Link from 'app/components/core/Link'
 import Text from 'app/components/core/Text'
+import { useSnackbar } from 'notistack'
 
 import {
   propsToValues,
@@ -16,15 +18,23 @@ import {
   EMAIL,
   PASSWORD,
 } from 'app/helpers/forms'
+import { sendNotificationsFormErrorResponse } from 'app/helpers/notifications'
 import { useWrappers } from 'app/helpers/redux'
 import useAuth from 'app/redux/auth'
 
 import { Container } from './styled'
 
 const Form = (props) => {
-  const { handleSubmit } = props
+  const { handleSubmit, errorResponse, setErrors } = props
   const termOfServices = <Link href='#'>Terms of service</Link>
   const privacyPolicy = <Link href='#'>Privacy Policy</Link>
+  const { enqueueSnackbar } = useSnackbar()
+
+  useEffect(() => {
+    errorResponse &&
+    sendNotificationsFormErrorResponse(errorResponse, enqueueSnackbar) &&
+    setErrors(null)
+  }, [errorResponse])
 
   return (
     <Container>

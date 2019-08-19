@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { withFormik } from 'formik'
+import { useSnackbar } from 'notistack'
 import * as Yup from 'yup'
 
 import Button from 'app/components/core/Button'
@@ -15,13 +16,22 @@ import {
   EMAIL,
   PASSWORD,
 } from 'app/helpers/forms'
+import { sendNotificationsFormErrorResponse } from 'app/helpers/notifications'
 import { useWrappers } from 'app/helpers/redux'
 import useAuth from 'app/redux/auth'
 
 import { Container } from './styled'
 
 const Form = (props) => {
-  const { handleSubmit } = props
+  const { handleSubmit, errorResponse, setErrors } = props
+  const { enqueueSnackbar } = useSnackbar()
+
+  useEffect(() => {
+    errorResponse &&
+    sendNotificationsFormErrorResponse(errorResponse, enqueueSnackbar) &&
+    setErrors(null)
+  }, [errorResponse])
+
   return (
     <Container>
       <form onSubmit={handleSubmit}>

@@ -6,15 +6,18 @@ import {
   LOGIN,
   LOGOUT,
   SIGN_UP,
+  SET_ERRORS,
   IS_LOGGED,
   VALIDATE_AUTH_KEY,
 } from './constants'
 
 export const initialState = {
   isLogged: false,
+  Create: false,
   loading: {
     authKey: false
   },
+  errorResponse: null,
 }
 
 export default (state = initialState, action) => {
@@ -34,6 +37,15 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isLogged: action.payload,
+        loading: {
+          authKey: false,
+        },
+      }
+
+    case SET_ERRORS:
+      return {
+        ...state,
+        errorResponse: action.payload,
         loading: {
           authKey: false,
         },

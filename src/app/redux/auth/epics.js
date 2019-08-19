@@ -5,17 +5,18 @@
  * Refs: [rxjs, redux-observable]
  */
 import pick from 'lodash/pick'
-import { of } from 'rxjs'
 import { ajax } from 'rxjs/ajax'
 import { ofType, combineEpics } from 'redux-observable'
 import { tap, map, delay, mergeMap, catchError } from 'rxjs/operators'
 
 import { getCookie, setCookie, eraseCookie } from 'app/helpers/cookie'
+import { handleRequestErrors } from 'app/helpers/redux'
 import api from 'app/helpers/api'
 
 import {
   // Actions
   isLogged,
+  setErrors,
   // Types
   LOGIN,
   LOGOUT,
@@ -32,13 +33,7 @@ const HEADER_TEMPLATE = {
   'Content-Type': 'application/json',
 }
 
-// TODO: make it a helper
-const handleRequestErrors = error => {
-  console.log(error)
-  // TODO: handle Unauthenticated error
-  // TODO: call notification with error message
-  return of(isLogged(false))
-}
+const closeLoader = () => isLogged(false)
 
 export const signup = action$ => action$.pipe(
   ofType(SIGN_UP),
@@ -48,9 +43,10 @@ export const signup = action$ => action$.pipe(
     url: api.signUp(),
     body: pick(action.payload, ['email', 'name', 'password']),
     headers: HEADER_TEMPLATE,
-  })),
-  map(() => isLogged(false)),
-  catchError(handleRequestErrors),
+  }).pipe(
+    map(() => isLogged(false)),
+    catchError(handleRequestErrors(setErrors)),
+  ))
 )
 
 export const login = (action$, state$) => action$.pipe(
@@ -66,8 +62,8 @@ export const login = (action$, state$) => action$.pipe(
       setCookie(COOKIE_REFRESH_KEY, response.refresh_token, 0)
     }),
     map(() => isLogged(true)),
+    catchError(handleRequestErrors(setErrors)),
   )),
-  catchError(handleRequestErrors),
 )
 
 export const logout = (action$, state$) => action$.pipe(
@@ -80,10 +76,10 @@ export const logout = (action$, state$) => action$.pipe(
       withCredentials: true
     }
   }).pipe(
-    map(() => isLogged(false)),
+    map(closeLoader),
     tap([COOKIE_KEY, COOKIE_REFRESH_KEY].map(eraseCookie)),
+    catchError(handleRequestErrors(setErrors)),
   )),
-  catchError(handleRequestErrors),
 )
 
 export const validateAuthKey = (action$, state$) => action$.pipe(
@@ -92,7 +88,7 @@ export const validateAuthKey = (action$, state$) => action$.pipe(
   map(() => getCookie(COOKIE_KEY)),
   // TODO: map(authKey => authKey && api.isValidAuthKey),
   map(isValidKey => isLogged(Boolean(isValidKey))),
-  catchError(handleRequestErrors),
+  catchError(handleRequestErrors(setErrors)),
 )
 
 export default combineEpics(
