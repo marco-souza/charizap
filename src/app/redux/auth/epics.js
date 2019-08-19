@@ -59,8 +59,8 @@ export const login = (action$, state$) => action$.pipe(
     headers: HEADER_TEMPLATE,
   }).pipe(
     map(({ response }) => {
-      setCookie(COOKIE_KEY, response.access_token, 0)
-      setCookie(COOKIE_REFRESH_KEY, response.refresh_token, 0)
+      setCookie(COOKIE_KEY, response.access_token)
+      setCookie(COOKIE_REFRESH_KEY, response.refresh_token)
     }),
     map(() => isLogged(true)),
     catchError(handleRequestErrors(setRequestErrors)),
@@ -72,13 +72,16 @@ export const logout = (action$, state$) => action$.pipe(
   mergeMap(action => ajax({
     method: 'GET',
     url: api.logout(),
-    headers: HEADER_TEMPLATE,
+    headers: {
+      ...HEADER_TEMPLATE,
+      'Authorization': `Bearer ${getCookie(COOKIE_KEY)}`,
+    },
     xhrFields: {
       withCredentials: true
     }
   }).pipe(
-    map(closeLoader),
     tap([COOKIE_KEY, COOKIE_REFRESH_KEY].map(eraseCookie)),
+    map(closeLoader),
     catchError(handleRequestErrors(setRequestErrors)),
   )),
 )
