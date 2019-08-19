@@ -12,7 +12,12 @@ export const sendNotification = (variant, handler) => {
     )
 }
 
-export const sendNotificationsFormErrorResponse = (errorResponse, notificationHandler) =>
-  Object.values(errorResponse.errors)
+export const sendNotificationsFormErrorResponse = (errorResponse, notificationHandler) => {
+  const errorList = errorResponse.errors
+    ? errorResponse.errors
+    : [errorResponse.message]
+
+  Object.values(errorList)
     .flatMap(x => x)
     .map(sendNotification('warning', notificationHandler))
+}

@@ -76,9 +76,9 @@ export const logout = (action$, state$) => action$.pipe(
       withCredentials: true
     }
   }).pipe(
-    map(closeLoader()),
+    map(closeLoader),
     tap([COOKIE_KEY, COOKIE_REFRESH_KEY].map(eraseCookie)),
-    catchError(handleRequestErrors(closeLoader)),
+    catchError(handleRequestErrors(setErrors)),
   )),
 )
 
