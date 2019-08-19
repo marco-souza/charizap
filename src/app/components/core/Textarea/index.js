@@ -20,7 +20,7 @@ export default styled(Component)`
   & textarea {
     resize: none;
     color: ${getPropsColor('secondary')};
-    border: 1px solid ${getPropsBackground('stroke')};
+    border: 2px solid ${getPropsBackground('stroke')};
     font-family: ${getFont('robotoMontserrat')};
     background: ${({ hasError }) => getColor(!hasError ? 'background' : 'stroke')};
 
