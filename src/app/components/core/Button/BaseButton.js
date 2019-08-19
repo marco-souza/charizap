@@ -6,7 +6,7 @@ import { removeBlueMark } from 'app/helpers/styles'
 const Button = styled.button`
   font-size: 20px;
   height: 64px;
-  padding: 10px 20px;
+  padding: 10px 32px;
   border-radius: 32px 32px;
   text-transform: uppercase;
   border: none;
@@ -21,7 +21,7 @@ const Button = styled.button`
     font-size: 16px;
     height: 42px;
     border-radius: 20px 20px;
-  `)}
+    `)}
 
   ${removeBlueMark}
 `
