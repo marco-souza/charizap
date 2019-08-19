@@ -7,7 +7,6 @@ import Button from 'app/components/core/Button'
 import Input from 'app/components/core/Input'
 import Link from 'app/components/core/Link'
 import Text from 'app/components/core/Text'
-import { useSnackbar } from 'notistack'
 
 import {
   propsToValues,
