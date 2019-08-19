@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { ThemeProvider } from 'styled-components'
+import { SnackbarProvider } from 'notistack'
 
 import theme from 'app/helpers/theme'
 import Router from 'app/components/Router'
@@ -30,7 +31,9 @@ const app = (
   <ThemeProvider theme={theme}>
     <Provider store={store}>
       <ReactBreakpoints breakpoints={breakpoints}>
-        <Router />
+        <SnackbarProvider maxSnack={3}>
+          <Router />
+        </SnackbarProvider>
       </ReactBreakpoints>
     </Provider>
   </ThemeProvider>
