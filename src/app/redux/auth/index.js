@@ -4,7 +4,8 @@ import {
   login,
   logout,
   signUp,
-  setErrors,
+  setRequestErrors,
+  setSignupDone,
   validateAuthKey
 } from './constants'
 // Make easy to import all important ducks information
@@ -17,14 +18,14 @@ const mapDispatchToProps = (dispatch, props) => ({
   login: data => dispatch(login(data)),
   logout: data => dispatch(logout(data)),
   signUp: data => dispatch(signUp(data)),
-  setErrors: data => dispatch(setErrors(data)),
-
+  setRequestErrors: data => dispatch(setRequestErrors(data)),
+  setSignupDone: data => dispatch(setSignupDone(data)),
   validateAuthKey: data => dispatch(validateAuthKey(data)),
 })
 
 export default connect(duckStateToProps('auth'), mapDispatchToProps)
 export {
-  reducer,
   epics,
+  reducer,
   initialState,
 }

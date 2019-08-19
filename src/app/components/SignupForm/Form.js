@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { withFormik } from 'formik'
 import { useSnackbar } from 'notistack'
+import { Redirect } from 'react-router-dom'
 import * as Yup from 'yup'
 
 import Button from 'app/components/core/Button'
@@ -24,7 +25,7 @@ import useAuth from 'app/redux/auth'
 import { Container } from './styled'
 
 const Form = (props) => {
-  const { handleSubmit, errorResponse, setErrors } = props
+  const { handleSubmit, errorResponse, signupDone, setRequestErrors, setSignupDone } = props
   const termOfServices = <Link href='#'>Terms of service</Link>
   const privacyPolicy = <Link href='#'>Privacy Policy</Link>
   const { enqueueSnackbar } = useSnackbar()
@@ -32,9 +33,15 @@ const Form = (props) => {
   useEffect(() => {
     if (errorResponse) {
       sendNotificationsFormErrorResponse(errorResponse, enqueueSnackbar)
-      setErrors(null)
+      setRequestErrors(null)
     }
   }, [errorResponse])
+
+  if (signupDone) {
+    setSignupDone(false)
+    enqueueSnackbar('Successfully sign up! You can login now :)', { variant: 'success' })
+    return <Redirect to='/login' />
+  }
 
   return (
     <Container>
