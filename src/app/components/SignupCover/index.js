@@ -9,7 +9,7 @@ import Switch from './Switch'
 const SignupCover = ({ className }) => (
   <div className={className}>
     <Cover
-      message='Focus on what really matters and leave it to us'
+      message='Leave it to us'
       className={className}
       logo='colored'
       padding='40px'
