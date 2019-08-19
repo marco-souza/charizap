@@ -25,7 +25,7 @@ import useAuth from 'app/redux/auth'
 import { Container } from './styled'
 
 const Form = (props) => {
-  const { handleSubmit, errorResponse, signupDone, setErrors, setSignupDone } = props
+  const { handleSubmit, errorResponse, signupDone, setRequestErrors, setSignupDone } = props
   const termOfServices = <Link href='#'>Terms of service</Link>
   const privacyPolicy = <Link href='#'>Privacy Policy</Link>
   const { enqueueSnackbar } = useSnackbar()
@@ -33,9 +33,7 @@ const Form = (props) => {
   useEffect(() => {
     if (errorResponse) {
       sendNotificationsFormErrorResponse(errorResponse, enqueueSnackbar)
-      setErrors(null)
-      // eslint-disable-next-line no-debugger
-      debugger
+      setRequestErrors(null)
     }
   }, [errorResponse])
 

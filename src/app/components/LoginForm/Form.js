@@ -23,13 +23,13 @@ import useAuth from 'app/redux/auth'
 import { Container } from './styled'
 
 const Form = (props) => {
-  const { handleSubmit, errorResponse, setErrors } = props
+  const { handleSubmit, errorResponse, setRequestErrors } = props
   const { enqueueSnackbar } = useSnackbar()
 
   useEffect(() => {
     if (errorResponse) {
       sendNotificationsFormErrorResponse(errorResponse, enqueueSnackbar)
-      setErrors(null)
+      setRequestErrors(null)
     }
   }, [errorResponse])
 

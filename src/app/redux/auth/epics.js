@@ -16,7 +16,7 @@ import api from 'app/helpers/api'
 import {
   // Actions
   isLogged,
-  setErrors,
+  setRequestErrors,
   setSignupDone,
   // Types
   LOGIN,
@@ -46,7 +46,7 @@ export const signup = action$ => action$.pipe(
     headers: HEADER_TEMPLATE,
   }).pipe(
     map(() => setSignupDone(true)),
-    catchError(handleRequestErrors(setErrors)),
+    catchError(handleRequestErrors(setRequestErrors)),
   ))
 )
 
@@ -63,7 +63,7 @@ export const login = (action$, state$) => action$.pipe(
       setCookie(COOKIE_REFRESH_KEY, response.refresh_token, 0)
     }),
     map(() => isLogged(true)),
-    catchError(handleRequestErrors(setErrors)),
+    catchError(handleRequestErrors(setRequestErrors)),
   )),
 )
 
@@ -79,7 +79,7 @@ export const logout = (action$, state$) => action$.pipe(
   }).pipe(
     map(closeLoader),
     tap([COOKIE_KEY, COOKIE_REFRESH_KEY].map(eraseCookie)),
-    catchError(handleRequestErrors(setErrors)),
+    catchError(handleRequestErrors(setRequestErrors)),
   )),
 )
 
@@ -89,7 +89,7 @@ export const validateAuthKey = (action$, state$) => action$.pipe(
   map(() => getCookie(COOKIE_KEY)),
   // TODO: map(authKey => authKey && api.isValidAuthKey),
   map(isValidKey => isLogged(Boolean(isValidKey))),
-  catchError(handleRequestErrors(setErrors)),
+  catchError(handleRequestErrors(setRequestErrors)),
 )
 
 export default combineEpics(
