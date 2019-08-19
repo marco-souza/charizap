@@ -26,7 +26,9 @@ export default styled(Component)`
 
   & label {
     color: ${getPropsColor('secondary')};
-    padding: 15px 0 10px;
+    padding: 36px 0 10px;
+
+    ${mediaQueryUpTo('xLarge', `padding: 14px 0 10px;`)}
   }
 
   & input {

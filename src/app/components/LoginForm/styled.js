@@ -11,7 +11,9 @@ export const Container = styled.div`
 
   & button {
     width: 100%;
-    margin: 20px 0;
+    margin: 64px 0px 0px;
+
+    ${mediaQueryUpTo('xLarge', `margin: 42px 0px 0px;`)}
   }
 
   & form {
