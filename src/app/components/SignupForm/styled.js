@@ -31,6 +31,7 @@ export const Container = styled.div`
 
   &&& {
     font-size: 1.2em;
+    ${mediaQueryUpTo('medium', `font-size: 1.1em;`)}
   }
 `
 
