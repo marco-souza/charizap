@@ -12,6 +12,9 @@ const Button = styled.button`
   border: none;
   font-family: ${getFont('robotoDefault')};
   cursor: pointer;
+  min-width: 194px;
+
+  ${mediaQueryUpTo('xLarge', `min-width: 160px;`)}
 
   &:disabled {
     opacity: 0.8;
