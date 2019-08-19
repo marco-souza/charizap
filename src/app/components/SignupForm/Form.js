@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { withFormik } from 'formik'
+import { useSnackbar } from 'notistack'
 import * as Yup from 'yup'
+import { useSnackbar } from 'notistack'
 
 import Button from 'app/components/core/Button'
 import Input from 'app/components/core/Input'
@@ -22,9 +24,21 @@ import useAuth from 'app/redux/auth'
 import { Container } from './styled'
 
 const Form = (props) => {
-  const { handleSubmit } = props
+  const { handleSubmit, errorResponse, setErrors } = props
   const termOfServices = <Link href='#'>Terms of service</Link>
   const privacyPolicy = <Link href='#'>Privacy Policy</Link>
+
+  const { enqueueSnackbar } = useSnackbar()
+  useEffect(() => {
+    errorResponse &&
+    Object.values(errorResponse.errors)
+      .flatMap(x => x)
+      .map(message => enqueueSnackbar(
+        message,
+        { variant: 'warning' }
+      )) &&
+    setErrors(null)
+  }, [errorResponse])
 
   return (
     <Container>

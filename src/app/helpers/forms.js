@@ -14,6 +14,7 @@ export const propsToValues = {
 }
 
 export const isSubmitDisabled = form => (
+  form.errors && form.touched &&
   Object.keys(form.errors).length &&
   Object.keys(form.touched).length &&
   !form.isValid
