@@ -27,9 +27,10 @@ const Form = (props) => {
   const { enqueueSnackbar } = useSnackbar()
 
   useEffect(() => {
-    errorResponse &&
-    sendNotificationsFormErrorResponse(errorResponse, enqueueSnackbar) &&
-    setErrors(null)
+    if (errorResponse) {
+      sendNotificationsFormErrorResponse(errorResponse, enqueueSnackbar)
+      setErrors(null)
+    }
   }, [errorResponse])
 
   return (
