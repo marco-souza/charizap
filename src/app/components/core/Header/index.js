@@ -1,13 +1,13 @@
 import styled from 'styled-components'
 import Component from './component'
 
-import { getFont } from 'app/helpers/theme'
+import { getFont, getColor } from 'app/helpers/theme'
 
 const Header = styled(Component)`
   /* Adapt the colors based on primary prop */
 
   font-family: ${getFont('robotoMontserrat')};
-  color: ${({ theme, color = 'secondVariant' }) => theme.colors[color]};
+  color: ${getColor('secondVariant')};
   margin: 1em 0;
   max-width: 380px;
   padding: 0.25em 0;
