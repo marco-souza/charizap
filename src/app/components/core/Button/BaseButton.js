@@ -6,12 +6,15 @@ import { removeBlueMark } from 'app/helpers/styles'
 const Button = styled.button`
   font-size: 20px;
   height: 64px;
-  padding: 10px 20px;
+  padding: 10px 32px;
   border-radius: 32px 32px;
   text-transform: uppercase;
   border: none;
   font-family: ${getFont('robotoDefault')};
   cursor: pointer;
+  min-width: 194px;
+
+  ${mediaQueryUpTo('xLarge', `min-width: 160px;`)}
 
   &:disabled {
     opacity: 0.8;
@@ -21,7 +24,7 @@ const Button = styled.button`
     font-size: 16px;
     height: 42px;
     border-radius: 20px 20px;
-  `)}
+    `)}
 
   ${removeBlueMark}
 `

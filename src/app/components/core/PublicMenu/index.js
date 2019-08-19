@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+import { mediaQueryUpTo } from 'app/helpers/theme'
+
 import Component from './component'
 
 export default styled(Component)`
@@ -12,4 +14,15 @@ export default styled(Component)`
   & button {
     margin-left: 15px;
   }
+
+  & span {
+    font-size: 20px;
+  }
+
+  ${mediaQueryUpTo('xLarge', `
+    & span {
+      font-size: 16px;
+    }
+  `)}
+
 `

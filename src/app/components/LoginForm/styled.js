@@ -9,9 +9,15 @@ export const Container = styled.div`
   margin-top: 40px;
   font-family: ${getFont('robotoDefault')};
 
+  ${mediaQueryUpTo('medium', `
+    margin: 0 3%
+  `)}
+
   & button {
     width: 100%;
-    margin: 20px 0;
+    margin: 64px 0px 0px;
+
+    ${mediaQueryUpTo('xLarge', `margin: 42px 0px 0px;`)}
   }
 
   & form {
@@ -22,14 +28,9 @@ export const Container = styled.div`
     margin-left: 0px;
   }
 
-  & h1 {
-    margin-top: 7%;
-    margin-right: 35%;
-    max-width: 100%;
-    font-size: 36px;
-    @media (max-width: 960px) {
-      font-size: 18px;
-    }
+  &&& {
+    font-size: 1.3em;
+    ${mediaQueryUpTo('xLarge', `font-size: 0.8em;`)}
   }
 
 `
@@ -37,9 +38,15 @@ export const Container = styled.div`
 export const Header = styled(CoreHeader)`
   margin: 0;
   color: ${getColor('secondary')};
+  margin-top: 7%;
+  margin-right: 35%;
+  max-width: 100%;
 
   &&& {
     font-size: 46px;
-    ${mediaQueryUpTo('xxLarge', `font-size: 32px;`)}
+    ${mediaQueryUpTo('xLarge', `font-size: 32px;`)}
+
+    ${mediaQueryUpTo('xLarge', `margin-right: 25%;`)}
+    ${mediaQueryUpTo('medium', `margin-right: 0%;`)}
   }
 `

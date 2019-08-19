@@ -4,7 +4,7 @@ import { css } from 'styled-components'
 export const breakpoints = {
   xSmall: 576,
   small: 768,
-  medium: 992,
+  medium: 960,
   large: 1200,
   xLarge: 1366,
   xxLarge: 1920,
