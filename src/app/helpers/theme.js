@@ -1,4 +1,21 @@
 import get from 'lodash/get'
+import { css } from 'styled-components'
+
+export const breakpoints = {
+  xSmall: 576,
+  small: 768,
+  medium: 992,
+  large: 1200,
+  xLarge: 1366,
+  xxLarge: 1920,
+}
+
+export const mediaQueryUpTo = (breakpoint, styles) =>
+  css`
+    @media (max-width: ${get(breakpoints, breakpoint, 'small')}px) {
+      ${styles}
+    }
+  `
 
 const theme = {
   colors: {
