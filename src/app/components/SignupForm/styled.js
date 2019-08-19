@@ -27,7 +27,7 @@ export const Container = styled.div`
 export const Header = styled(CoreHeader)`
   margin: 0;
   margin-top: 7%;
-  margin-right: 25%;
+  margin-right: 10%;
   max-width: 100%;
 
   @media(max-width: 960px) {
@@ -40,5 +40,8 @@ export const Header = styled(CoreHeader)`
   &&& {
     font-size: 46px;
     ${mediaQueryUpTo('xLarge', `font-size: 32px;`)}
+
+    ${mediaQueryUpTo('xLarge', `margin-right: 5%;`)}
+    ${mediaQueryUpTo('large', `margin-right: 0%;`)}
   }
 `

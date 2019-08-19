@@ -34,5 +34,8 @@ export const Header = styled(CoreHeader)`
   &&& {
     font-size: 46px;
     ${mediaQueryUpTo('xLarge', `font-size: 32px;`)}
+
+
+    ${mediaQueryUpTo('xLarge', `margin-right: 25%;`)}
   }
 `
