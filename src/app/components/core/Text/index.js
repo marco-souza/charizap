@@ -7,5 +7,5 @@ import Component from './component'
 export default styled(Component)`
   color: ${getPropsColor('secondaryVariant')};
   font-family: ${getFont('robotoDefault')};
-  font-size: ${props => props.small && '12px'};
+  font-size: ${props => props.small && '0.8em'};
 `

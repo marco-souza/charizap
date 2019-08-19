@@ -28,6 +28,10 @@ export const Container = styled.div`
     margin-left: 0px;
   }
 
+  &&& {
+    font-size: 1.3em;
+  }
+
 `
 
 export const Header = styled(CoreHeader)`
