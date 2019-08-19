@@ -28,6 +28,10 @@ export const Container = styled.div`
   & div {
     margin-left: 0px;
   }
+
+  &&& {
+    font-size: 1.2em;
+  }
 `
 
 export const Header = styled(CoreHeader)`
