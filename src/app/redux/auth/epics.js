@@ -17,11 +17,12 @@ import {
   // Actions
   isLogged,
   setErrors,
+  setSignupDone,
   // Types
   LOGIN,
   LOGOUT,
-  VALIDATE_AUTH_KEY,
   SIGN_UP,
+  VALIDATE_AUTH_KEY,
 } from './constants'
 
 const COOKIE_KEY = 'access_token'
@@ -44,7 +45,7 @@ export const signup = action$ => action$.pipe(
     body: pick(action.payload, ['email', 'name', 'password']),
     headers: HEADER_TEMPLATE,
   }).pipe(
-    map(() => isLogged(false)),
+    map(() => setSignupDone(true)),
     catchError(handleRequestErrors(setErrors)),
   ))
 )
