@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 import CoreHeader from 'app/components/core/Header'
-import { getFont, getColor } from 'app/helpers/theme'
+import { getFont, getColor, mediaQueryUpTo } from 'app/helpers/theme'
 
 export const Container = styled.div`
   margin: 0 22%;
@@ -37,4 +37,9 @@ export const Container = styled.div`
 export const Header = styled(CoreHeader)`
   margin: 0;
   color: ${getColor('secondary')};
+
+  &&& {
+    font-size: 46px;
+    ${mediaQueryUpTo('xxLarge', `font-size: 32px;`)}
+  }
 `
