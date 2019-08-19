@@ -13,6 +13,7 @@ import {
 
 export const initialState = {
   isLogged: false,
+  Create: false,
   loading: {
     authKey: false
   },
