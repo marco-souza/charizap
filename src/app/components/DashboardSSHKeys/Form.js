@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import Button from 'app/components/core/Button'
 import Textarea from 'app/components/core/Textarea'
 import Input from 'app/components/core/Input'
-import { getPropsColor } from 'app/helpers/theme'
+import { getPropsColor, getFont } from 'app/helpers/theme'
 
 const Form = ({
   values,
@@ -21,7 +21,7 @@ const Form = ({
     <form onSubmit={handleSubmit}>
       <Input
         name='name'
-        label='Name'
+        label='SSH key name'
         placeholder='Ex: MacBook'
       />
 
@@ -62,7 +62,9 @@ export default styled(Form)`
   label {
     margin: 10px 0;
     font-weight: bold;
-    font-size: 1em;
-    color: ${getPropsColor('secondary')}
+    font-size: 1rem;
+    padding: 10px 0;
+    color: ${getPropsColor('secondary')};
+    font-family: ${getFont('robotoDefault')};
   }
 `
