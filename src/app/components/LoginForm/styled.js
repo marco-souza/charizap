@@ -30,7 +30,7 @@ export const Container = styled.div`
 
   &&& {
     font-size: 1.3em;
-    ${mediaQueryUpTo('xLarge', `font-size: 0.8em;`)}
+    ${mediaQueryUpTo('xLarge', `font-size: 22px;`)}
   }
 
 `
