@@ -4,16 +4,11 @@ import {
   getColor,
   getPropsColor,
   getPropsBackground,
-  mediaQueryUpTo,
   getFont,
 } from 'app/helpers/theme'
 import { removeBlueMark } from 'app/helpers/styles'
 
 import Component from './component'
-
-const adaptFontSize = mediaQueryUpTo('xLarge', `
-  font-size: 16px;
-`)
 
 export default styled(Component)`
   display: flex;
@@ -21,14 +16,11 @@ export default styled(Component)`
   font-family: ${getFont('robotoDefault')};
   text-align: left;
 
-  font-size: 24px;
-  ${adaptFontSize}
+  font-size: 16px;
 
   & label {
     color: ${getPropsColor('secondary')};
-    padding: 36px 0 10px;
-
-    ${mediaQueryUpTo('xLarge', `padding: 14px 0 10px;`)}
+    padding: 14px 0 10px
   }
 
   & input {
@@ -36,8 +28,7 @@ export default styled(Component)`
     border: 2px solid ${({ hasError }) => getColor(!hasError ? 'stroke' : 'error')};
     background: ${({ hasError }) => getColor(!hasError ? 'background' : 'stroke')};
 
-    font-size: 24px;
-    ${adaptFontSize}
+    font-size: 16px;
 
     border-radius: 30px 30px;
     padding: 10px 20px;
