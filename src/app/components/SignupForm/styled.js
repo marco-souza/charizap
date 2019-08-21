@@ -9,9 +9,7 @@ export const Container = styled.div`
   margin-top: 40px;
   font-family: ${getFont('robotoDefault')};
 
-  ${mediaQueryUpTo('medium', `
-    margin: 0 3%
-  `)}
+  ${mediaQueryUpTo('medium', `margin: 0 3%`)}
 
   & button {
     width: 100%;
@@ -45,6 +43,7 @@ export const Header = styled(CoreHeader)`
 
   &&& {
     font-size: 46px;
+
     ${mediaQueryUpTo('xLarge', `
       font-size: 32px;
       margin-right: 5%;

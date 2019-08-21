@@ -9,9 +9,7 @@ export const Container = styled.div`
   margin-top: 40px;
   font-family: ${getFont('robotoDefault')};
 
-  ${mediaQueryUpTo('medium', `
-    margin: 0 3%
-  `)}
+  ${mediaQueryUpTo('medium', `margin: 0 3%`)}
 
   & button {
     width: 100%;
