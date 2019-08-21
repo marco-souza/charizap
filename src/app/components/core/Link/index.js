@@ -9,7 +9,7 @@ const Link = styled.a`
   text-decoration: none;
 
   &:hover, &:focus {
-    color: ${getColor('secondary')}};
+    color: ${getColor('secondary')};
   }
 `
 

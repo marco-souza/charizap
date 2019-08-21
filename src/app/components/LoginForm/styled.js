@@ -25,8 +25,12 @@ export const Container = styled.div`
     margin-left: 0px;
   }
 
+  & a {
+    font-size: 16px;
+  }
+
   &&& {
-    font-size: 1.3em;
+    font-size: 16px;
     ${mediaQueryUpTo('xLarge', `font-size: 22px;`)}
   }
 
@@ -36,16 +40,11 @@ export const Header = styled(CoreHeader)`
   margin: 0;
   color: ${getColor('secondary')};
   margin-top: 7%;
-  margin-right: 35%;
+  margin-right: 45%;
   max-width: 100%;
 
   &&& {
-    font-size: 46px;
-    ${mediaQueryUpTo('xLarge', `
-      font-size: 32px;
-      margin-right: 25%;
-    `)}
-    ${mediaQueryUpTo('medium', `margin-right: 0%;`)}
-    ${mediaQueryUpTo('xxSmall', `font-size: 28px`)}
+    font-size: 32px;
+    margin-right: 0px;
   }
 `

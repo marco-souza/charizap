@@ -6,7 +6,8 @@ import { Header, Container } from './styled'
 const SignupForm = props => (
   <Container {...props}>
     <Header>
-      Get started absolutely free. No credit card needed.
+      Get started absolutely free.<br />
+      No credit card needed.
     </Header>
 
     <Form />
