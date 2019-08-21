@@ -26,6 +26,12 @@ const Button = styled.button`
     border-radius: 20px 20px;
     `)}
 
+  ${mediaQueryUpTo('xSmall', `
+    font-size: 14px;
+    min-width: 140px;
+    padding: 10px 24px;
+  `)}
+
   ${removeBlueMark}
 `
 
