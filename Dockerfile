@@ -19,7 +19,7 @@ ENV DESCRIPTION='Devopness Web App'
 ENV BG_COLOR='#f8f9ff'
 ENV THEME_COLOR='#786efd'
 # API
-ENV API_BASE_URL='https://test-api.devopness.com/'
+ENV API_BASE_URL='https://test-api.devopness.com'
 
 WORKDIR /app
 
