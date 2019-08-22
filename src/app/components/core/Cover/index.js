@@ -6,7 +6,7 @@ import Container from './component'
 
 export default styled(Container)`
   text-align: center;
-  max-width: inherit;
+  max-width: 502px;
   max-height: 1200px;
   overflow: hidden;
   background-color: ${getPropsBackground()};
@@ -15,7 +15,7 @@ export default styled(Container)`
     display: none;
   }
 
- /* Not Proud */
+ /* TODO: Not Proud of this, needs refactoring */
   @media (max-width: 2000px) {
     & > h5 {font-size: 217%;}
   }
