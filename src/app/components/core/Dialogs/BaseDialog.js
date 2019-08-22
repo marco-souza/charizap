@@ -18,6 +18,8 @@ const BaseDialog = ({
       open={isOpen}
       onClose={handleClose}
       classes={{ paper: className }}
+      disableBackdropClick
+      disableEscapeKeyDown
     >
       <Header>
         <Text variant='span' color='secondary'>
