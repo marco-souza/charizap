@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import Grid from '@material-ui/core/Grid'
 
-import { getColor } from 'app/helpers/theme'
+import { getColor, getFont } from 'app/helpers/theme'
 
 export const GridItem = styled(Grid)`
   display: flex;
@@ -10,6 +10,9 @@ export const GridItem = styled(Grid)`
   }
 
   & textarea, input {
+    font-size: 16px;
+
     background: ${getColor('white')};
+    font-family: ${getFont('robotoDefault')}
   }
 `

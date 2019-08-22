@@ -13,7 +13,7 @@ export const Container = styled.div`
 
   & button {
     width: 100%;
-    margin: 42px 0px 0px;
+    margin: 42px 0px 30px 0px;
   }
 
   & form {
@@ -26,8 +26,7 @@ export const Container = styled.div`
   }
 
   &&& {
-    font-size: 1.2em;
-    ${mediaQueryUpTo('xLarge', `font-size: 16px;`)}
+    font-size: 16px;
   }
 `
 

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { mediaQueryUpTo } from 'app/helpers/theme'
+import { getColor } from 'app/helpers/theme'
 
 import Component from './component'
 
@@ -16,13 +16,7 @@ export default styled(Component)`
   }
 
   & span {
-    font-size: 20px;
+    font-size: 16px;
+    color: ${getColor('inputFontColor')};
   }
-
-  ${mediaQueryUpTo('xLarge', `
-    & span {
-      font-size: 16px;
-    }
-  `)}
-
 `

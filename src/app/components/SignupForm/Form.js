@@ -78,7 +78,7 @@ const Form = (props) => {
           Sign Up
         </Button>
 
-        <Text variant='span' small>
+        <Text variant='span'>
           By signing up you're agreeing to the Devopness {termOfServices} & {privacyPolicy}.
         </Text>
       </form>
