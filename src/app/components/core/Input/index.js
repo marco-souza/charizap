@@ -24,7 +24,7 @@ export default styled(Component)`
   }
 
   & input {
-    color: ${getColor('secondary')};
+    color: ${getColor('inputFontColor')};
     border: 2px solid ${({ hasError }) => getColor(!hasError ? 'stroke' : 'error')};
     background: ${({ hasError }) => getColor(!hasError ? 'background' : 'stroke')};
 
