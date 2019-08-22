@@ -46,5 +46,7 @@ export const Header = styled(CoreHeader)`
   &&& {
     font-size: 32px;
     margin-right: 0px;
+
+    ${mediaQueryUpTo('xSmall', `font-size: 26px;`)}
   }
 `
