@@ -21,8 +21,8 @@ export const Container = styled.div`
   }
 
   & form {
-    margin-top: 30%;
     margin-top: 70px;
+    ${mediaQueryUpTo('xSmall', `margin-top: 45px;`)}
   }
 
   & div {
@@ -45,9 +45,12 @@ export const Header = styled(CoreHeader)`
 
   &&& {
     font-size: 46px;
-    ${mediaQueryUpTo('xLarge', `font-size: 32px;`)}
+    ${mediaQueryUpTo('xLarge', `
+      font-size: 32px;
+      margin-right: 5%;
+    `)}
 
-    ${mediaQueryUpTo('xLarge', `margin-right: 5%;`)}
     ${mediaQueryUpTo('large', `margin-right: 0%;`)}
+    ${mediaQueryUpTo('xxSmall', `font-size: 22px`)}
   }
 `

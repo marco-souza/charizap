@@ -2,6 +2,7 @@ import get from 'lodash/get'
 import { css } from 'styled-components'
 
 export const breakpoints = {
+  xxSmall: 380,
   xSmall: 576,
   small: 768,
   medium: 960,
