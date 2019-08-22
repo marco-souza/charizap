@@ -6,9 +6,9 @@ import { Header, Container } from './styled'
 const LoginForm = props => (
   <Container {...props}>
     <Header>
-      Be a happy DevOps. Enter your account.
+      Be a happy DevOps.<br />
+      Enter your account.
     </Header>
-
     <Form />
   </Container>
 )
