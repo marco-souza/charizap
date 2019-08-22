@@ -23,6 +23,7 @@ const theme = {
     primary: '#786efd',
     secondary: '#2e364e',
     secondaryVariant: '#bdc4d3',
+    inputFontColor: ' #afb8c9',
     success: '#00d756',
     error: '#fd595c',
     alert: '#fff793',
@@ -47,7 +48,7 @@ export const getPropsBackground = (defaultColor = 'background') =>
   ({ background = defaultColor }) => getBgColor(background)
 
 export const getFont = font =>
-  get(theme, `fonts.${font}`, 'fonts.fallback')
+  get(theme, `fonts.${font}`, 'fallback')
 
 export const getColor = color =>
   get(theme, `colors.${color}`, 'primary')
