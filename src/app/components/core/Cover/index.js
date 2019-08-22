@@ -7,8 +7,8 @@ import Container from './component'
 export default styled(Container)`
   text-align: center;
   max-width: 502px;
-  max-height: 1200px;
   overflow: hidden;
+  height: 100${props => props.tittleUp ? '%' : 'vh'};
   background-color: ${getPropsBackground()};
 
   @media (max-width: 960px) {
@@ -38,8 +38,8 @@ export default styled(Container)`
 
     &:nth-child(2) {
       width: 100%;
-      margin-top: 20px;
-      margin-bottom: ${props => props.tittleUp ? -200 : -100}px;
+      margin-top: 120px;
+      margin-bottom: ${props => props.tittleUp ? -200 : 0}px;
     }
   }
 
