@@ -52,6 +52,16 @@ Switch.propTypes = {
 
 export default styled(Switch)`
   background-color: ${getPropsBackground()};
+  position: relative;
+  height: 80vh;
+
+  & img {
+    width:100%;
+    left: 0;
+    bottom:0;
+    position: absolute;
+    max-height: 90%;
+  }
 
   & > .switcher {
     margin: 0 40px;
