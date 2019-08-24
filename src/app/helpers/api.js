@@ -4,7 +4,7 @@ import { getCookie, COOKIE_KEY } from 'app/helpers/cookie'
 
 const BASE_URL = process.env.API_BASE_URL
 const headers = {
-  'Accept': 'application/json',
+  Accept: 'application/json',
   'Content-Type': 'application/json',
 }
 
@@ -24,12 +24,12 @@ export const request = (url, options) =>
 
 export default {
   signUp: body => request(`${BASE_URL}/users/signup`, { body }),
-  login: body => request(`${BASE_URL}/users/signup`, { body }),
-  logout: options => request(`${BASE_URL}/users/signup`, {
+  login: body => request(`${BASE_URL}/users/login`, { body }),
+  logout: options => request(`${BASE_URL}/users/logout`, {
     method: 'GET',
     headers: {
       ...headers,
-      'Authorization': `Bearer ${getCookie(COOKIE_KEY)}`,
+      Authorization: `Bearer ${getCookie(COOKIE_KEY)}`,
     },
     xhrFields: {
       withCredentials: true
