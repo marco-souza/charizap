@@ -1,9 +1,9 @@
 import { of } from 'rxjs'
 import { ajax } from 'rxjs/ajax'
-import { getCookie, COOKIE_KEY } from 'app/helpers/cookie'
+import { getCookie, COOKIE_KEY, COOKIE_REFRESH_KEY } from 'app/helpers/cookie'
 
 const BASE_URL = process.env.API_BASE_URL
-const headers = {
+const defaultHeaders = {
   Accept: 'application/json',
   'Content-Type': 'application/json',
 }
@@ -18,17 +18,29 @@ export const handleRequestErrors = callback =>
 export const request = (url, options) =>
   ajax({
     url,
-    headers,
     ...options,
   })
 
 export default {
-  signUp: body => request(`${BASE_URL}/users/signup`, { body }),
-  login: body => request(`${BASE_URL}/users/login`, { body }),
+  signUp: body => request(`${BASE_URL}/users/signup`, {
+    method: 'POST',
+    body: body,
+    headers: defaultHeaders,
+  }),
+  login: body => request(`${BASE_URL}/users/login`, {
+    method: 'POST',
+    body: body,
+    headers: defaultHeaders,
+  }),
+  refresh_key: () => request(`${BASE_URL}/users/refresh`, {
+    method: 'POST',
+    body: { refresh_token: `${getCookie(COOKIE_REFRESH_KEY)}` },
+    headers: defaultHeaders,
+  }),
   logout: options => request(`${BASE_URL}/users/logout`, {
     method: 'GET',
     headers: {
-      ...headers,
+      ...defaultHeaders,
       Authorization: `Bearer ${getCookie(COOKIE_KEY)}`,
     },
     xhrFields: {
