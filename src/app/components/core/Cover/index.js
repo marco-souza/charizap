@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { getPropsBackground, getFont, getColor } from 'app/helpers/theme'
+import { getPropsBackground, getFont, getColor, mediaQueryUpTo } from 'app/helpers/theme'
 
 import Container from './component'
 
@@ -15,21 +15,9 @@ export default styled(Container)`
     display: none;
   }
 
- /* TODO: Not Proud of this, needs refactoring */
-  @media (max-width: 2000px) {
-    & > h5 {font-size: 217%;}
-  }
-  @media (max-width: 1900px) {
-    & > h5 {font-size: 189%;}
-  }
-   @media (max-width: 1417px) {
-    & > h5 {font-size: 166%;}
-  }
-  @media (max-width: 1242px) {
-    & > h5 {font-size: 142%;}
-  }
-  @media (max-width: 1062px) {
-    & > h5 {font-size: 121%;}
+  & h5 {
+    font-size: 30px;
+    ${mediaQueryUpTo('xLarge', `font-size: 25px;`)}
   }
 
   & img {
