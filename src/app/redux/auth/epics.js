@@ -9,7 +9,7 @@ import { ofType, combineEpics } from 'redux-observable'
 import { tap, map, mergeMap } from 'rxjs/operators'
 
 import { getCookie, eraseCookie, COOKIE_KEY, COOKIE_REFRESH_KEY } from 'app/helpers/cookie'
-import api from 'app/helpers/api'
+import api, { cookieHandler } from 'app/helpers/api'
 
 import {
   // Actions
@@ -23,7 +23,14 @@ import {
   VALIDATE_AUTH_KEY,
 } from './constants'
 
-const closeLoader = () => isLogged(false)
+const loginHandler = response => {
+  cookieHandler(response)
+  return isLogged(true)
+}
+const logoutHandler = response => {
+  [COOKIE_KEY, COOKIE_REFRESH_KEY].map(eraseCookie)
+  return isLogged(false)
+}
 
 export const signup = action$ => action$.pipe(
   ofType(SIGN_UP),
@@ -41,7 +48,7 @@ export const login = (action$, state$) => action$.pipe(
   mergeMap(action =>
     api.login(
       pick(action.payload, ['email', 'password']),
-      () => isLogged(true),
+      loginHandler,
       setRequestErrors,
     ))
 )
@@ -49,13 +56,9 @@ export const login = (action$, state$) => action$.pipe(
 export const logout = (action$, state$) => action$.pipe(
   ofType(LOGOUT),
   mergeMap(action => api.logout(
-    () => setSignupDone(false),
+    logoutHandler,
     setRequestErrors,
-  )
-    .pipe(
-      tap([COOKIE_KEY, COOKIE_REFRESH_KEY].map(eraseCookie)),
-      map(closeLoader),
-    )),
+  )),
 )
 
 export const validateAuthKey = (action$, state$) => action$.pipe(

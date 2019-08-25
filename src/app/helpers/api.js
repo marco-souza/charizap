@@ -18,15 +18,13 @@ export const cookieHandler = ({ response }) => {
 
 export const refreshHandler = () => {
   const refreshRequest = ajax({
-    url: `${BASE_URL}/users/refresh`,
     method: 'POST',
+    url: `${BASE_URL}/users/refresh`,
     body: { refresh_token: getCookie(COOKIE_REFRESH_KEY) },
   })
 
   return refreshRequest
-    .pipe(
-      map(cookieHandler),
-    )
+    .pipe(map(cookieHandler))
 }
 
 export const request = (url, options, callbackSuccess, callbackError) => {
