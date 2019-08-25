@@ -41,7 +41,7 @@ export const providers = {
 
 export const validationSchema = Yup.object()
   .shape({
-    provider: Yup.string().required(REQUIRED),
+    provider: Yup.object().required(REQUIRED),
     name: Yup.string()
       .when('provider', {
         is: [DIGITAL_OCEAN, AWS],
