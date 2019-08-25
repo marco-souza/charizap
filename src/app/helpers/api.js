@@ -1,6 +1,6 @@
 import { of } from 'rxjs'
 import { ajax } from 'rxjs/ajax'
-import { catchError, map } from 'rxjs/operators'
+import { catchError, map, mapTo } from 'rxjs/operators'
 
 import { getCookie, setCookie, COOKIE_KEY, COOKIE_REFRESH_KEY } from 'app/helpers/cookie'
 
@@ -19,7 +19,7 @@ export const cookieHandler = ({ response }) => {
 export const refreshHandler = () => {
   const refreshRequest = ajax({
     method: 'POST',
-    url: `${BASE_URL}/users/refresh`,
+    url: `${BASE_URL}/users/refresh-token`,
     body: { refresh_token: getCookie(COOKIE_REFRESH_KEY) },
   })
 
@@ -41,11 +41,16 @@ export const request = (url, options, callbackSuccess, callbackError) => {
   return ajaxRequest.pipe(
     map(callbackSuccess),
     catchError(err => {
+      const hasCookie = !getCookie(COOKIE_REFRESH_KEY)
       switch (err.status) {
         // Refresh keys
         case 401:
-          return refreshHandler()
-            .pipe(map(ajaxRequest))
+        case 403:
+          return hasCookie
+            ? of(callbackError(err.response))
+            : refreshHandler().pipe(
+              mapTo(ajaxRequest)
+            )
 
         default:
           return of(callbackError(err.response))
