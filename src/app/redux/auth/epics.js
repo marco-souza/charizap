@@ -8,7 +8,7 @@ import pick from 'lodash/pick'
 import { ofType, combineEpics } from 'redux-observable'
 import { tap, map, mergeMap } from 'rxjs/operators'
 
-import { getCookie, setCookie, eraseCookie, COOKIE_KEY, COOKIE_REFRESH_KEY } from 'app/helpers/cookie'
+import { getCookie, eraseCookie, COOKIE_KEY, COOKIE_REFRESH_KEY } from 'app/helpers/cookie'
 import api from 'app/helpers/api'
 
 import {
@@ -29,10 +29,11 @@ export const signup = action$ => action$.pipe(
   ofType(SIGN_UP),
   tap(console.log),
   mergeMap(action =>
-    api.signUp(pick(action.payload, ['email', 'name', 'password']))
-      .pipe(
-        map(() => setSignupDone(true)),
-      ))
+    api.signUp(
+      pick(action.payload, ['email', 'name', 'password']),
+      () => setSignupDone(true),
+      setRequestErrors,
+    ))
 )
 
 export const login = (action$, state$) => action$.pipe(
@@ -40,20 +41,17 @@ export const login = (action$, state$) => action$.pipe(
   mergeMap(action =>
     api.login(
       pick(action.payload, ['email', 'password']),
+      () => isLogged(true),
       setRequestErrors,
-    )
-      .pipe(
-        map(({ response }) => {
-          setCookie(COOKIE_KEY, response.access_token)
-          setCookie(COOKIE_REFRESH_KEY, response.refresh_token)
-        }),
-        map(() => isLogged(true)),
-      ))
+    ))
 )
 
 export const logout = (action$, state$) => action$.pipe(
   ofType(LOGOUT),
-  mergeMap(action => api.logout()
+  mergeMap(action => api.logout(
+    () => setSignupDone(false),
+    setRequestErrors,
+  )
     .pipe(
       tap([COOKIE_KEY, COOKIE_REFRESH_KEY].map(eraseCookie)),
       map(closeLoader),

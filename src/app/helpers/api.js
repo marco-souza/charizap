@@ -7,13 +7,26 @@ import { getCookie, setCookie, COOKIE_KEY, COOKIE_REFRESH_KEY } from 'app/helper
 const BASE_URL = process.env.API_BASE_URL
 const defaultHeaders = () => ({
   Accept: 'application/json',
-  'Content-Type': 'application/json',
   Authorization: `Bearer ${getCookie(COOKIE_KEY)}`,
+  'Content-Type': 'application/json',
 })
 
 export const cookieHandler = ({ response }) => {
   setCookie(COOKIE_KEY, response.access_token)
   setCookie(COOKIE_REFRESH_KEY, response.refresh_token)
+}
+
+export const refreshHandler = () => {
+  const refreshRequest = ajax({
+    url: `${BASE_URL}/users/refresh`,
+    method: 'POST',
+    body: { refresh_token: getCookie(COOKIE_REFRESH_KEY) },
+  })
+
+  return refreshRequest
+    .pipe(
+      map(cookieHandler),
+    )
 }
 
 export const request = (url, options, callbackSuccess, callbackError) => {
@@ -27,49 +40,39 @@ export const request = (url, options, callbackSuccess, callbackError) => {
     }
   })
 
-  const refreshResquest = ajax({
-    url: `${BASE_URL}/users/refresh`,
-    method: 'POST',
-    body: { refresh_token: getCookie(COOKIE_REFRESH_KEY) },
-  })
-
   return ajaxRequest.pipe(
     map(callbackSuccess),
     catchError(err => {
-      // Refresh keys
-      if (err.status === 401) {
-        return refreshResquest
-          .pipe(
-            map(cookieHandler),
-            map(ajaxRequest),
-          )
+      switch (err.status) {
+        // Refresh keys
+        case 401:
+          return refreshHandler()
+            .pipe(map(ajaxRequest))
+
+        default:
+          return of(callbackError(err.response))
       }
-      const test = callbackError(err.response)
-      return of(test)
     }),
   )
 }
 
 export default {
-  signUp: (body, callbackError) => request(
+  signUp: (body, callbackSuccess, callbackError) => request(
     '/users/signup',
     { method: 'POST', body },
-    callbackError
+    callbackSuccess,
+    callbackError,
   ),
-  login: (body, callbackError) => request(
+  login: (body, callbackSuccess, callbackError) => request(
     '/users/login',
-    { method: 'POST', body: { bla: 'break' } },
-    callbackError
+    { method: 'POST', body },
+    callbackSuccess,
+    callbackError,
   ),
-  logout: callbackError => request(
+  logout: (callbackSuccess, callbackError) => request(
     '/users/logout',
     { xhrFields: { withCredentials: true } },
-    callbackError
+    callbackSuccess,
+    callbackError,
   ),
 }
-
-export const handleRequestErrors = callback =>
-  ({ response }) => {
-    console.log('TEST', response)
-    return of(callback(response))
-  }
