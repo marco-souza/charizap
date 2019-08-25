@@ -4,12 +4,19 @@ import pick from 'lodash/pick'
 import { withFormik } from 'formik'
 
 import Input from 'app/components/core/Input'
+import Select from 'app/components/core/Select'
 
 import { validationSchema, formFields } from './constants'
 import { SELF_HOSTED } from '../SelectProvider/constants'
 import { Button } from '../styled'
 
 const DATA_KEY = 'serverSpecs'
+const options = [
+  { label: 'small', value: 'small' },
+  { label: 'medium', value: 'medium' },
+  { label: 'big', value: 'big' },
+  { label: 'huge', value: 'huge' },
+]
 
 const mapPropsToValues = ({ data }) =>
   pick({
@@ -29,6 +36,7 @@ const Form = ({
   values,
   handleSubmit,
   isSubmitting,
+  setFieldValue,
   className,
   ...otherProps
 }) => {
@@ -42,11 +50,13 @@ const Form = ({
           required
         />
 
-        {data.credentials.provider !== SELF_HOSTED && (
-          <Input
+        {data.credentials.provider.value !== SELF_HOSTED && (
+          <Select
             name='size'
-            label='Server size'
+            label='Select size'
             placeholder='Choose an instance type'
+            onChange={value => setFieldValue('size', value)}
+            options={options}
             required
           />
         )}
@@ -63,6 +73,7 @@ Form.propTypes = {
   data: PropTypes.object,
   values: PropTypes.object,
   handleSubmit: PropTypes.func,
+  setFieldValue: PropTypes.func,
   isSubmitting: PropTypes.bool,
   className: PropTypes.string,
 }

@@ -5,11 +5,24 @@ import pick from 'lodash/pick'
 import { withFormik } from 'formik'
 
 import Input from 'app/components/core/Input'
+import Select from 'app/components/core/Select'
 
-import { validationSchema, formFields, providers } from './constants'
+import {
+  validationSchema,
+  formFields,
+  providers,
+  AWS,
+  DIGITAL_OCEAN,
+  SELF_HOSTED,
+} from './constants'
 import { Button } from '../styled'
 
 const DATA_KEY = 'credentials'
+const options = [
+  { label: 'AWS', value: AWS },
+  { label: 'Digital Ocean', value: DIGITAL_OCEAN },
+  { label: 'Self Hosted (vps)', value: SELF_HOSTED },
+]
 
 const mapPropsToValues = ({ data }) =>
   pick({
@@ -28,16 +41,18 @@ const Form = ({
   values,
   handleSubmit,
   isSubmitting,
+  setFieldValue,
   className,
 }) => {
-  const extraFields = values.provider && get(providers, values.provider)
+  const extraFields = values.provider && get(providers, get(values, 'provider.value'))
   return (
     <div className={className}>
       <form onSubmit={handleSubmit}>
-        <Input
-          name='provider'
-          label='What is your provider'
-          placeholder='AWS, Digital Ocean, ...'
+        <Select
+          label='What is your provider?'
+          placeholder='Select provider'
+          onChange={value => setFieldValue('provider', value)}
+          options={options}
         />
 
         {extraFields && extraFields
@@ -61,6 +76,7 @@ const Form = ({
 Form.propTypes = {
   values: PropTypes.object,
   handleSubmit: PropTypes.func,
+  setFieldValue: PropTypes.func,
   isSubmitting: PropTypes.bool,
   className: PropTypes.string,
 }
