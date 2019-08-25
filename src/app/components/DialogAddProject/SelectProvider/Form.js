@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import get from 'lodash/get'
 import pick from 'lodash/pick'
 import { withFormik } from 'formik'
@@ -7,6 +6,11 @@ import { withFormik } from 'formik'
 import Input from 'app/components/core/Input'
 import Select from 'app/components/core/Select'
 
+import {
+  isSubmitDisabled,
+  defaultFormikProps,
+  hasError,
+} from 'app/helpers/forms'
 import {
   validationSchema,
   formFields,
@@ -37,13 +41,13 @@ const onSubmit = (values, { props }) => {
   props.nextStep()
 }
 
-const Form = ({
-  values,
-  handleSubmit,
-  isSubmitting,
-  setFieldValue,
-  className,
-}) => {
+const Form = (props) => {
+  const {
+    values,
+    handleSubmit,
+    setFieldValue,
+    className,
+  } = props
   const extraFields = values.provider && get(providers, get(values, 'provider.value'))
   return (
     <div className={className}>
@@ -52,6 +56,7 @@ const Form = ({
           label='What is your provider?'
           placeholder='Select provider'
           onChange={value => setFieldValue('provider', value)}
+          hasError={hasError(props, 'provider')}
           options={options}
         />
 
@@ -60,12 +65,12 @@ const Form = ({
             <Input
               key={input.name}
               {...input}
-              required
+              hasError={hasError(props, input.name)}
             />
           ))
         }
 
-        <Button type='submit' disable={isSubmitting}>
+        <Button type='submit' disable={isSubmitDisabled(props)}>
           Next
         </Button>
       </form>
@@ -74,11 +79,7 @@ const Form = ({
 }
 
 Form.propTypes = {
-  values: PropTypes.object,
-  handleSubmit: PropTypes.func,
-  setFieldValue: PropTypes.func,
-  isSubmitting: PropTypes.bool,
-  className: PropTypes.string,
+  ...defaultFormikProps,
 }
 
 let Container

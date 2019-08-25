@@ -1,10 +1,15 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import pick from 'lodash/pick'
 import { withFormik } from 'formik'
 
 import Input from 'app/components/core/Input'
 import Select from 'app/components/core/Select'
+
+import {
+  isSubmitDisabled,
+  defaultFormikProps,
+  hasError,
+} from 'app/helpers/forms'
 
 import { validationSchema, formFields } from './constants'
 import { SELF_HOSTED } from '../SelectProvider/constants'
@@ -31,15 +36,13 @@ const onSubmit = (values, { props }) => {
   props.nextStep()
 }
 
-const Form = ({
-  data,
-  values,
-  handleSubmit,
-  isSubmitting,
-  setFieldValue,
-  className,
-  ...otherProps
-}) => {
+const Form = (props) => {
+  const {
+    data,
+    handleSubmit,
+    setFieldValue,
+    className,
+  } = props
   return (
     <div className={className}>
       <form onSubmit={handleSubmit}>
@@ -47,7 +50,7 @@ const Form = ({
           name='name'
           label='Server name'
           placeholder='name your server'
-          required
+          hasError={hasError(props, 'name')}
         />
 
         {data.credentials.provider.value !== SELF_HOSTED && (
@@ -57,11 +60,11 @@ const Form = ({
             placeholder='Choose an instance type'
             onChange={value => setFieldValue('size', value)}
             options={options}
-            required
+            hasError={hasError(props, 'size')}
           />
         )}
 
-        <Button type='submit' disable={isSubmitting}>
+        <Button type='submit' disable={isSubmitDisabled(props)}>
           Next
         </Button>
       </form>
@@ -70,12 +73,7 @@ const Form = ({
 }
 
 Form.propTypes = {
-  data: PropTypes.object,
-  values: PropTypes.object,
-  handleSubmit: PropTypes.func,
-  setFieldValue: PropTypes.func,
-  isSubmitting: PropTypes.bool,
-  className: PropTypes.string,
+  ...defaultFormikProps,
 }
 
 let Container
