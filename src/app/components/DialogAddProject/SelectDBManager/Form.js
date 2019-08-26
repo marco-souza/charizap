@@ -4,6 +4,8 @@ import pick from 'lodash/pick'
 import { withFormik } from 'formik'
 import Grid from '@material-ui/core/Grid'
 
+import { useWrappers } from 'app/helpers/redux'
+
 import { validationSchema, formFields } from './constants'
 import { Button } from '../styled'
 
@@ -68,12 +70,11 @@ Form.propTypes = {
   className: PropTypes.string,
 }
 
-let Container
-Container = withFormik({
-  enableReinitialize: true,
-  handleSubmit: onSubmit,
-  validationSchema,
-  mapPropsToValues,
-})(Form)
-
-export default Container
+export default useWrappers(
+  withFormik({
+    enableReinitialize: true,
+    handleSubmit: onSubmit,
+    validationSchema,
+    mapPropsToValues,
+  })
+)(Form)

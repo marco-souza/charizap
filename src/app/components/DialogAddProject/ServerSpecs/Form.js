@@ -5,6 +5,7 @@ import { withFormik } from 'formik'
 import Input from 'app/components/core/Input'
 import Select from 'app/components/core/Select'
 
+import { useWrappers } from 'app/helpers/redux'
 import {
   isSubmitDisabled,
   defaultFormikProps,
@@ -75,13 +76,11 @@ const Form = (props) => {
 Form.propTypes = {
   ...defaultFormikProps,
 }
-
-let Container
-Container = withFormik({
-  enableReinitialize: true,
-  handleSubmit: onSubmit,
-  validationSchema,
-  mapPropsToValues,
-})(Form)
-
-export default Container
+export default useWrappers(
+  withFormik({
+    enableReinitialize: true,
+    handleSubmit: onSubmit,
+    validationSchema,
+    mapPropsToValues,
+  })
+)(Form)
