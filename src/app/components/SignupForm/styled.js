@@ -4,7 +4,7 @@ import CoreHeader from 'app/components/core/Header'
 import { getFont, getColor, mediaQueryUpTo } from 'app/helpers/theme'
 
 export const Container = styled.div`
-  margin: 0 22%;
+  margin: 20px 22%;
   text-align: center;
   margin-top: 40px;
   font-family: ${getFont('robotoDefault')};

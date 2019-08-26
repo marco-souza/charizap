@@ -7,7 +7,6 @@ import Container from './component'
 export default styled(Container)`
   text-align: center;
   max-width: 502px;
-  overflow: hidden;
   height: 100${props => props.tittleUp ? '%' : 'vh'};
   background-color: ${getPropsBackground()};
 
