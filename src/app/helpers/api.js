@@ -1,26 +1,30 @@
-import { of } from 'rxjs'
-import { ajax } from 'rxjs/ajax'
-import { catchError, map, mapTo } from 'rxjs/operators'
+import { of, from, throwError } from 'rxjs'
+import { fromFetch } from 'rxjs/fetch'
+import { catchError, map, mapTo, switchMap } from 'rxjs/operators'
 
 import { getCookie, setCookie, COOKIE_KEY, COOKIE_REFRESH_KEY } from 'app/helpers/cookie'
 
 const BASE_URL = process.env.API_BASE_URL
 const defaultHeaders = () => ({
   Accept: 'application/json',
-  Authorization: `Bearer ${getCookie(COOKIE_KEY)}`,
   'Content-Type': 'application/json',
+  ...{
+    ...(getCookie(COOKIE_KEY)
+      ? { Authorization: `Bearer ${getCookie(COOKIE_KEY)}` }
+      : {}
+    )
+  }
 })
 
-export const cookieHandler = ({ response }) => {
+export const cookieHandler = response => {
   setCookie(COOKIE_KEY, response.access_token)
   setCookie(COOKIE_REFRESH_KEY, response.refresh_token)
 }
 
 export const refreshHandler = () => {
-  const refreshRequest = ajax({
+  const refreshRequest = fromFetch(`${BASE_URL}/users/refresh-token`, {
     method: 'POST',
-    url: `${BASE_URL}/users/refresh-token`,
-    body: { refresh_token: getCookie(COOKIE_REFRESH_KEY) },
+    body: JSON.stringify({ refresh_token: getCookie(COOKIE_REFRESH_KEY) }),
   })
 
   return refreshRequest
@@ -28,32 +32,42 @@ export const refreshHandler = () => {
 }
 
 export const request = (url, options, callbackSuccess, callbackError) => {
-  const ajaxRequest = ajax({
-    url: `${BASE_URL}${url}`,
+  const ajaxRequest = fromFetch(`${BASE_URL}${url}`, {
     ...options,
-    crossDomain: true,
+    body: JSON.stringify(options.body),
     headers: {
       ...defaultHeaders(),
       ...options.header,
     }
-  })
+  }).pipe(
+    switchMap(response => response.ok
+      ? response.json()
+      // handle error
+      : from(response.json()).pipe(
+        switchMap((message) => throwError({
+          status: response.status,
+          message
+        }))
+      )
+    ),
+  )
 
   return ajaxRequest.pipe(
     map(callbackSuccess),
     catchError(err => {
-      const hasCookie = !getCookie(COOKIE_REFRESH_KEY)
+      const hasCookie = getCookie(COOKIE_REFRESH_KEY)
       switch (err.status) {
         // Refresh keys
         case 401:
         case 403:
-          return hasCookie
-            ? of(callbackError(err.response))
+          return !hasCookie
+            ? of(callbackError(err.message))
             : refreshHandler().pipe(
               mapTo(ajaxRequest)
             )
 
         default:
-          return of(callbackError(err.response))
+          return of(callbackError(err.message))
       }
     }),
   )
