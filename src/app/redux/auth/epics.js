@@ -8,8 +8,8 @@ import pick from 'lodash/pick'
 import { ofType, combineEpics } from 'redux-observable'
 import { tap, map, mergeMap } from 'rxjs/operators'
 
-import { getCookie, eraseCookie, COOKIE_KEY, COOKIE_REFRESH_KEY } from 'app/helpers/cookie'
-import api, { cookieHandler } from 'app/helpers/api'
+import { cookieHandler, hasCookies, deleteCookies } from 'app/helpers/request'
+import api from 'app/helpers/api'
 
 import {
   // Actions
@@ -28,7 +28,7 @@ const loginHandler = response => {
   return isLogged(true)
 }
 const logoutHandler = response => {
-  [COOKIE_KEY, COOKIE_REFRESH_KEY].map(eraseCookie)
+  deleteCookies()
   return isLogged(false)
 }
 
@@ -63,7 +63,7 @@ export const logout = (action$, state$) => action$.pipe(
 
 export const validateAuthKey = (action$, state$) => action$.pipe(
   ofType(VALIDATE_AUTH_KEY),
-  map(() => getCookie(COOKIE_KEY)),
+  map(() => hasCookies()),
   map(isValidKey => isLogged(Boolean(isValidKey))),
 )
 
