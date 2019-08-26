@@ -17,7 +17,7 @@ export const Container = styled.div`
   }
 
   & form {
-    margin-top: 70px;
+    margin-top: 50px;
     ${mediaQueryUpTo('xSmall', `margin-top: 45px;`)}
   }
 

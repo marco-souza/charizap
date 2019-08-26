@@ -21,7 +21,7 @@ export default styled(Container)`
 
   & img {
     margin: 0 auto;
-    margin-top: 60px;
+    margin-top: 40px;
 
     &:nth-child(2) {
       width: 100%;
@@ -29,8 +29,13 @@ export default styled(Container)`
       margin-bottom: ${props => props.tittleUp ? -200 : 0}px;
 
       @media(max-height: 768px) {
-        margin-bottom: ${props => props.tittleUp ? -250 : 0}px;
-        margin-top: 60px;
+        margin-bottom: ${props => props.tittleUp ? -250 : -100}px;
+        margin-top: 40px;
+      }
+
+      @media(max-width: 1024px) {
+        margin-bottom: ${props => props.tittleUp ? -150 : -100}px;
+        margin-top: 40px;
       }
     }
   }
