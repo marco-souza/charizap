@@ -7,7 +7,6 @@ import Container from './component'
 export default styled(Container)`
   text-align: center;
   max-width: 502px;
-  overflow: hidden;
   height: 100${props => props.tittleUp ? '%' : 'vh'};
   background-color: ${getPropsBackground()};
 
@@ -22,12 +21,22 @@ export default styled(Container)`
 
   & img {
     margin: 0 auto;
-    margin-top: 60px;
+    margin-top: 40px;
 
     &:nth-child(2) {
       width: 100%;
       margin-top: 120px;
       margin-bottom: ${props => props.tittleUp ? -200 : 0}px;
+
+      @media(max-height: 768px) {
+        margin-bottom: ${props => props.tittleUp ? -250 : -100}px;
+        margin-top: 40px;
+      }
+
+      @media(max-width: 1024px) {
+        margin-bottom: ${props => props.tittleUp ? -150 : -100}px;
+        margin-top: 40px;
+      }
     }
   }
 

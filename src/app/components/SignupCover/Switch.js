@@ -41,7 +41,9 @@ const Switch = ({ className }) => {
         </span>
       </div>
 
-      <img className='imageCover' src={selected} alt='devopness' />
+      <div className='imageCover'>
+        <img src={selected} alt='devopness' />
+      </div>
     </div>
   )
 }
@@ -55,12 +57,16 @@ export default styled(Switch)`
   position: relative;
   height: 80vh;
 
-  & img {
+  & .imageCover {
     width:100%;
     left: 0;
     bottom:0;
     position: absolute;
     max-height: 90%;
+
+    & img {
+      max-width: 100%;
+    }
   }
 
   & > .switcher {

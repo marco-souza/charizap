@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
 import Cover from 'app/components/core/Cover'
 
@@ -23,4 +24,10 @@ LoginCover.propTypes = {
   className: PropTypes.string,
 }
 
-export default LoginCover
+export default styled(LoginCover)`
+  & h5 {
+    @media(max-height: 768px){
+      padding: 20px 15%;
+    }
+  }
+`
