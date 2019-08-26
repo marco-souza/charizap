@@ -3,20 +3,28 @@ import { fromFetch } from 'rxjs/fetch'
 import { map, switchMap } from 'rxjs/operators'
 
 import { getCookie, setCookie, eraseCookie, COOKIE_KEY, COOKIE_REFRESH_KEY } from 'app/helpers/cookie'
-const cookies = [COOKIE_KEY, COOKIE_REFRESH_KEY]
 
+const cookies = [COOKIE_KEY, COOKIE_REFRESH_KEY]
 const BASE_URL = process.env.API_BASE_URL
 
-const defaultHeaders = () => ({
-  Accept: 'application/json',
-  'Content-Type': 'application/json',
-  ...{
-    ...(getCookie(COOKIE_KEY)
-      ? { Authorization: `Bearer ${getCookie(COOKIE_KEY)}` }
-      : {}
-    )
+export const hasCookies = () => cookies
+  .map(getCookie)
+  .every(item => item)
+
+export const deleteCookies = () => cookies
+  .map(eraseCookie)
+
+const defaultHeaders = () => {
+  const headers = {
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
   }
-})
+  if (hasCookies()) {
+    headers.Authorization = `Bearer ${getCookie(COOKIE_KEY)}`
+  }
+
+  return headers
+}
 
 export const cookieHandler = response => {
   setCookie(COOKIE_KEY, response.access_token)
@@ -24,16 +32,19 @@ export const cookieHandler = response => {
 }
 
 export const request = (url, options) => {
-  return fromFetch(`${BASE_URL}${url}`, {
+  const reqURL = `${BASE_URL}${url}`
+  const reqOptions = {
     ...options,
     body: options.body
       ? JSON.stringify(options.body)
       : null,
     headers: {
       ...defaultHeaders(),
-      ...options.header,
+      ...options.headers,
     }
-  }).pipe(
+  }
+
+  return fromFetch(reqURL, reqOptions).pipe(
     switchMap(response => response.ok
       ? response.json()
       // handle error
@@ -57,10 +68,3 @@ export const refreshHandler = () => {
     map(cookieHandler),
   )
 }
-
-export const hasCookies = () => cookies
-  .map(getCookie)
-  .every(item => item)
-
-export const deleteCookies = () => cookies
-  .map(eraseCookie)

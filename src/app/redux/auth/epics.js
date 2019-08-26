@@ -63,7 +63,7 @@ export const logout = (action$, state$) => action$.pipe(
 
 export const validateAuthKey = (action$, state$) => action$.pipe(
   ofType(VALIDATE_AUTH_KEY),
-  map(() => hasCookies()),
+  map(hasCookies),
   map(isValidKey => isLogged(Boolean(isValidKey))),
 )
 
