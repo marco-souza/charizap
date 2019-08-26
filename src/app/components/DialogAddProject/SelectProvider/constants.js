@@ -1,6 +1,7 @@
 import * as Yup from 'yup'
 
-export const REQUIRED = 'Field is required!'
+import { REQUIRED } from 'app/helpers/forms'
+
 export const AWS = 'aws'
 export const DIGITAL_OCEAN = 'digitalOcean'
 export const SELF_HOSTED = 'selfHosted'
@@ -41,33 +42,37 @@ export const providers = {
 
 export const validationSchema = Yup.object()
   .shape({
-    provider: Yup.string().required(REQUIRED),
+    provider: Yup.object().required(REQUIRED),
     name: Yup.string()
-      .when('provider', {
-        is: [DIGITAL_OCEAN, AWS],
-        then: Yup.string().min(1).required(REQUIRED)
+      .when('provider.value', {
+        is: AWS,
+        then: Yup.string().required(REQUIRED)
+      })
+      .when('provider.value', {
+        is: DIGITAL_OCEAN,
+        then: Yup.string().required(REQUIRED)
       }),
     key: Yup.string()
-      .when('provider', {
+      .when('provider.value', {
         is: DIGITAL_OCEAN,
         then: Yup.string().min(15).required(REQUIRED)
       })
-      .when('provider', {
+      .when('provider.value', {
         is: AWS,
         then: Yup.string().min(20).required(REQUIRED)
       }),
     secret: Yup.string()
-      .when('provider', {
+      .when('provider.value', {
         is: AWS,
         then: Yup.string().min(20).required(REQUIRED)
       }),
     ip: Yup.string()
-      .when('provider', {
+      .when('provider.value', {
         is: SELF_HOSTED,
         then: Yup.string().min(8).required(REQUIRED)
       }),
     port: Yup.string()
-      .when('provider', {
+      .when('provider.value', {
         is: SELF_HOSTED,
         then: Yup.string().min(2).required(REQUIRED),
       }),

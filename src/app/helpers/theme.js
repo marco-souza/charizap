@@ -11,6 +11,9 @@ export const breakpoints = {
   xxLarge: 1920,
 }
 
+export const isMobile = () =>
+  window.innerWidth < breakpoints.medium
+
 export const mediaQueryUpTo = (breakpoint, styles) =>
   css`
     @media (max-width: ${get(breakpoints, breakpoint, 'small')}px) {

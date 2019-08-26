@@ -1,11 +1,11 @@
 import * as Yup from 'yup'
 
-const REQUIRED = 'Field is required!'
+import { REQUIRED } from 'app/helpers/forms'
 
 export const validationSchema = Yup.object()
   .shape({
     name: Yup.string().min(1).required(REQUIRED),
-    size: Yup.string().min(1),
+    size: Yup.object().required(REQUIRED),
   })
 
 export const formFields = {

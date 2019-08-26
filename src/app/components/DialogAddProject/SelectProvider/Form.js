@@ -1,15 +1,33 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import get from 'lodash/get'
 import pick from 'lodash/pick'
 import { withFormik } from 'formik'
 
+import { useWrappers } from 'app/helpers/redux'
 import Input from 'app/components/core/Input'
+import Select from 'app/components/core/Select'
 
-import { validationSchema, formFields, providers } from './constants'
+import {
+  isSubmitDisabled,
+  defaultFormikProps,
+  hasError,
+} from 'app/helpers/forms'
+import {
+  validationSchema,
+  formFields,
+  providers,
+  AWS,
+  DIGITAL_OCEAN,
+  SELF_HOSTED,
+} from './constants'
 import { Button } from '../styled'
 
 const DATA_KEY = 'credentials'
+const options = [
+  { label: 'AWS', value: AWS },
+  { label: 'Digital Ocean', value: DIGITAL_OCEAN },
+  { label: 'Self Hosted (vps)', value: SELF_HOSTED },
+]
 
 const mapPropsToValues = ({ data }) =>
   pick({
@@ -24,20 +42,23 @@ const onSubmit = (values, { props }) => {
   props.nextStep()
 }
 
-const Form = ({
-  values,
-  handleSubmit,
-  isSubmitting,
-  className,
-}) => {
-  const extraFields = values.provider && get(providers, values.provider)
+const Form = (props) => {
+  const {
+    values,
+    handleSubmit,
+    setFieldValue,
+    className,
+  } = props
+  const extraFields = values.provider && get(providers, get(values, 'provider.value'))
   return (
     <div className={className}>
       <form onSubmit={handleSubmit}>
-        <Input
-          name='provider'
-          label='What is your provider'
-          placeholder='AWS, Digital Ocean, ...'
+        <Select
+          label='What is your provider?'
+          placeholder='Select provider'
+          onChange={value => setFieldValue('provider', value)}
+          hasError={hasError(props, 'provider')}
+          options={options}
         />
 
         {extraFields && extraFields
@@ -45,12 +66,12 @@ const Form = ({
             <Input
               key={input.name}
               {...input}
-              required
+              hasError={hasError(props, input.name)}
             />
           ))
         }
 
-        <Button type='submit' disable={isSubmitting}>
+        <Button type='submit' disable={isSubmitDisabled(props)}>
           Next
         </Button>
       </form>
@@ -59,18 +80,14 @@ const Form = ({
 }
 
 Form.propTypes = {
-  values: PropTypes.object,
-  handleSubmit: PropTypes.func,
-  isSubmitting: PropTypes.bool,
-  className: PropTypes.string,
+  ...defaultFormikProps,
 }
 
-let Container
-Container = withFormik({
-  enableReinitialize: true,
-  handleSubmit: onSubmit,
-  validationSchema,
-  mapPropsToValues,
-})(Form)
-
-export default Container
+export default useWrappers(
+  withFormik({
+    enableReinitialize: true,
+    handleSubmit: onSubmit,
+    validationSchema,
+    mapPropsToValues,
+  })
+)(Form)

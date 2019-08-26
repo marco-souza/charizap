@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Dialog from '@material-ui/core/Dialog'
 import Text from 'app/components/core/Text'
+import { isMobile } from 'app/helpers/theme'
 
 import { Header, Body, CloseIcon } from './styled'
 
@@ -20,6 +21,8 @@ const BaseDialog = ({
       classes={{ paper: className }}
       disableBackdropClick
       disableEscapeKeyDown
+      scroll='body'
+      fullScreen={isMobile()}
     >
       <Header>
         <Text variant='span' color='secondary'>
