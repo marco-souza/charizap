@@ -30,7 +30,7 @@ export default styled(Container)`
 
       @media(max-height: 768px) {
         margin-bottom: ${props => props.tittleUp ? -250 : 0}px;
-        margin-top: 80px;
+        margin-top: 60px;
       }
     }
   }

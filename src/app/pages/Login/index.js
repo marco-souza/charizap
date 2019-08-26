@@ -8,8 +8,10 @@ import LoginCover from 'app/components/LoginCover'
 import LoginMenu from 'app/components/LoginMenu'
 import LoginForm from 'app/components/LoginForm'
 
+import { Container } from './styled'
+
 const Login = ({ login }) => (
-  <div>
+  <Container>
     <Grid container padding={0}>
       <Grid item xlg={4} lg={4} md={4} xs={12} sm={12}>
         <LoginCover />
@@ -20,7 +22,7 @@ const Login = ({ login }) => (
         <LoginForm />
       </Grid>
     </Grid>
-  </div>
+  </Container>
 )
 
 Login.propTypes = {

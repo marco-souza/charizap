@@ -7,8 +7,10 @@ import SignupForm from 'app/components/SignupForm'
 
 import useAuth from 'app/redux/auth'
 
+import { Container } from './styled'
+
 const Signup = () => (
-  <div>
+  <Container>
     <Grid container padding={0}>
       <Grid item xlg={4} lg={4} md={4} xs={12} sm={12}>
         <SignupCover />
@@ -19,7 +21,7 @@ const Signup = () => (
         <SignupForm />
       </Grid>
     </Grid>
-  </div>
+  </Container>
 )
 
 export default useAuth(Signup)
