@@ -28,6 +28,11 @@ export default styled(Container)`
       width: 100%;
       margin-top: 120px;
       margin-bottom: ${props => props.tittleUp ? -200 : 0}px;
+
+      @media(max-height: 768px) {
+        margin-bottom: ${props => props.tittleUp ? -250 : 0}px;
+        margin-top: 80px;
+      }
     }
   }
 
