@@ -3,6 +3,7 @@ import get from 'lodash/get'
 import pick from 'lodash/pick'
 import { withFormik } from 'formik'
 
+import { useWrappers } from 'app/helpers/redux'
 import Input from 'app/components/core/Input'
 import Select from 'app/components/core/Select'
 
@@ -82,12 +83,11 @@ Form.propTypes = {
   ...defaultFormikProps,
 }
 
-let Container
-Container = withFormik({
-  enableReinitialize: true,
-  handleSubmit: onSubmit,
-  validationSchema,
-  mapPropsToValues,
-})(Form)
-
-export default Container
+export default useWrappers(
+  withFormik({
+    enableReinitialize: true,
+    handleSubmit: onSubmit,
+    validationSchema,
+    mapPropsToValues,
+  })
+)(Form)
