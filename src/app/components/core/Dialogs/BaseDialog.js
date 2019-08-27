@@ -13,7 +13,7 @@ const BaseDialog = ({
   children,
   className,
   handleClose,
-  goToPrevious,
+  previousStep,
 }) => {
   return (
     <Dialog
@@ -28,7 +28,7 @@ const BaseDialog = ({
 
       <Header>
         {/* TODO Add 'BACK' text here, couldn't handle the style =( */}
-        <LeftArrow onClick={goToPrevious} className='leftSide' />
+        <LeftArrow onClick={previousStep} className='leftSide' />
 
         <Text variant='span' color='secondary'>
           {title}
@@ -50,7 +50,7 @@ BaseDialog.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string.isRequired,
   handleClose: PropTypes.func.isRequired,
-  goToPrevious: PropTypes.func,
+  previousStep: PropTypes.func.isRequired,
 }
 
 export default styled(BaseDialog)`

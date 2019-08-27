@@ -54,6 +54,7 @@ const DialogContainer = ({ handleClose, modalIsVisible }) => {
       title='Make it happen'
       isOpen={modalIsVisible}
       handleClose={handleClose}
+      previousStep={previousStep}
     >
       <MultiStepForm
         steps={steps}
