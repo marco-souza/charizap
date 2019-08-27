@@ -55,6 +55,8 @@ const Form = (props) => {
       <form onSubmit={handleSubmit}>
         <Select
           label='What is your provider?'
+          name='provider'
+          value={values.provider}
           placeholder='Select provider'
           onChange={value => setFieldValue('provider', value)}
           hasError={hasError(props, 'provider')}
