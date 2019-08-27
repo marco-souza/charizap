@@ -7,7 +7,7 @@ import bodyImage from 'assets/images/tetris-4p.gif'
 
 import { Step, Header, Button, SubText, Tag } from '../styled'
 
-const SelectDBStep = (props) => (
+const ConfirmationStep = (props) => (
   <Step {...props}>
     <Header variant='h4'>Are you ready?</Header>
 
@@ -29,7 +29,7 @@ const SelectDBStep = (props) => (
       </Grid>
 
       <Grid item xs={6}>
-        <Button onClick={props.nextStep()}>
+        <Button onClick={props.nextStep}>
           Confirm
         </Button>
       </Grid>
@@ -37,8 +37,8 @@ const SelectDBStep = (props) => (
   </Step>
 )
 
-SelectDBStep.propTypes = {
+ConfirmationStep.propTypes = {
   nextStep: PropTypes.func,
 }
 
-export default SelectDBStep
+export default ConfirmationStep
