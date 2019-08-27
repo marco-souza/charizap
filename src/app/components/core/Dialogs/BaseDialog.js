@@ -5,7 +5,7 @@ import Dialog from '@material-ui/core/Dialog'
 import Text from 'app/components/core/Text'
 import { isMobile } from 'app/helpers/theme'
 
-import { Header, Body, CloseIcon } from './styled'
+import { Header, Body, CloseIcon, LeftArrow } from './styled'
 
 const BaseDialog = ({
   title,
@@ -13,6 +13,7 @@ const BaseDialog = ({
   children,
   className,
   handleClose,
+  goToPrevious,
 }) => {
   return (
     <Dialog
@@ -24,7 +25,11 @@ const BaseDialog = ({
       scroll='body'
       fullScreen={isMobile()}
     >
+
       <Header>
+        {/* TODO Add 'BACK' text here, couldn't handle the style =( */}
+        <LeftArrow onClick={goToPrevious} className='leftSide' />
+
         <Text variant='span' color='secondary'>
           {title}
         </Text>
@@ -45,6 +50,7 @@ BaseDialog.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string.isRequired,
   handleClose: PropTypes.func.isRequired,
+  goToPrevious: PropTypes.func,
 }
 
 export default styled(BaseDialog)`
