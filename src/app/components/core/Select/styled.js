@@ -1,12 +1,12 @@
 import styled from 'styled-components'
 import Select from 'react-select'
 
+import Sort from 'app/components/core/icons/Sort'
 import { getColor, getFont, getPropsColor, getPropsBackground } from 'app/helpers/theme'
 import { removeBlueMark } from 'app/helpers/styles'
 
 export const ReactSelect = styled(Select)`
   font-family: ${getFont('robotoDefault')};
-
   .devopness__control, > div {
     border-radius: 20px 20px;
     overflow: hidden;
@@ -70,4 +70,7 @@ export const Container = styled.div`
   flex-direction: column;
   font-family: ${getFont('robotoDefault')};
   text-align: left;
+`
+export const SortIcon = styled(Sort)`
+  color: ${getColor('secondaryVariant')};
 `
