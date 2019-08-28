@@ -1,22 +1,27 @@
 import { of } from 'rxjs'
-import { catchError, map, mapTo } from 'rxjs/operators'
+import { catchError, map, switchMap } from 'rxjs/operators'
 
-import { request, hasCookies, refreshHandler } from 'app/helpers/request'
+import { request, hasCookies, refreshHandler, deleteCookies } from 'app/helpers/request'
+import { isLogged } from 'app/redux/auth/constants'
 
 export const apiRequest = (url, options, callbackSuccess, callbackError) => {
-  const ajaxRequest = request(url, options)
-
-  return ajaxRequest.pipe(
+  return request(url, options).pipe(
     map(callbackSuccess),
     catchError(err => {
       switch (err.status) {
-        // Refresh keys
         case 401:
-        case 403:
           return !hasCookies()
             ? of(callbackError(err.message))
             : refreshHandler().pipe(
-              mapTo(ajaxRequest)
+              switchMap(() => apiRequest(url, options, callbackSuccess, callbackError)),
+              catchError(err => {
+                // NOTE: if fail to refresh token, logout user
+                deleteCookies()
+                return of(
+                  callbackError(err.message),
+                  isLogged(false),
+                )
+              }),
             )
 
         default:
