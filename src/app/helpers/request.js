@@ -1,4 +1,4 @@
-import { from, throwError } from 'rxjs'
+import { of, from, throwError } from 'rxjs'
 import { fromFetch } from 'rxjs/fetch'
 import { map, switchMap } from 'rxjs/operators'
 
@@ -46,7 +46,9 @@ export const request = (url, options) => {
 
   return fromFetch(reqURL, reqOptions).pipe(
     switchMap(response => response.ok
-      ? response.json()
+      ? response.status === 204
+        ? of({}) // success without body
+        : response.json()
       // handle error
       : from(response.json()).pipe(
         switchMap((message) => throwError({
