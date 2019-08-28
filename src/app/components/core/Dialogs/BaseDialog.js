@@ -5,7 +5,7 @@ import Dialog from '@material-ui/core/Dialog'
 import Text from 'app/components/core/Text'
 import { isMobile } from 'app/helpers/theme'
 
-import { Header, Body, CloseIcon } from './styled'
+import { Header, Body, CloseIcon, ReturnState } from './styled'
 
 const BaseDialog = ({
   title,
@@ -13,6 +13,8 @@ const BaseDialog = ({
   children,
   className,
   handleClose,
+  previousStep,
+  hasPrevious,
 }) => {
   return (
     <Dialog
@@ -24,7 +26,12 @@ const BaseDialog = ({
       scroll='body'
       fullScreen={isMobile()}
     >
-      <Header>
+      <Header >
+        { hasPrevious
+          ? <ReturnState action={previousStep} />
+          : <div />
+        }
+
         <Text variant='span' color='secondary'>
           {title}
         </Text>
@@ -45,6 +52,8 @@ BaseDialog.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string.isRequired,
   handleClose: PropTypes.func.isRequired,
+  previousStep: PropTypes.func.isRequired,
+  hasPrevious: PropTypes.func.isRequired,
 }
 
 export default styled(BaseDialog)`

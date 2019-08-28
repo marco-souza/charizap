@@ -43,6 +43,7 @@ const Form = (props) => {
     handleSubmit,
     setFieldValue,
     className,
+    values,
   } = props
   return (
     <div className={className}>
@@ -58,10 +59,12 @@ const Form = (props) => {
           <Select
             name='size'
             label='Select size'
+            value={values.size}
             placeholder='Choose an instance type'
             onChange={value => setFieldValue('size', value)}
             options={options}
             hasError={hasError(props, 'size')}
+            required
           />
         )}
 
