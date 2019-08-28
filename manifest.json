@@ -2,14 +2,7 @@
 	"name": "Charizap",
 	"version": "1.0",
 	"description": "WhatsApp Chrome extension!",
-	"permissions": [
-		"declarativeContent",
-		"webRequest",
-		"webRequestBlocking",
-		"webRequest",
-		"webRequestBlocking",
-		"<all_urls>"
-	],
+	"permissions": [ "declarativeContent", "webRequest", "webRequestBlocking", "<all_urls>" ],
 	"background": {
 		"scripts": [ "background.js", "allowIframe.js" ],
 		"persistent": true

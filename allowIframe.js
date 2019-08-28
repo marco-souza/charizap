@@ -2,7 +2,7 @@ function allowIframe(details) {
   return {
     responseHeaders: details.responseHeaders
       .filter(header =>
-        header.name.toLowerCase() == 'x-frame-options'
+        header.name.toLowerCase() !== 'x-frame-options'
       )
   };
 }
