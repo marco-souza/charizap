@@ -1,4 +1,3 @@
-import { of } from 'rxjs'
 
 export const generateNewState = (state, key, payload) => ({
   ...state,
@@ -17,10 +16,3 @@ export const useWrappers = (...wrappers) =>
       (Wrapper, curFunc) => curFunc(Wrapper),
       Component,
     )
-
-export const handleRequestErrors = callback =>
-  ({ response }) => {
-    console.log(response)
-    // TODO: handle Unauthenticated requests
-    return of(callback(response))
-  }

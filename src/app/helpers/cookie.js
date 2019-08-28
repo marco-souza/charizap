@@ -1,4 +1,6 @@
 const DAY = 24 * 60 * 60 * 1000
+export const COOKIE_KEY = 'access_token'
+export const COOKIE_REFRESH_KEY = 'refresh_token'
 
 export const setCookie = (name, value, days) => {
   let expires = ''

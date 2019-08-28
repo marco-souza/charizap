@@ -5,12 +5,10 @@
  * Refs: [rxjs, redux-observable]
  */
 import pick from 'lodash/pick'
-import { ajax } from 'rxjs/ajax'
 import { ofType, combineEpics } from 'redux-observable'
-import { tap, map, delay, mergeMap, catchError } from 'rxjs/operators'
+import { tap, map, mergeMap } from 'rxjs/operators'
 
-import { getCookie, setCookie, eraseCookie } from 'app/helpers/cookie'
-import { handleRequestErrors } from 'app/helpers/redux'
+import { cookieHandler, hasCookies, deleteCookies } from 'app/helpers/request'
 import api from 'app/helpers/api'
 
 import {
@@ -25,74 +23,48 @@ import {
   VALIDATE_AUTH_KEY,
 } from './constants'
 
-const COOKIE_KEY = 'access_token'
-const COOKIE_REFRESH_KEY = 'refresh_token'
-
-// TODO: Make function to generate requests
-const HEADER_TEMPLATE = {
-  'Accept': 'application/json',
-  'Content-Type': 'application/json',
+const loginHandler = response => {
+  cookieHandler(response)
+  return isLogged(true)
 }
-
-const closeLoader = () => isLogged(false)
+const logoutHandler = response => {
+  deleteCookies()
+  return isLogged(false)
+}
 
 export const signup = action$ => action$.pipe(
   ofType(SIGN_UP),
   tap(console.log),
-  mergeMap(action => ajax({
-    method: 'POST',
-    url: api.signUp(),
-    body: pick(action.payload, ['email', 'name', 'password']),
-    headers: HEADER_TEMPLATE,
-  }).pipe(
-    map(() => setSignupDone(true)),
-    catchError(handleRequestErrors(setRequestErrors)),
-  ))
+  mergeMap(action =>
+    api.signUp(
+      pick(action.payload, ['email', 'name', 'password']),
+      () => setSignupDone(true),
+      setRequestErrors,
+    ))
 )
 
 export const login = (action$, state$) => action$.pipe(
   ofType(LOGIN),
-  mergeMap(action => ajax({
-    method: 'POST',
-    url: api.login(),
-    body: pick(action.payload, ['email', 'password']),
-    headers: HEADER_TEMPLATE,
-  }).pipe(
-    map(({ response }) => {
-      setCookie(COOKIE_KEY, response.access_token)
-      setCookie(COOKIE_REFRESH_KEY, response.refresh_token)
-    }),
-    map(() => isLogged(true)),
-    catchError(handleRequestErrors(setRequestErrors)),
-  )),
+  mergeMap(action =>
+    api.login(
+      pick(action.payload, ['email', 'password']),
+      loginHandler,
+      setRequestErrors,
+    ))
 )
 
 export const logout = (action$, state$) => action$.pipe(
   ofType(LOGOUT),
-  mergeMap(action => ajax({
-    method: 'GET',
-    url: api.logout(),
-    headers: {
-      ...HEADER_TEMPLATE,
-      'Authorization': `Bearer ${getCookie(COOKIE_KEY)}`,
-    },
-    xhrFields: {
-      withCredentials: true
-    }
-  }).pipe(
-    tap([COOKIE_KEY, COOKIE_REFRESH_KEY].map(eraseCookie)),
-    map(closeLoader),
-    catchError(handleRequestErrors(setRequestErrors)),
+  mergeMap(action => api.logout(
+    logoutHandler,
+    setRequestErrors,
   )),
 )
 
 export const validateAuthKey = (action$, state$) => action$.pipe(
   ofType(VALIDATE_AUTH_KEY),
-  delay(1000),
-  map(() => getCookie(COOKIE_KEY)),
-  // TODO: map(authKey => authKey && api.isValidAuthKey),
+  map(hasCookies),
   map(isValidKey => isLogged(Boolean(isValidKey))),
-  catchError(handleRequestErrors(setRequestErrors)),
 )
 
 export default combineEpics(
