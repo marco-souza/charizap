@@ -12,6 +12,7 @@ export const ReactSelect = styled(Select)`
     border-radius: 20px 20px;
     overflow: hidden;
     padding: 0 10px;
+    cursor: pointer;
 
     /* Adapt the colors based on primary prop */
     color: ${getPropsColor()};
@@ -58,7 +59,7 @@ export const ReactSelect = styled(Select)`
   }
 
   &&& input {
-    ${removeBlueMark}
+    ${removeBlueMark};
   }
 `
 
