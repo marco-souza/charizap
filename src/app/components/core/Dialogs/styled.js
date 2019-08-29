@@ -7,28 +7,48 @@ import ReturnButtom from 'app/components/core/ReturnButton/component'
 export const Header = styled.div`
   background-color: ${getBgColor('modalHeader')};
   font-family: ${getFont('helveticaFallback')};
+  color: ${getColor('secondary')};
   font-weight: bold;
-  font-size: 0.8em;
+  font-size: 16px;
   display: flex;
+  position: relative;
   flex: 1;
-  justify-content: space-between;
   padding: 10px;
-  align-items: baseline;
+  text-align: center;
 
   & span {
-    justify-content: center;
+    margin: 0 auto;
   }
 `
+
 export const Body = styled.div`
   min-width: 420px;
   padding: 10px;
 `
 
 export const CloseIcon = styled(Close)`
-  color: ${getColor('secondaryVariant')};
-  justify-content: flex-end;
+  right: 0;
+  font-size: 16px;
+  opacity: 0.7;
+  position: absolute;
+  cursor: pointer;
+  padding-right: 12px;
 `
 export const ReturnState = styled(ReturnButtom)`
-  justify-content: flex-start;
-  color: ${getColor('secondaryVariant')};
+  left: 0;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  opacity: 0.7;
+  font-size: 16px;
+  cursor: pointer;
+
+  & svg {
+    font-size: 14px;
+    padding-right: 12px;
+  }
+
+  &&& {
+    margin-left: 12px;
+  }
 `
