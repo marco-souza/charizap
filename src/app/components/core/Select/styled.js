@@ -7,6 +7,7 @@ import { removeBlueMark } from 'app/helpers/styles'
 
 export const ReactSelect = styled(Select)`
   font-family: ${getFont('robotoDefault')};
+
   .devopness__control, > div {
     border-radius: 20px 20px;
     overflow: hidden;
@@ -34,6 +35,8 @@ export const ReactSelect = styled(Select)`
   }
 
   .devopness__option {
+    color: ${getColor('secondary')};
+
     &--is-selected, &--is-focused {
       background-color: ${getPropsColor()};
       color: ${getColor('white')};
