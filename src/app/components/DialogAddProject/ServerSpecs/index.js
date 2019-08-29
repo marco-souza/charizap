@@ -15,13 +15,14 @@ const ServerSpecsStep = (props) => (
     <Header variant='h4'>
       Now lets define your server name.
     </Header>
-    <SubText variant='subtitle2'>
-      Let's create your machine with <Highlight>php</Highlight> and <Highlight>Nginx</Highlight>.
-    </SubText>
 
     <img src={bodyImage} alt='Server Specifications' />
 
     <ServerSpecsForm {...props} />
+
+    <SubText variant='subtitle2'>
+      Let's create your machine with <Highlight>php</Highlight> and <Highlight>Nginx</Highlight>.
+    </SubText>
   </Step>
 )
 

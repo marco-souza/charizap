@@ -10,5 +10,5 @@ export const validationSchema = Yup.object()
 
 export const formFields = {
   name: '',
-  size: {},
+  size: null,
 }
