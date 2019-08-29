@@ -34,5 +34,5 @@ export const Tag = styled(CoreButton)`
 
 export const Button = styled(CoreButton)`
   width: 100%;
-  margin: 20px 0;
+  margin: 20px 0 0;
 `

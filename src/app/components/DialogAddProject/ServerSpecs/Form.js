@@ -60,7 +60,7 @@ const Form = (props) => {
             name='size'
             label='Select size'
             value={values.size}
-            placeholder='Choose an instance type'
+            placeholder='Select your size'
             onChange={value => setFieldValue('size', value)}
             options={options}
             hasError={hasError(props, 'size')}

@@ -28,7 +28,7 @@ const BaseDialog = ({
     >
       <Header >
         { hasPrevious
-          ? <ReturnState action={previousStep} />
+          ? <ReturnState text='Back' action={previousStep} />
           : <div />
         }
 
@@ -53,7 +53,7 @@ BaseDialog.propTypes = {
   className: PropTypes.string.isRequired,
   handleClose: PropTypes.func.isRequired,
   previousStep: PropTypes.func.isRequired,
-  hasPrevious: PropTypes.func.isRequired,
+  hasPrevious: PropTypes.bool.isRequired,
 }
 
 export default styled(BaseDialog)`

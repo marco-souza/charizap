@@ -17,23 +17,23 @@ const ConfirmationStep = (props) => (
       <Tag>10$ month</Tag>
     </div>
 
-    <SubText small>
-      Have you opted for the <Highlight>$ 10 a month</Highlight> plan with the <Highlight>1 GB</Highlight> capacity. Can we continue?
-    </SubText>
-
     <Grid container spacing={2}>
       <Grid item xs={6}>
         <Button variant='text'>
-          Cancel
+          No
         </Button>
       </Grid>
 
       <Grid item xs={6}>
         <Button onClick={props.nextStep}>
-          Confirm
+          Yes
         </Button>
       </Grid>
     </Grid>
+
+    <SubText small>
+          You have opted for the <Highlight>$ 10 a month</Highlight> plan with the <Highlight>1 GB</Highlight> capacity. Can we continue?
+    </SubText>
   </Step>
 )
 
