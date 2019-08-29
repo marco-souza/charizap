@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import get from 'lodash/get'
 
 import Highlight from 'app/components/core/Highlight'
-import bodyImage from 'assets/images/tetris-1p.gif'
+import bodyImage from 'assets/images/tetris-2p.gif'
 
 import ServerSpecsForm from './Form'
 import { Step, SubText, Header } from '../styled'

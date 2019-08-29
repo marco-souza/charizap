@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import Highlight from 'app/components/core/Highlight'
-import bodyImage from 'assets/images/tetris-2p.gif'
+import bodyImage from 'assets/images/tetris-3p.gif'
 
 import SelectDBForm from './Form'
 import { Step, SubText, Header } from '../styled'

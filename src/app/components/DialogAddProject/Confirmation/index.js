@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Grid from '@material-ui/core/Grid'
 
 import Highlight from 'app/components/core/Highlight'
-import bodyImage from 'assets/images/tetris-4p.gif'
+import bodyImage from 'assets/images/tetris-5p.gif'
 
 import { Step, Header, Button, SubText, Tag } from '../styled'
 
