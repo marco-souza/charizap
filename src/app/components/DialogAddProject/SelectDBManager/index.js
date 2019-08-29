@@ -4,7 +4,7 @@ import get from 'lodash/get'
 import styled from 'styled-components'
 
 import Highlight from 'app/components/core/Highlight'
-import bodyImage from 'assets/images/tetris-3p.gif'
+import bodyImage from 'assets/images/tetris-4p.gif'
 
 import SelectDBManagerForm from './Form'
 import { Step, SubText, Header } from '../styled'

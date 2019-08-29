@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import Grid from '@material-ui/core/Grid'
 
-import bodyImage from 'assets/images/tetris-5p.gif'
-import DoneGif from 'assets/images/tetris-6p.gif'
+import bodyImage from 'assets/images/tetris-6p.gif'
+import DoneGif from 'assets/images/tetris-7p.gif'
 
 import { Step, SubText, Header, Button } from '../styled'
 
