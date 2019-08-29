@@ -12,10 +12,9 @@ const ColorSwitch = (props, isBorder) => (
 )
 
 export const DotStep = styled.div`
-  display: inline-block;
-  width: 15px;
-  height: 15px;
-  margin: 20px 5px;
+  width: ${props => props.selected ? '12px' : '10px'};
+  height: ${props => props.selected ? '12px' : '10px'};
+  margin: 10px 5px 20px;
   border-radius: 10px;
   border: solid 2px ${props => ColorSwitch(props, true)};
   background-color: ${props => ColorSwitch(props)};
@@ -23,5 +22,8 @@ export const DotStep = styled.div`
 `
 
 export const StepManager = styled.div`
-  text-align: center;
+  display: flex;
+  vertical-align: middle;
+  align-items: center;
+  justify-content: center;
 `
