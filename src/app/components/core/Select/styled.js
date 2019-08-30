@@ -25,7 +25,9 @@ export const ReactSelect = styled(Select)`
     }
   }
 
-
+  .devopness__single-value {
+    color: ${getColor('secondary')};
+  }
   .devopness__control {
     box-shadow: none;
 
