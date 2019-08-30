@@ -24,7 +24,6 @@ export default styled(Component)`
   }
 
   & input {
-    color: ${getColor('secondary')};
     border: 2px solid ${({ hasError }) => getColor(!hasError ? 'stroke' : 'error')};
     background: ${({ hasError }) => getColor(!hasError ? 'background' : 'stroke')};
 
@@ -39,6 +38,10 @@ export default styled(Component)`
 
     &::placeholder {
       color: ${({ hasError }) => getColor(!hasError ? 'secondaryVariant' : 'white')};
+    }
+    
+    &&& {
+      color: ${getColor('secondary')};
     }
   }
 

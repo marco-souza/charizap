@@ -27,13 +27,13 @@ const WaitStep = (props) => {
       <Grid container spacing={2}>
         <Grid item xs={6}>
           <Button variant='text'>
-            Cancel
+            NO
           </Button>
         </Grid>
 
         <Grid item xs={6}>
           <Button onClick={props.nextStep()} disabled={!serverDone}>
-            Success
+            YES
           </Button>
         </Grid>
       </Grid>

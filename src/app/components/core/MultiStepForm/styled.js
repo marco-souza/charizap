@@ -19,6 +19,7 @@ export const DotStep = styled.div`
   border: solid 2px ${props => ColorSwitch(props, true)};
   background-color: ${props => ColorSwitch(props)};
   opacity: ${props => !props.selected ? 0.5 : 1};
+  cursor: pointer;
 `
 
 export const StepManager = styled.div`
