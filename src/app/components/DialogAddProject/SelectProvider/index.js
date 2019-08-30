@@ -12,13 +12,13 @@ const SelectProviderStep = (props) => (
     <Header variant='h4'>
       What is you <Highlight>server provider</Highlight> credential?
     </Header>
-    <SubText variant='subtitle2'>
-      Let's create your machine with <Highlight>php</Highlight> and <Highlight>Nginx</Highlight>.
-    </SubText>
 
     <img src={bodyImage} alt='Cloud Provider' />
 
     <SelectProviderForm {...props} />
+    <SubText variant='subtitle2'>
+      Let's create your machine with <Highlight>php</Highlight> and <Highlight>Nginx</Highlight>.
+    </SubText>
   </Step>
 )
 
