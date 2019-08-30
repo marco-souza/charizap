@@ -7,7 +7,7 @@ import { getColor, getFont } from 'app/helpers/theme'
 
 export const Step = styled(CoreStep)`
   text-align: center;
-  padding: 10px 100px;
+  padding: 20px 100px 10px;
 
   & img {
     width: 50%;

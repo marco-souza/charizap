@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import Grid from '@material-ui/core/Grid'
+import styled from 'styled-components'
 
 import bodyImage from 'assets/images/tetris-6p.gif'
 import DoneGif from 'assets/images/tetris-7p.gif'
@@ -52,4 +53,6 @@ WaitStep.propTypes = {
   className: PropTypes.string,
 }
 
-export default WaitStep
+export default styled(WaitStep)`
+  padding-bottom: 20px;
+`
