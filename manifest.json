@@ -16,5 +16,14 @@
 			"128": "images/logo_128.png"
 		}
 	},
+	"commands": {
+		"_execute_page_action": {
+			"suggested_key": {
+				"default": "Alt+Shift+Z"
+			},
+			"description": "Open Charizap",
+			"global": true
+		}
+	},
 	"manifest_version": 2
 }

@@ -11,3 +11,8 @@ chrome.runtime.onInstalled.addListener(function() {
     ]);
   });
 });
+
+chrome.commands.onCommand.addListener(function(command) {
+  debugger
+  console.log('Command:', command);
+});
