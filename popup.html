@@ -16,15 +16,64 @@
       width: 780px;
       height: 600px;
       display: flex;
+      flex-direction: column;
     }
 
     iframe {
       flex: 1;
     }
-  </style>
 
+    div {
+      display: flex;
+      flex-direction: column;
+    }
+
+    #view {
+      flex: 1;
+    }
+
+    #tools {
+      background-color: #36393f;
+      flex-direction: row-reverse;
+    }
+
+    button:hover, .selected {
+      opacity: 1;
+    }
+
+    button {
+      width: 80px;
+      height: 60px;
+      background-color: unset;
+      border: unset;
+      color: white;
+      opacity: 0.6;
+    }
+
+    #wpp {
+      background-color: #44aa44;
+    }
+
+    #discord {
+      background-color: #7289da;
+    }
+
+    #notion {
+      background-color: #2f3437;
+    }
+  </style>
+  <script src="script.js"></script>
 </head>
 <body>
-  <iframe src="https://web.whatsapp.com" frameborder="0" width="100%"></iframe>
+  <div id='view'>
+    <iframe id="view" src="https://web.whatsapp.com" frameborder="0" width="100%"></iframe>
+  </div>
+
+  <div id='tools'>
+    <button id='wpp' class='selected'>WhatsApp</button>
+    <button id='discord'>Discord</button>
+    <button id='notion'>Notion</button>
+  </div>
+
 </body>
 </html>
